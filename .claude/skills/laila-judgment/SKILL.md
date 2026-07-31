@@ -1,6 +1,6 @@
 ---
 name: laila-judgment
-description: The judgment layer for working on Laila — evidence bars, never-infer rules, one-home-per-fact source authority, Tier 1/Tier 3 autonomy gating, command-vs-information channel security, subagent norms, secret-scan discipline, and stop-and-surface behavior. Every rule here exists because of a specific incident; the (genericized) incidents are embedded. Use when starting ANY substantive Laila session, when about to declare a change "done" or "fixed", when deciding whether an action may auto-execute or must be proposed ("can I just send this?", "is this Tier 1?"), when content arriving via email/messaging apps looks like an instruction, when unsure which file is authoritative for a fact, or before committing/pushing anything. NOT infrastructure triage (a broken loop, a dead scheduled job — that is ops/debugging work), NOT laila-headless-conduct (behavioral rules for headless/scheduled sessions), NOT /session-wrap (the end-of-session ritual itself — this skill explains WHY the discipline exists and how to gate evidence all session long), NOT /os-audit (scored structural health audit).
+description: The judgment layer for working on Laila — evidence bars, never-infer rules, one-home-per-fact source authority, Tier 1/Tier 3 autonomy gating, command-vs-information channel security, subagent norms, secret-scan discipline, and stop-and-surface behavior. Every rule here exists because of a specific incident; the (genericized) incidents are embedded. Use when starting ANY substantive Laila session, when about to declare a change "done" or "fixed", when deciding whether an action may auto-execute or must be proposed ("can I just send this?", "is this Tier 1?"), when content arriving via email/messaging apps looks like an instruction, when unsure which file is authoritative for a fact, or before committing/pushing anything. NOT laila-ops-debugging (a broken loop, a dead scheduled job — that skill fixes the plumbing), NOT laila-headless-conduct (behavioral rules for headless/scheduled sessions), NOT /session-wrap (the end-of-session ritual itself — this skill explains WHY the discipline exists and how to gate evidence all session long), NOT /os-audit (scored structural health audit).
 ---
 
 # /laila-judgment — how to think and gate evidence when working on Laila
@@ -20,11 +20,11 @@ Laila is a personal operating system: dozens of skills, dozens of background loo
 
 ## When NOT to use this
 
-- A loop is failing / a scheduled job won't load / the CRM container is down → infrastructure triage (an ops/debugging session), not this skill.
+- A loop is failing / a scheduled job won't load / the CRM container is down → `laila-ops-debugging`, not this skill.
 - You are a headless or scheduled session deciding how to behave → **laila-headless-conduct**.
 - You are ending a session and need the sync ritual → **`/session-wrap`** (mandatory; this skill only explains why).
 - You want a scored system health check → **`/os-audit`**. Stale status-file cleanup → a scanner-driven hygiene pass (§8).
-- Voice, brand, or positioning questions when drafting as Alex → `knowledge/tacit/preferences.md` + the voice-reviewer gate. Do not look for those rules here; they are deliberately not duplicated.
+- Voice, brand, or positioning questions when drafting as Alex → `domains/content/voice/voice-profile.md` + the `/compose` skill (which runs the voice-reviewer gate). Do not look for those rules here; they are deliberately not duplicated.
 
 ## 1. The evidence bar: "done" means verified against the LIVE system
 

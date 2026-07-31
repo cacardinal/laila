@@ -15,6 +15,8 @@ Read `domains/content/voice/voice-profile.md`. This file is USER-SUPPLIED — Al
 
 If the profile doesn't exist yet, say so and stop — you cannot gate against a ban list that hasn't been written.
 
+If the profile exists but is still the unfilled template, review structurally only (clarity, channel norms, length) and do NOT enforce the template's example rules as if they were Alex's.
+
 ## HARD FAILS (must fix)
 
 Everything the profile's Anti-Patterns section marks as banned: every hard-fail syntax entry, every banned-vocabulary list, the banned openers and closers, and any channel-specific rules the profile scopes to the draft's channel.

@@ -57,7 +57,7 @@ DATE_PATTERNS = [
     re.compile(r"\b(\d{1,2})/(\d{1,2})\b(?!/\d)"),                         # 4/21 (bare)
 ]
 
-HEADER_RE = re.compile(r"^\s*\*?Last updated:\s*([^*\n]+?)\s*\*?\s*$", re.IGNORECASE)
+HEADER_RE = re.compile(r"^\s*\*{0,2}Last updated:\*{0,2}\s*([^*\n]+?)\s*\*{0,2}\s*$", re.IGNORECASE)
 CHECKBOX_RE = re.compile(r"^\s*[-*]\s*\[\s\]\s*(.+)$")
 TABLE_ROW_RE = re.compile(r"^\s*\|(.+)\|\s*$")
 

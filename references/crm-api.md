@@ -19,6 +19,7 @@ Paste 3-5 working queries for your most common lookups:
 - Find a person by name → record ID, company, role
 - Find a company and its open opportunities/tasks
 - Read notes attached to a record
+- Create a note on a record (title + markdown body, linked to the record ID — `/persona`'s main-session save needs this)
 - Update a pipeline stage (Tier 1 candidates only — see `config/autonomy-rules.json`)
 
 ## Gotchas

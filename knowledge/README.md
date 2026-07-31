@@ -31,7 +31,7 @@ How Alex works. Preferences, patterns, lessons, security rules.
 - `tacit/lessons.md` — Lessons from past mistakes
 - `tacit/bottlenecks.md` — Manual tasks Alex keeps repeating (automation candidates)
 - `tacit/security-rules.md` — Authenticated channels, trust boundaries (see also `docs/security-model.md`)
-- `tacit/archive/` — Pre-compaction snapshots; live files are periodically compacted
+- `tacit/archive/` — Pre-compaction snapshots; live files are periodically compacted (created at first compaction)
 
 ### Decisions Log (`decisions/`)
 
@@ -39,6 +39,10 @@ Timestamped strategic and tactical decisions with reasoning and impact. Monthly 
 
 - `decisions/YYYY-MM.md` — Decisions made that month
 - Capturing the *reasoning* is the point — six months later, "why did we choose X?" should be answerable from this file alone
+
+### Brainstorms (`brainstorms/`)
+
+Structured briefs extracted from Alex's head by the `/grill-me` interview skill — the raw material that later feeds `entities/` and `tacit/` updates. Created on first use.
 
 ## The Retrieval Layer
 

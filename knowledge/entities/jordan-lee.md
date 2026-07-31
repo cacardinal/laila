@@ -2,9 +2,9 @@
 
 **Type:** Person
 **Role:** VP Product, Acme Corp ([[acme-corp]])
-**Relationship:** Warm — active consulting prospect, decision-maker
+**Relationship:** Warm — anchor client, engagement principal and decision-maker
 **First contact:** 2026-06-05
-**Last updated:** 2026-07-22
+**Last updated:** 2026-07-31
 
 ## Who They Are
 
@@ -20,16 +20,17 @@
 
 ## Relationship Dynamics
 
-- Introduced by Sam Okafor (CTO, internal champion) — always keep Sam in the loop
+- Introduced by Sam Okafor (COO, internal champion) — always keep Sam in the loop
 - Jordan is skeptical of consultants after a bad prior engagement; earn trust with small concrete deliverables before proposing anything bigger
 - Personal note: mentioned training for a fall marathon — fine to reference casually
 
 ## Open Items
 
-- [ ] Awaiting exec review of proposal v2 (expected ~2026-08-01)
+- [ ] Kickoff 2026-08-04 — 6-week fixed-fee advisory on the Q4 AI-dispatching feature
 
 ## History
 
+- 2026-07-24 — Accepted proposal v2 (fixed fee, 6 weeks; kickoff 2026-08-04)
 - 2026-07-18 — Received proposal v2
 - 2026-06-30 — Declined proposal v1 (too broad), asked for narrower scope
 - 2026-06-05 — Discovery call; laid out Q4 board commitment and team constraints

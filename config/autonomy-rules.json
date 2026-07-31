@@ -4,29 +4,23 @@
   "rules": [
     {
       "id": "prospect-decline-email",
-      "description": "Prospect decline detected",
+      "description": "Consulting-prospect decline detected — sender is the prospect's own company domain (keep this list in sync with active prospects in the pipeline)",
       "tier": 1,
       "trigger": {
         "channel": "email",
         "sender_patterns": [
-          "greenhouse.io",
-          "lever.co",
-          "ashbyhq.com",
-          "workable.com",
-          "icims.com",
-          "smartprospects.com",
-          "jobvite.com",
-          "breezy.hr",
-          "wellfound.com"
+          "verdantgrid.com",
+          "solstice-systems.com",
+          "heliotrope.co"
         ],
         "content_patterns": [
-          "decided not to move forward",
-          "unfortunately.*not be advancing",
-          "after careful consideration.*not moving",
-          "position has been filled",
-          "selected other candidates",
-          "not moving forward with your candidacy",
-          "will not be proceeding"
+          "decided to go in another direction",
+          "not moving forward with the proposal",
+          "chosen another (partner|vendor)",
+          "going with another (partner|vendor)",
+          "putting this on hold",
+          "pausing the engagement",
+          "will not be proceeding with the engagement"
         ]
       },
       "actions": [
@@ -53,28 +47,22 @@
     },
     {
       "id": "discovery-call-scheduling",
-      "description": "Discovery-call scheduling or pipeline advancement detected",
+      "description": "Discovery-call scheduling or pipeline advancement detected — sender is the prospect's own company domain (keep in sync with active prospects) or a scheduling tool",
       "tier": 1,
       "trigger": {
         "channel": "email",
         "sender_patterns": [
-          "greenhouse.io",
-          "lever.co",
-          "ashbyhq.com",
-          "workable.com",
-          "icims.com",
-          "smartprospects.com",
-          "jobvite.com",
-          "breezy.hr",
-          "wellfound.com",
+          "verdantgrid.com",
+          "solstice-systems.com",
+          "heliotrope.co",
           "calendly.com"
         ],
         "content_patterns": [
           "schedule.*discovery call",
-          "next round",
+          "set up an intro call",
           "would like to invite you",
-          "pleased to advance",
-          "moving you forward"
+          "discuss.*(proposal|scope|engagement)",
+          "ready to move forward.*(proposal|engagement)"
         ]
       },
       "actions": [

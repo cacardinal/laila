@@ -23,7 +23,14 @@ re-derived each time.
 | `/domain-hygiene` | `scripts/domain-status-hygiene.py` scan + batch cleanup review |
 | "Check goals", "Goal status" | Review goal progress across domains |
 | "Weekly planning" | Full week overview (Sundays) |
-| "Quarterly planning" | Goal setting across all domains |
+| "Quarterly planning", "new quarter", "grade the quarter" | `/quarterly-refresh` — grade + archive the outgoing quarter, set the new slate (interactive only) |
+| `/setup`, "make this mine", "I just cloned this" | `/setup` — guided onboarding; resumes at the first unfinished step |
+| "Add a domain", "retire/archive the X domain" | `/new-domain` — the full adding-domains.md checklist, add or retire, verified end-to-end |
+| `/compose`, "draft a reply to...", "help me respond" | `/compose` — draft as Alex with the voice-reviewer gate; never sends |
+| `/persona [name]`, "who is X", "research X before the call" | `/persona` — relationship dossier saved to the contact's CRM record |
+| "Grill me on [topic]", "extract what I know about X" | `/grill-me` — knowledge-extraction interview → brief in `knowledge/brainstorms/` |
+| "Deep dive on [idea]", "is [idea] worth building" | `/idea-deep-dive` — stage-2 commitment evaluation for ideas past `/validate-idea`'s bar |
+| "The brief didn't arrive", "a job isn't firing", "hc-ping alerted", "the dashboard is down" | `/laila-ops-debugging` — symptom → fix triage of the operational stack |
 
 ## Domain triggers (sample domains)
 

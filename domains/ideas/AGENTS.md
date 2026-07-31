@@ -4,7 +4,7 @@
 
 The idea pipeline: every business/side-project idea gets captured, scored, and either graduated or killed on a timer. The point of the domain is the discipline, not the ideas — an idea that sits unvalidated for 30 days gets killed by default, and killed ideas keep their post-mortem so the same idea doesn't relitigate itself in six months.
 
-Worked by the **`/validate-idea`** skill (capture → classify → score → research → kill/commit). Deeper commitment decisions (>40 hours or real capital) get a `/roast` council first.
+Worked by the **`/validate-idea`** skill (capture → classify → score → research → kill/commit). Deeper commitment decisions (>40 hours or real capital) go through `/idea-deep-dive` (which runs the `/roast` council at its Step 4).
 
 ## Tracking
 

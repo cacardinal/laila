@@ -15,7 +15,7 @@ Hence the checklists. Every step, every time.
      `Last updated: YYYY-MM-DD` header (the hygiene scanner keys off it).
 2. **Register the trigger:** add an entry to `config/domain-triggers.json` —
    `patterns` (the phrases that invoke it), `context_file` path, and
-   `state: "active"`. Include `meeting_routing` signals if meeting transcripts
+   `state: "active"`. Include `meeting_routing` signals if meeting notes
    should auto-file to this domain.
 3. **Add a pointer row** to the root `AGENTS.md` Domains section if it's a
    headline domain. Keep it to one line — the router routes, it doesn't hold

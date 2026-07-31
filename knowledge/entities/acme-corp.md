@@ -1,9 +1,9 @@
 # Acme Corp
 
 **Type:** Company
-**Status:** Active prospect (consulting pipeline)
+**Status:** Anchor client — fixed-fee advisory engagement (proposal accepted 2026-07-24)
 **First contact:** 2026-05-14
-**Last updated:** 2026-07-22
+**Last updated:** 2026-07-31
 
 ## What They Do
 
@@ -11,9 +11,9 @@ Mid-market logistics software company (~200 employees, Denver-based). Sells rout
 
 ## Relationship
 
-- Alex met CTO Sam Okafor at the Front Range DevOps meetup (May 2026); Sam later intro'd Alex to VP Product Jordan Lee ([[jordan-lee]])
-- Current thread: scoping a 6-week advisory engagement on their AI dispatching roadmap
-- Proposal v2 sent 2026-07-18; Jordan said the exec team reviews consulting spend at month-end
+- Alex met COO Sam Okafor at the Front Range DevOps meetup (May 2026); Sam later intro'd Alex to VP Product Jordan Lee ([[jordan-lee]])
+- Current engagement: 6-week fixed-fee advisory on the Q4 AI-dispatching feature; kickoff 2026-08-04
+- Proposal v2 accepted 2026-07-24 — Acme is now the anchor client
 
 ## Dynamics & Preferences
 
@@ -23,11 +23,12 @@ Mid-market logistics software company (~200 employees, Denver-based). Sells rout
 
 ## Open Items
 
-- [ ] Follow up on proposal v2 if no reply by 2026-08-01
-- [ ] Sam mentioned a second project (warehouse analytics) — park until the first engagement signs
+- [ ] Prep kickoff materials before 2026-08-04
+- [ ] Sam mentioned a second project (warehouse analytics) — explicitly parked as the phase-2 expansion; NOT current scope
 
 ## History
 
+- 2026-07-24 — Proposal v2 accepted; engagement confirmed (kickoff 2026-08-04)
 - 2026-07-18 — Proposal v2 sent (reduced scope, 6 weeks, fixed fee)
 - 2026-06-30 — Proposal v1 declined as too broad; Jordan asked for a narrower scope
 - 2026-06-05 — Discovery call with Jordan + Sam
