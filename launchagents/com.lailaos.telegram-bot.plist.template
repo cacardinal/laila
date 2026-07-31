@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.lailaos.telegram-bot</string>
+
+  <!-- The inbound command channel: long-polls Telegram and answers only the
+       allowlisted sender. KeepAlive restarts it after crashes and reboots. -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>__HOME__/laila/scripts/telegram-bot.py</string>
+  </array>
+
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>LAILA_OS_ROOT</key>
+    <string>__HOME__/laila</string>
+    <!-- AGENT_RUN needs the agent CLI on PATH; launchd PATH is minimal. -->
+    <key>PATH</key>
+    <string>/usr/local/bin:/usr/bin:/bin:__HOME__/.nvm/versions/node/__NODE_VERSION__/bin</string>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/lailaos-telegram-bot.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/lailaos-telegram-bot.err.log</string>
+</dict>
+</plist>

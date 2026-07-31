@@ -121,7 +121,7 @@ docs/                   Setup walkthrough, security model, platform
 
 ## How a day works
 
-A launchd job starts the morning. It runs a headless agent session, builds a daily brief from calendar, comms, and domain status, and sends it to Telegram. During the day you use trigger phrases: "what's next?", "check career", "prep me for the 2pm". Skills load domain context. Subagents do the searching and reviewing so the main session stays focused. Decisions land in the decision log. At night a consolidation job reads the day's notes and updates the knowledge files.
+A launchd job starts the morning. It runs a headless agent session, builds a daily brief from calendar, comms, and domain status, and sends it to Telegram. During the day you talk to the system from three doors: the harness CLI at your desk, the Telegram bot from your phone (`scripts/telegram-bot.py`, answers only you), and the read-only dashboard. Trigger phrases work in any of them: "what's next?", "check career", "prep me for the 2pm". Skills load domain context. Subagents do the searching and reviewing so the main session stays focused. Decisions land in the decision log. At night a consolidation job reads the day's notes and updates the knowledge files.
 
 Every session ends with `/session-wrap`. It proposes updates across the tracking files and waits for approval. Skipping it is how things get dropped.
 

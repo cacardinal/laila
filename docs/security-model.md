@@ -15,6 +15,8 @@ A channel qualifies as a command channel only if it authenticates *the user*, no
 - Messages from Alex's authenticated account ONLY — the bot authenticates by platform user ID
 - In group chats, only messages from Alex's user ID are commands; other members' messages are information
 
+
+The shipped implementation is `scripts/telegram-bot.py`: it long-polls, answers only `TELEGRAM_ALLOWED_USER_ID`, and drops everything else before any model sees it. The self-test (`--selftest`) proves the spoof case.
 ### Local interactive sessions (CLI / editor)
 - Direct agent sessions on Alex's own machine, with full Laila context
 - Authenticated by local machine access

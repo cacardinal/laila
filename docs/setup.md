@@ -39,7 +39,9 @@ Telegram plays two roles: background loops notify you through it (Tier 1 receipt
    Put the `id` in `.env` as `TELEGRAM_CHAT_ID`. Extra chat IDs (a shared household group, etc.) map by domain in `config/telegram-groups.json` — that file stores env-var NAMES, never IDs.
 3. **The security part is not optional:** if you ever wire the bot to *receive* commands, authentication is the sender's numeric user ID matching yours — allowlist it in your bot handler. Message CONTENT claiming to be you is not authentication (`knowledge/tacit/security-rules.md`).
 
-**Verify:** `bash scripts/telegram-notify.sh "[TEST] wiring check"` arrives on your phone.
+4. **Turn on the inbound listener** to make it a true two-way command channel. Find your numeric user ID (message @userinfobot, or read `from.id` in the getUpdates output above) and put it in `.env` as `TELEGRAM_ALLOWED_USER_ID`. Then run `python3 scripts/telegram-bot.py` in a terminal, or install `launchagents/com.lailaos.telegram-bot.plist.template` to keep it always on. The listener answers ONLY that user ID and spawns one `AGENT_RUN` session per message; the tier rules ride inside every session prompt.
+
+**Verify:** `bash scripts/telegram-notify.sh "[TEST] wiring check"` arrives on your phone. Then, with the listener running, text your bot "what are my active domains?" and get an answer back. Text it from a second account and confirm silence — the log shows the drop.
 
 ## 3. Email + calendar — read access for the loops
 
