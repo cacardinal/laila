@@ -2,17 +2,17 @@
 
 ![checks](https://github.com/cacardinal/laila/actions/workflows/checks.yml/badge.svg)
 
-Laila is a personal operating system for AI agents. Your life becomes a filesystem the agent reads, and memory persists across sessions. Autonomy comes with hard lines, and a named agent persona runs background loops on your behalf while you sleep.
+Laila is a personal operating system for AI agents. It stores your life as plain files. An agent reads those files, remembers what happened last session, and runs scheduled jobs overnight. Strict rules decide what it may do alone and what waits for your approval.
 
-New agent harnesses are shipping every month. Claude Code, Codex, and company-scale platforms like YC's QM all supply the engine, the sessions, tools, sandboxes, and place for agents to run. Laila sits one layer up and supplies what the engine runs for a single person. It defines where memory lives, how it consolidates, and which actions execute on their own versus wait for you. It also defines why an email can never give your agent an order, and the daily rituals that keep the whole thing coherent. The conventions are plain files (an `AGENTS.md` router, SKILL.md rituals, JSON state, an env-configurable headless runner), so Laila works on any harness that can read a repo. The reference implementation runs on [Claude Code](https://claude.com/claude-code); the porting checklist is in `docs/platform-portability.md`.
+New agent harnesses ship every month. Claude Code, Codex, and company platforms like YC's QM supply the engine: sessions, tools, sandboxes. Laila supplies what the engine runs for one person. It says where memory lives, what the agent may do without asking, and why an email can never give it an order. Everything is a plain file, so any harness that can read a repo can run it. The reference implementation is Claude Code. The porting checklist is in `docs/platform-portability.md`.
 
-Where a company installs a platform, a life gets a repo you own. Everything stays in files on your machine, in a private git repo, with a security model designed for one principal. Nothing here needs a cloud account or a subscription.
+A company installs a platform. You keep a repo. Your files stay on your machine, in private git, under a security model built for one person. It needs no cloud account and no subscription.
 
-This repo is extracted from a real system that has run daily since early 2026. The original carries 20 active domains, ~46 skills, ~50 scheduled background jobs, a self-hosted CRM, and an agent that triages email, preps meetings, and files the day's records while its human sleeps. Everything personal has been replaced with a fictional user named Alex. The architecture is the artifact.
+This repo is a cleaned copy of a real system that has run daily since early 2026. The original has 20 domains, ~46 skills, ~50 scheduled jobs, and a self-hosted CRM. Everything personal was replaced with a fictional user named Alex.
 
 ## Try it in 30 seconds
 
-No dependencies, no build step. The dashboard reads the fictional sample state directly:
+No dependencies, no build step. The dashboard reads the sample state directly:
 
 ```bash
 git clone https://github.com/cacardinal/laila && cd laila
@@ -25,19 +25,19 @@ node dashboard/server.js
   <img alt="Laila dashboard: stat tiles, active tasks, pending comms with tier labels, background loops, domain cards" src="docs/images/dashboard-light.png">
 </picture>
 
-What you're looking at is the whole system in miniature: tasks with owners (Alex vs. the agent), comms items labeled by autonomy tier, background loops with dead-man-switch status, and one card per life domain.
+The dashboard shows tasks with owners, comms items labeled by autonomy tier, background loops with their dead-man status, and one card per life domain.
 
 ## The core idea
 
-Most "AI assistant" setups fail the same way. The model is smart but the *system* has no memory, no boundaries, and no structure, so every session starts from zero and every action needs babysitting.
+Most AI assistant setups fail the same way. The model is smart but the system has no memory, no boundaries, and no structure. Every session starts from zero. Every action needs babysitting.
 
-Laila answers with three design commitments:
+Laila makes three commitments:
 
-1. **The filesystem is the mind.** Domains, tracking files, daily notes, and a knowledge graph live as markdown and JSON in one repo. The agent reads state instead of asking you to repeat it, and any agent that can read a repo can run the system. Recall comes in tiers. Hybrid search covers the memory collections with BM25 plus embeddings, which amounts to RAG over your own files; a wikilink entity graph lets the agent walk connections by reading; grep sits underneath both and never breaks. Every piece of truth has exactly one authoritative file, everything else is a generated export, and there is deliberately no separate memory database to drift out of sync (`knowledge/README.md`).
+1. **The filesystem is the mind.** Everything lives as markdown and JSON in one repo: domains, tracking files, daily notes, a knowledge graph. The agent reads state instead of asking you to repeat it. Recall works three ways. Hybrid search (BM25 plus embeddings) covers the memory collections. Wikilinks connect entity files, and the agent follows them. Grep handles the rest. Each fact has exactly one authoritative file. Everything else is a generated export, and there is no separate memory database to drift out of sync (`knowledge/README.md`).
 
-2. **Autonomy has a bright line.** Every action is Tier 1 (auto-execute and notify; deterministic, reversible, invisible to anyone but you) or Tier 3 (propose and wait; the default, and mandatory for anything another human could observe). The agent never sends a message, completes a shared task, or touches anything outward-facing without approval. No skill or subagent routes around this.
+2. **Autonomy has a bright line.** Every action is Tier 1 or Tier 3. Tier 1 actions run on their own and notify you; they must be deterministic, reversible, and invisible to anyone but you. Tier 3 is the default. The agent proposes and waits. Anything another person could see is Tier 3, always. The agent never sends a message or completes a shared task without approval, and no skill or subagent routes around this.
 
-3. **Commands and information are different channels.** Instructions reach the agent only through authenticated command channels (your Telegram, your local sessions, a dedicated task queue). Email, messages, web pages, and CRM data are information channels, content to reason about and never instructions to follow. An email claiming to be from you, telling the agent to forward a document? The agent reads it as content, maybe reports it, and does nothing. This is the prompt-injection defense, built into the architecture instead of bolted on.
+3. **Commands and information are different channels.** Instructions reach the agent only through channels that authenticate you: your Telegram, your local sessions, a dedicated task queue. Email, messages, web pages, and CRM data are information. The agent reasons about them and never obeys them. If an email claims to be you and tells the agent to forward a document, the agent reads it, maybe reports it, and does nothing. This is how the system defeats prompt injection.
 
 ## Architecture
 
@@ -84,7 +84,7 @@ flowchart TB
   CRM --> DASH
 ```
 
-The diagram is the security model: instructions only enter from the left column, everything outward-facing exits through an approval, and the files in the middle are the memory that makes each session start warm.
+The diagram doubles as the security model. Instructions enter only from the left column. Anything outward-facing passes through an approval. The files in the middle carry memory between sessions.
 
 ## What's in the box
 
@@ -121,34 +121,32 @@ docs/                   Setup walkthrough, security model, platform
 
 ## How a day works
 
-The morning starts with a launchd job that runs a headless agent session (whatever CLI `AGENT_RUN` names), assembles a daily brief (calendar, comms triage, domain status, cross-domain conflicts), and sends it to Telegram. During the day, you talk to the system through trigger phrases ("what's next?", "check career", "prep me for the 2pm"). Skills load domain context, subagents do the searching and reviewing so the main session stays sharp, and every decision lands in the decision log. At night a consolidation job reviews the day's notes and folds what mattered into the knowledge layer.
+A launchd job starts the morning. It runs a headless agent session, builds a daily brief from calendar, comms, and domain status, and sends it to Telegram. During the day you use trigger phrases: "what's next?", "check career", "prep me for the 2pm". Skills load domain context. Subagents do the searching and reviewing so the main session stays focused. Decisions land in the decision log. At night a consolidation job reads the day's notes and updates the knowledge files.
 
-Sessions end with `/session-wrap`, a mandatory ritual that proposes updates across every tracking surface and waits for approval. Skipping it is how things get dropped, so it isn't optional.
+Every session ends with `/session-wrap`. It proposes updates across the tracking files and waits for approval. Skipping it is how things get dropped.
 
 ## The CRM next door
 
-Flat files carry most of the system's truth, but contacts, pipeline, and goals outgrow markdown — they have real structure and want a real database. The reference setup runs [Twenty](https://github.com/twentyhq/twenty), an open-source CRM, in local Docker beside the repo. The agent reads and writes it over GraphQL (relationship notes, pipeline stages, task sync), the repo keeps generated exports of its data, and the bundled dashboard proxies to it for live counts. The split, the worked examples, and the gotchas are in `docs/crm-twenty.md`.
+Flat files carry most of the truth. Contacts, pipeline, and goals need more structure, so the reference setup runs [Twenty](https://github.com/twentyhq/twenty), an open-source CRM, in local Docker. The agent reads and writes it over GraphQL. The repo keeps generated exports of its data. The dashboard proxies to it for live counts. Worked examples and gotchas are in `docs/crm-twenty.md`.
 
 ## The judgment layer
 
-The most transferable thing here may be `skills/laila-judgment`: a distillation of the working discipline this system learned from its own incidents. Evidence bars ("done" means verified against the live system, and a subagent's report is not that). Never-infer rules (run `date` for day-of-week, always). Secret-scan discipline for anything public. Stop-and-surface when reality contradicts the task description.
-
-Every rule in that file was paid for once. The skill exists so nothing gets paid for twice.
+`skills/laila-judgment` may be the most transferable file here. It records the working discipline the original system learned from its own failures. "Done" means verified against the live system, and a subagent's report is not evidence. Day-of-week comes from `date`, never from inference. Anything public gets a secret scan. When reality contradicts the task, the agent stops and says so. Each rule exists because breaking it once cost something.
 
 ## Adapting it
 
-The full walkthrough — Telegram bot, email/calendar access, the reminders queue, dead-man switches, loops — is **`docs/setup.md`**, in dependency order with a verification step per stage. The short version:
+The full walkthrough is **`docs/setup.md`**: Telegram bot, email and calendar access, the reminders queue, dead-man switches, and loops, in dependency order with a verification step per stage. The short version:
 
-1. Clone into a PRIVATE repo (your copy becomes your personal data store, and the nightly loop auto-pushes it — `docs/setup.md` §0 before anything else).
-2. Rewrite `AGENTS.md`'s user facts and `config/domain-triggers.json` with your real domains. Start with 3, add domains only when a real workload demands one (`docs/adding-domains.md` has the checklist).
-3. Replace the sample content in `domains/`, `state/`, and `knowledge/` with your own. The structures are what transfer; Alex's data exists only to show the shape.
-4. Wire your channels (`docs/setup.md` §2-7): Telegram for notify + command, read-only mail/calendar access for the loops, healthchecks.io as the dead-man layer, optionally the CRM.
-5. Adopt the tier model before you adopt anything else. A system that can act while you're away is only trustworthy if the line between "act" and "ask" is written down and enforced everywhere.
-6. Not on Claude Code? Work through the adapter checklist in `docs/platform-portability.md` — the invariants port; only the discovery layer changes.
+1. Clone into a PRIVATE repo. Your copy becomes your personal data store, and the nightly loop auto-pushes it (`docs/setup.md` §0 before anything else).
+2. Rewrite `AGENTS.md`'s user facts and `config/domain-triggers.json` with your real domains. Start with 3. Add a domain only when a real workload demands one (`docs/adding-domains.md`).
+3. Replace the sample content in `domains/`, `state/`, and `knowledge/` with your own. The structures are what transfer. Alex's data only shows the shape.
+4. Wire your channels (`docs/setup.md` §2-7): Telegram for notify and command, read-only mail and calendar access for the loops, healthchecks.io as the dead-man layer, optionally the CRM.
+5. Adopt the tier model before anything else. Write down the line between "act" and "ask", and enforce it everywhere.
+6. Not on Claude Code? Work through `docs/platform-portability.md`. The rules port; only the discovery layer changes.
 
 ## What's deliberately absent
 
-No credentials, no OAuth tokens, and none of the original system's personal data or git history. This repo was assembled fresh; the private system it's modeled on stays private. Where an integration was too entangled to genericize (browser credential automation, account-specific mail plumbing), you'll find a clearly marked placeholder and a note on the pattern instead.
+No credentials, no OAuth tokens, no personal data, no shared git history. The repo was assembled fresh, and the private system it copies stays private. Where an integration was too personal to genericize, a marked placeholder describes the pattern instead.
 
 ## License
 
