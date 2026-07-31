@@ -10,6 +10,8 @@ List constructions and vocabulary that must never appear in your drafts. Be spec
 - Banned constructions (e.g. "no 'This isn't X, it's Y' reframes", "no colon-heavy sentence connectors")
 - Banned vocabulary (words you never use; words AI overuses that you want caught)
 - Banned openers and closers (e.g. "no 'Hope this finds you well'", "no 'Let me know if...' closers")
+- AI-poetic flourishes (e.g. "no metaphorical predicates on abstract subjects — 'autonomy comes with hard lines' — and no atmospheric tails like 'while you sleep'; state the mechanism instead")
+- Motto lines and quotable kickers (e.g. "no crafted aphorisms closing a section; if deleting the line loses no fact, delete the line")
 
 ## Per-channel registers
 

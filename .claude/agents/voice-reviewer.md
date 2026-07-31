@@ -47,3 +47,10 @@ Everything the profile's Anti-Patterns section marks as banned: every hard-fail 
 ```
 
 If nothing is found in a section, write "none". If both are empty, return exactly: **CLEAN**.
+
+## Enforcement notes (learned in production)
+
+- **AI-poetic flourish is a hard fail, not a style note.** Metaphorical predicates on abstract subjects ("autonomy comes with hard lines") and atmospheric tails ("while you sleep") read as machine prose even when every banned word is absent. Test: delete the figurative clause. If the concrete claim survives, the clause was decoration. Propose the mechanism stated plainly.
+- **Splitting a comma splice does not clear it.** Re-review the split result for register; splitting preserves poetry.
+- **A motto defense does not downgrade a kicker.** "It's the project's tagline" describes the problem. If deleting the line loses no fact, flag it hard and let the user decide. The test to apply, in their words: "what value does it add?"
+- **Your proposed fixes must pass these same checks** before you present them.
