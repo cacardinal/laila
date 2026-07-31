@@ -6,10 +6,10 @@ Generated: 2026-07-31. One row per data connection. `auth` examples: oauth (stor
 
 | Domain | Tool | Mechanism | Auth | Write? | Last verified | Reference doc |
 | --- | --- | --- | --- | --- | --- | --- |
-| all | Telegram Bot API | curl in scripts/telegram-notify.sh | api-key (TELEGRAM_BOT_TOKEN in .env) | yes | 2026-07-30 | `docs/background-monitoring.md` |
-| all | healthchecks.io | dead-man-switch pings from background scripts | per-check ping URL (HC_* vars in .env) | yes | 2026-07-30 | `docs/background-monitoring.md` |
-| career | Gmail | local MCP server (read + draft) | oauth (stored refresh token) | read-only | 2026-07-10 | - |
-| household | Google Calendar | local MCP server | oauth (stored refresh token) | yes | 2026-06-01 (STALE) | - |
+| all | Telegram Bot API | curl in scripts/telegram-notify.sh | api-key (TELEGRAM_BOT_TOKEN in .env) | yes | 2026-07-30 | `docs/setup.md` |
+| all | healthchecks.io | dead-man-switch pings from background scripts | per-check ping URL (HC_* vars in .env) | yes | 2026-07-30 | `docs/setup.md` |
+| career | Gmail | local MCP server (read + draft) | oauth (stored refresh token) | read-only | 2026-07-10 | `docs/setup.md` |
+| household | Google Calendar | local MCP server | oauth (stored refresh token) | yes | 2026-06-01 (STALE) | `docs/setup.md` |
 | all | Twenty CRM (self-hosted) | GraphQL at localhost:3000/graphql; dashboard proxies /graphql server-side | api-key (CRM_API_KEY in .env, minted in Twenty Settings > Developers) | yes | 2026-07-31 | `docs/crm-twenty.md` |
 
 ## Stale verifications (>30 days)

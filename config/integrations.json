@@ -8,7 +8,7 @@
       "auth": "api-key (TELEGRAM_BOT_TOKEN in .env)",
       "can_write": true,
       "last_verified": "2026-07-30",
-      "reference_doc": "docs/background-monitoring.md"
+      "reference_doc": "docs/setup.md"
     },
     {
       "domain": "all",
@@ -17,7 +17,7 @@
       "auth": "per-check ping URL (HC_* vars in .env)",
       "can_write": true,
       "last_verified": "2026-07-30",
-      "reference_doc": "docs/background-monitoring.md"
+      "reference_doc": "docs/setup.md"
     },
     {
       "domain": "career",
@@ -26,7 +26,7 @@
       "auth": "oauth (stored refresh token)",
       "can_write": false,
       "last_verified": "2026-07-10",
-      "reference_doc": null
+      "reference_doc": "docs/setup.md"
     },
     {
       "domain": "household",
@@ -35,7 +35,7 @@
       "auth": "oauth (stored refresh token)",
       "can_write": true,
       "last_verified": "2026-06-01",
-      "reference_doc": null
+      "reference_doc": "docs/setup.md"
     },
     {
       "domain": "all",

@@ -111,8 +111,9 @@ dashboard/              Zero-dependency status page over the state files,
                         with an optional live-CRM panel
 launchagents/           macOS launchd templates for the background loops
 templates/              Sync protocol, daily cadence, OKR architecture
-docs/                   Security model, background monitoring, trigger
-                        phrases, how to add a domain
+docs/                   Setup walkthrough, security model, platform
+                        portability, background monitoring, how to add
+                        a domain
 ```
 
 ## How a day works
@@ -133,11 +134,14 @@ Every rule in that file was paid for once. The skill exists so nothing gets paid
 
 ## Adapting it
 
-1. Clone, then rewrite `AGENTS.md`'s user facts and `config/domain-triggers.json` with your real domains. Start with 3, add domains only when a real workload demands one (`docs/adding-domains.md` has the checklist).
-2. Replace the sample content in `domains/`, `state/`, and `knowledge/` with your own. The structures are what transfer; Alex's data exists only to show the shape.
-3. Wire the integrations you actually have. The scripts read config from `.env` (see `.env.example`); the launchagent templates document the headless gotchas (PATH, TCC permissions, node paths).
-4. Adopt the tier model before you adopt anything else. A system that can act while you're away is only trustworthy if the line between "act" and "ask" is written down and enforced everywhere.
-5. Not on Claude Code? Work through the adapter checklist in `docs/platform-portability.md` — the invariants port; only the discovery layer changes.
+The full walkthrough — Telegram bot, email/calendar access, the reminders queue, dead-man switches, loops — is **`docs/setup.md`**, in dependency order with a verification step per stage. The short version:
+
+1. Clone into a PRIVATE repo (your copy becomes your personal data store, and the nightly loop auto-pushes it — `docs/setup.md` §0 before anything else).
+2. Rewrite `AGENTS.md`'s user facts and `config/domain-triggers.json` with your real domains. Start with 3, add domains only when a real workload demands one (`docs/adding-domains.md` has the checklist).
+3. Replace the sample content in `domains/`, `state/`, and `knowledge/` with your own. The structures are what transfer; Alex's data exists only to show the shape.
+4. Wire your channels (`docs/setup.md` §2-7): Telegram for notify + command, read-only mail/calendar access for the loops, healthchecks.io as the dead-man layer, optionally the CRM.
+5. Adopt the tier model before you adopt anything else. A system that can act while you're away is only trustworthy if the line between "act" and "ask" is written down and enforced everywhere.
+6. Not on Claude Code? Work through the adapter checklist in `docs/platform-portability.md` — the invariants port; only the discovery layer changes.
 
 ## What's deliberately absent
 

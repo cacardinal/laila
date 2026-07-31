@@ -16,3 +16,4 @@ state/secrets/
 .local/
 __pycache__/
 *.pyc
+.mcp.json

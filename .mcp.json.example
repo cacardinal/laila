@@ -1,0 +1,19 @@
+{
+  "_comment": "Example MCP server wiring for the reference harness (docs/setup.md §3). Copy to .mcp.json and point each entry at the Gmail/Calendar MCP server implementation you chose — one server per account keeps the access matrix explicit. .mcp.json is gitignored; OAuth tokens live wherever your chosen server stores them (untracked paths only).",
+  "mcpServers": {
+    "gmail-personal": {
+      "command": "npx",
+      "args": ["-y", "YOUR-GMAIL-MCP-SERVER"],
+      "env": {
+        "GMAIL_OAUTH_PATH": "${HOME}/.config/laila-os/gmail-personal-oauth.json"
+      }
+    },
+    "gcal-personal": {
+      "command": "npx",
+      "args": ["-y", "YOUR-GCAL-MCP-SERVER"],
+      "env": {
+        "GCAL_OAUTH_PATH": "${HOME}/.config/laila-os/gcal-personal-oauth.json"
+      }
+    }
+  }
+}
