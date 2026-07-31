@@ -2,6 +2,8 @@
 
 ![checks](https://github.com/cacardinal/laila/actions/workflows/checks.yml/badge.svg)
 
+<img src="docs/images/social-preview.png" alt="lAIla — an operating system for a life run with AI agents" width="100%">
+
 Laila is an operating system for a person who runs their life with AI agents. It stores your world as plain files: career, health, household, whatever you carry. Agents read those files, remember between sessions, and do scheduled work overnight. Strict rules decide what they may do alone and what waits for you.
 
 Harnesses like Claude Code, Codex, and YC's QM supply the engine agents run in. Laila is what you point the engine at. Everything is a plain file, so any harness that can read a repo can run it. The reference implementation is Claude Code. The porting checklist is in `docs/platform-portability.md`.
