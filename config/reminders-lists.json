@@ -1,11 +1,50 @@
 {
   "_description": "Reminders list mapping by domain. Shared lists are visible to household members.",
   "lists": [
-    { "domain": "Default", "list": "Reminders", "shared": false, "notes": "Catch-all for misc items" },
-    { "domain": "Career", "list": "Career", "shared": false },
-    { "domain": "Health", "list": "Health", "shared": false },
-    { "domain": "Household", "list": "Life", "shared": true },
-    { "domain": "Content", "list": "Content Ideas", "shared": false },
-    { "domain": "Laila", "list": "Laila", "shared": false, "agent_queue": true, "notes": "Laila's task queue — items here are picked up and processed by the headless agent per autonomy-rules.json. Differentiator: list membership." }
+    {
+      "domain": "Default",
+      "list": "Reminders",
+      "shared": false,
+      "notes": "Catch-all for misc items"
+    },
+    {
+      "domain": "Career",
+      "list": "Career",
+      "shared": false
+    },
+    {
+      "domain": "Health",
+      "list": "Health",
+      "shared": false
+    },
+    {
+      "domain": "Household",
+      "list": "Life",
+      "shared": true
+    },
+    {
+      "domain": "Content",
+      "list": "Content Ideas",
+      "shared": false
+    },
+    {
+      "domain": "Laila",
+      "list": "Laila",
+      "shared": false,
+      "agent_queue": true,
+      "notes": "Laila's task queue \u2014 items here are picked up and processed by the headless agent per autonomy-rules.json. Differentiator: list membership."
+    },
+    {
+      "domain": "acme",
+      "list": "Acme",
+      "shared": false,
+      "notes": "Engagement deadlines; archived with the domain at close"
+    },
+    {
+      "domain": "ideas",
+      "list": "Ideas",
+      "shared": false,
+      "notes": "Kill-timer reminders created by /validate-idea"
+    }
   ]
 }

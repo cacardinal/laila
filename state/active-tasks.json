@@ -25,6 +25,17 @@
       "next_check": "2026-08-07T09:00:00-05:00",
       "notes": "If quiet on 8/7, draft a short follow-up for Alex to approve (Tier 3 \u2014 never auto-send).",
       "last_checked": "2026-07-31T14:14:42.394877+00:00"
+    },
+    {
+      "id": "AT-003",
+      "title": "Send revised Acme SOW to Jordan (link, not attachment)",
+      "owner": "alex",
+      "status": "in_progress",
+      "domain": "acme",
+      "created": "2026-07-30",
+      "updated": "2026-07-31",
+      "next_check": "2026-08-01T09:00:00-05:00",
+      "notes": "IP clause needs Alex's call before send (see domains/acme/PROGRESS.md). Send is Tier 3."
     }
   ],
   "completed": [],

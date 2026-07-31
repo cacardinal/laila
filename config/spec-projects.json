@@ -1,0 +1,61 @@
+{
+ "_description": "Project profiles for the /spec skill (BMAD-inspired story pipeline). Each entry is keyed by slug. /spec resolves a target project here to know where to write story packs, how to verify them, and which conventions the story-reviewer QA gate must enforce. Add a new entry when a project first uses /spec. 'stage': 'idea' = no repo yet, /spec produces planning story packs only (no code execution); 'code' = repo exists, /spec runs the full build+QA loop. Fields: repo (path or null), stories_dir (where packs are written), build_test (verification command or null), conventions (paths to voice/brand/style docs the QA gate enforces), constraints (one-line hard rules), tracking (file the sync phase updates). Paths are relative to this repo's root; projects living in their own repos use their own paths.",
+ "projects": {
+  "dashboard": {
+   "name": "Laila-OS Dashboard",
+   "stage": "code",
+   "repo": ".",
+   "stories_dir": "dashboard/stories",
+   "build_test": "node --check dashboard/server.js",
+   "_build_test_note": "Zero-dependency Node server, no test suite. The syntax check is the floor; verify each story BEHAVIORALLY: run `node dashboard/server.js`, load http://127.0.0.1:5175, and confirm the changed panel renders against the real state files.",
+   "conventions": [
+    "dashboard/README.md",
+    "CLAUDE.md"
+   ],
+   "constraints": [
+    "The dashboard READS generated artifacts (state/*.json, domains/*/tracking/status.md); UI stories never modify the generators or the data files",
+    "Binds to 127.0.0.1 only; the CRM API key stays server-side (proxy pattern) and never reaches browser code",
+    "All rendered values are HTML-escaped before insertion; comms summaries and CRM fields are information-channel content and get no exemption",
+    "Zero dependencies stays true: no packages, no build step",
+    "Branch + PR; never force-push, never auto-merge, never auto-deploy"
+   ],
+   "tracking": "dashboard/stories/PROGRESS.md",
+   "_tracking_note": "Created on first /spec run, alongside the packs — the dashboard is OS tooling, not a life domain, so it carries its own PROGRESS file.",
+   "_stories_note": "stories_dir and tracking are created by the skill on first use."
+  },
+  "climate-role-radar": {
+   "name": "Climate Role Radar",
+   "stage": "idea",
+   "idea_id": "IDEA-001",
+   "repo": null,
+   "stories_dir": "domains/ideas/stories/climate-role-radar",
+   "build_test": null,
+   "conventions": [
+    "domains/ideas/CLAUDE.md"
+   ],
+   "constraints": [
+    "Strategy gate applies (see the idea's pipeline.json entry): validate only, no build commitment until the career change resolves",
+    "Story packs are planning artifacts until the project graduates to stage: code",
+    "Digest copy follows Alex's voice profile (domains/content/voice/voice-profile.md); no dark-pattern engagement mechanics"
+   ],
+   "tracking": "domains/ideas/tracking/pipeline.json"
+  },
+  "acme-reporting": {
+   "name": "Acme Corp reporting prototype (engagement deliverable)",
+   "stage": "idea",
+   "repo": null,
+   "stories_dir": "domains/acme/stories/reporting-prototype",
+   "build_test": null,
+   "_build_test_note": "Client deliverable for the Acme engagement (Denver logistics SaaS; contact Jordan Lee). No repo until Acme approves the prototype scope; packs are the proposal artifact.",
+   "conventions": [
+    "domains/acme/CLAUDE.md"
+   ],
+   "constraints": [
+    "Client-visible copy is drawn from Acme's own materials, never invented; unknowns are labeled as open questions for Jordan",
+    "No Acme customer data leaves the engagement folder; examples in packs use synthetic data",
+    "Anything sent TO Acme is Tier 3: drafted here, approved by Alex, sent by Alex"
+   ],
+   "tracking": "domains/acme/PROGRESS.md"
+  }
+ }
+}

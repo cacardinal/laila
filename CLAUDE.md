@@ -19,7 +19,7 @@ Example:
 
 ## Domains
 
-Active domains: Career, Health, Household, Content. Retired domains live in `domains/_archive/`.
+Active domains: Career, Health, Household, Content, Ideas, Acme (an engagement domain — created for one client commitment, archived at its close). Retired domains live in `domains/_archive/`.
 
 Authoritative registry (paths, trigger phrases, lifecycle `state`): `config/domain-triggers.json`.
 
@@ -35,6 +35,7 @@ Definitions in `.claude/agents/`. Delegate to protect the main context window �
 | research-worker | haiku | Focused web research, parallel fan-outs |
 | meeting-prep-assembler | sonnet | "Prep me for [meeting]" — one-page brief |
 | voice-reviewer | sonnet | Gate on every draft written as Alex (compose workflow) |
+| story-reviewer | sonnet | QA gate on a completed /spec story pack — findings only, never rewrites |
 | decision-logger | haiku | Append session/meeting decisions to knowledge/decisions/ |
 | daily-sync-coordinator | sonnet | Cross-domain conflicts/synergies for daily brief |
 | comms-triage | haiku | Tier 1/3 decision on a comms event (returns JSON, never acts) |

@@ -14,19 +14,27 @@ The main quest. Pipeline health beats application volume — 3 well-researched
 applications a week with warm paths where possible. Networking calls count as
 progress; doomscrolling job boards does not.
 
-### 2. Stay healthy and present through the transition
+### 2. Deliver the Acme engagement (6 weeks, hard-scoped)
+
+The one carve-out from the side-project freeze (2026-07-24 decision): a fixed
+engagement shipping Acme's Q4 AI-dispatching feature. It feeds priority 1 — live
+AI-shipping stories for interviews — and it has an end date. Scope creep here is a
+strategy violation, not a sales opportunity.
+
+### 3. Stay healthy and present through the transition
 
 The career push does not get to cannibalize sleep, the running habit, or evenings
 with Sam and Biscuit. If a week's schedule forces a trade, this priority is the
-tiebreaker — the job search flexes, not the fundamentals.
+tiebreaker — the job search and the engagement flex, not the fundamentals.
 
-### 3. Build the public learning trail (content)
+### 4. Build the public learning trail (content)
 
 One post per week documenting the transition. This compounds into the career priority
-(visibility, credibility, conversation starters) but is deliberately ranked third:
+(visibility, credibility, conversation starters) but is deliberately ranked last:
 it supports the change, it is not the change.
 
 ## Explicit Non-Priorities (for now)
 
-- Side-project revenue — parked until the career change resolves.
+- Side-project revenue beyond the Acme carve-out — parked until the career change
+  resolves. Ideas get validated, not committed (`domains/ideas/` strategy gate).
 - Home renovation beyond safety/maintenance items.

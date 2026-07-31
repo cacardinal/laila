@@ -23,7 +23,7 @@ When triggered:
 3. **Check Calendar — ALL configured accounts** for today + tomorrow (e.g. personal + work). Missing any account is a bug. *(Query your calendar integration here — one call per account.)*
 4. **Check the task system** — all lists/projects for overdue + today's items. *(Query your reminders/task tool here.)*
 5. **Check Email — ALL configured accounts.** Missing any account is a bug:
-   - Personal inbox (e.g. a `gmail-personal` MCP server) — run each active domain's email filters (defined in the domain CLAUDE.md files): career, health, household, content
+   - Personal inbox (e.g. a `gmail-personal` MCP server) — run each active domain's email filters (defined in the domain CLAUDE.md files): career, health, household, content, acme
    - Work inbox (e.g. a `gmail-work` MCP server) — unread + last 24h; mail from key stakeholders is high priority while an engagement is live
 6. **Check messaging channels** — any configured messaging queue or capture file (e.g. `state/comms-queue.json`); respect per-channel allowlists
 7. **Check news subscriptions** for the last 24h — read your configured news-sources list for senders and categories. Deep-read full bodies and extract articles with links + summaries.

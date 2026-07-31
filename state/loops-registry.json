@@ -34,6 +34,14 @@
       "schedule": "every 10 min",
       "last_run": "2026-07-31T09:10:01-05:00",
       "status": "ok"
+    },
+    {
+      "label": "Security Audit",
+      "script": "scripts/security-audit.sh",
+      "schedule": "monthly (1st, 06:30)",
+      "last_run": "2026-07-01T06:30:04-05:00",
+      "status": "ok",
+      "hc_env_var": "HC_SECURITY_AUDIT_URL"
     }
   ]
 }

@@ -1,0 +1,39 @@
+{
+  "_comment": "Authoritative idea pipeline. matrix.md is generated from this. Stages: captured -> researching -> validated -> committed | parked | killed. Every idea has a kill_by date at capture.",
+  "ideas": [
+    {
+      "id": "IDEA-001",
+      "slug": "climate-role-radar",
+      "title": "Climate Role Radar — weekly digest of climate-tech PM openings with warm-path hints",
+      "captured": "2026-07-12",
+      "stage": "researching",
+      "kill_by": "2026-08-11",
+      "classification": "pain",
+      "scores": { "pain": 4, "founder_fit": 4, "market": 2, "moat": 1, "weighted_total": 3.1 },
+      "notes": "Scratches Alex's own itch during the job search. Market score low: job-board aggregators are a graveyard. Real question is whether the warm-path layer (who do you know at each company) is differentiated enough. Strategy gate applies: validate only, no commit until the career change resolves."
+    },
+    {
+      "id": "IDEA-002",
+      "slug": "dispatch-postmortem-kit",
+      "title": "Post-mortem kit for AI feature launches (templates + facilitation guide)",
+      "captured": "2026-07-26",
+      "stage": "captured",
+      "kill_by": "2026-08-25",
+      "classification": "enjoyment",
+      "scores": null,
+      "notes": "Sparked by the Acme engagement prep. Might be content (free posts) rather than product — classify honestly before scoring."
+    },
+    {
+      "id": "IDEA-003",
+      "slug": "interview-loop-simulator",
+      "title": "Mock-interview simulator for PM behavioral loops",
+      "captured": "2026-06-20",
+      "stage": "killed",
+      "killed": "2026-07-15",
+      "kill_by": "2026-07-20",
+      "kill_reason": "Crowded (4 funded competitors found in the scan), and Alex's edge is domain judgment, not interview coaching. Post-mortem: the idea was really a rehearsal avoidance mechanism — just do the practice interviews.",
+      "classification": "pain",
+      "scores": { "pain": 3, "founder_fit": 2, "market": 2, "moat": 1, "weighted_total": 2.2 }
+    }
+  ]
+}

@@ -93,6 +93,7 @@ Design details worth copying:
 | Nightly Consolidation | daily 2:00am | `scripts/nightly-consolidation.sh` | Headless Claude reviews daily notes, updates `knowledge/`, commits + pushes |
 | Task Heartbeat | every 30 min | `scripts/heartbeat.sh` | Active-task staleness/completion checks, Telegram alerts |
 | Comms Poll | every 10 min | `scripts/comms-poll.sh` (yours) | Fetch new email/message metadata, triage, update the comms queue |
+| Security Audit | monthly (1st, 06:30) | `scripts/security-audit.sh` | Diff-scan commits since the last audited base for secret patterns (hex 32-64, sk-*, long base64); env hygiene; verify the pre-push hook is installed. Findings hold the audited base and page the command channel |
 
 Registry: `state/loops-registry.json`. Healthcheck vars: `HC_HEARTBEAT_URL`,
 `HC_NIGHTLY_CONSOLIDATION_URL`, `HC_DAILY_BRIEF_URL` in `.env`.

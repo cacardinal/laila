@@ -25,7 +25,7 @@ re-derived each time.
 | "Weekly planning" | Full week overview (Sundays) |
 | "Quarterly planning" | Goal setting across all domains |
 
-## Domain triggers (4 sample domains)
+## Domain triggers (sample domains)
 
 Domain triggers load the domain's `CLAUDE.md` first, then run its "Check
 [Domain]" workflow. The authoritative registry — patterns, paths, and
@@ -38,6 +38,11 @@ human-readable summary.
 | "Check health" | Health | `domains/health/CLAUDE.md` |
 | "Check household", "Smart home maintenance" | Household | `domains/household/CLAUDE.md` |
 | "Content ideas", "Write for LinkedIn" | Content | `domains/content/CLAUDE.md` |
+| "Check acme", "Prep for Jordan", "Engagement status" | Acme (engagement) | `domains/acme/CLAUDE.md` |
+| "I have an idea", "Idea pipeline" | Ideas | `domains/ideas/CLAUDE.md` |
+
+Feature work on any registered project (dashboard, an idea, the engagement) goes
+through **`/spec`** — story packs, subagent implementation, story-reviewer QA gate.
 
 Only domains whose `state` is `active` in `config/domain-triggers.json` get
 their Check workflow executed — for dormant/complete/killed domains, surface

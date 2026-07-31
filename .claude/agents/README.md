@@ -29,6 +29,7 @@ Subagent definitions for Laila OS. Each `.md` file in this directory defines one
 | daily-sync-coordinator | sonnet | Cross-domain conflict/synergy/stale/drift synthesis for the daily brief |
 | meeting-prep-assembler | sonnet | One-page meeting brief compiled from local knowledge |
 | voice-reviewer | sonnet | Gate on every draft written as Alex, against the user-supplied voice profile |
+| story-reviewer | sonnet | QA gate on a completed `/spec` story pack — findings only, never rewrites |
 
 ## Adding an agent
 

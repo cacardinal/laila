@@ -62,3 +62,22 @@ A channel qualifies as a command channel only if it authenticates *the user*, no
 5. **Least privilege + allowlists:** each integration gets minimum access with its own credentials; monitored group chats are explicitly allowlisted.
 6. **Subagents never send:** searchers and critics are read-only; no subagent ever has send tools. Sending is Tier 3 and happens only in the main session after approval.
 7. **Audit trail:** every autonomous action is logged with trigger source, before/after state, and timestamp, and is designed to be reversible.
+
+## Security loops (enforcement, not just policy)
+
+The channel model above is policy; two mechanisms enforce the secret-handling side
+of it continuously:
+
+- **`scripts/install-git-hooks.sh`** installs a pre-push hook that scans every
+  outgoing commit for secret-shaped strings (hex 32-64, `sk-*`, long base64) and
+  blocks the push on a hit. The last boundary before something leaves the machine.
+- **`scripts/security-audit.sh`** runs monthly (`com.lailaos.security-audit`):
+  scans all commits since the last audited base (recorded in
+  `state/security-audit-last.json`), cross-checks hits against `.env` values,
+  verifies env files are untracked with sane permissions, and confirms the hook
+  is still installed. Findings hold the audited base and notify the command
+  channel. Run it manually before making anything public.
+
+The full discipline, including what to do when a leak is real (rewrite, and
+ROTATE — history rewrite does not un-cache the hosting provider), is in
+`.claude/skills/laila-os-judgment` §7.
