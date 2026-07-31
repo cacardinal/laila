@@ -6,7 +6,7 @@ Laila is an operating system for a person who runs their life with AI agents. It
 
 Harnesses like Claude Code, Codex, and YC's QM supply the engine agents run in. Laila is what you point the engine at. Everything is a plain file, so any harness that can read a repo can run it. The reference implementation is Claude Code. The porting checklist is in `docs/platform-portability.md`.
 
-A company installs a platform. You keep a repo. Your files stay on your machine, in private git, under a security model built for one person. It needs no cloud account and no subscription.
+Your data stays on your machine, in a private git repo you own. Nothing syncs to a cloud service and there is nothing to subscribe to. The security model assumes one user.
 
 This repo is a cleaned copy of a real system that has run daily since early 2026. The original has 20 domains, ~46 skills, ~50 scheduled jobs, and a self-hosted CRM. Everything personal was replaced with a fictional user named Alex.
 
