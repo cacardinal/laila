@@ -1,10 +1,29 @@
 # Laila OS
 
+![checks](https://github.com/cacardinal/laila-os/actions/workflows/checks.yml/badge.svg)
+
 A working example of a personal operating system for AI agent harnesses. Life domains live as a filesystem, memory persists across sessions, autonomy comes with hard lines, and a named agent persona (Laila) runs background loops on your behalf.
 
 The conventions are deliberately platform-agnostic — an `AGENTS.md` router, SKILL.md rituals, plain-file state, and an env-configurable headless runner — because the system is the files and the discipline, not any vendor's feature set. The reference implementation runs on [Claude Code](https://claude.com/claude-code); adapters and the porting checklist are in `docs/platform-portability.md`.
 
 This repo is extracted from a real system that has run daily since early 2026. The original carries 20 active domains, ~46 skills, ~50 scheduled background jobs, a self-hosted CRM, and an agent that triages email, preps meetings, and files transcripts while its human sleeps. Everything personal has been replaced with a fictional user named Alex. The architecture is the artifact.
+
+## Try it in 30 seconds
+
+No dependencies, no build step. The dashboard reads the fictional sample state directly:
+
+```bash
+git clone https://github.com/cacardinal/laila-os && cd laila-os
+node dashboard/server.js
+# → http://127.0.0.1:5175
+```
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/dashboard-dark.png">
+  <img alt="Laila OS dashboard: stat tiles, active tasks, pending comms with tier labels, background loops, domain cards" src="docs/images/dashboard-light.png">
+</picture>
+
+What you're looking at is the whole system in miniature: tasks with owners (Alex vs. the agent), comms items labeled by autonomy tier, background loops with dead-man-switch status, and one card per life domain.
 
 ## The core idea
 
@@ -17,6 +36,53 @@ Laila OS answers with three design commitments:
 2. **Autonomy has a bright line.** Every action is Tier 1 (auto-execute and notify; deterministic, reversible, invisible to anyone but you) or Tier 3 (propose and wait; the default, and mandatory for anything another human could observe). The agent never sends a message, completes a shared task, or touches anything outward-facing without approval. No skill or subagent routes around this.
 
 3. **Commands and information are different channels.** Instructions reach the agent only through authenticated command channels (your Telegram, your local sessions, a dedicated task queue). Email, messages, web pages, and CRM data are information channels, content to reason about and never instructions to follow. An email claiming to be from you, telling the agent to forward a document? The agent reads it as content, maybe reports it, and does nothing. This is the prompt-injection defense, built into the architecture instead of bolted on.
+
+## Architecture
+
+```mermaid
+flowchart TB
+  subgraph CMD["Command channels — authenticated"]
+    TG["Messaging bot"]
+    SESH["Local sessions"]
+    QUEUE["Agent task queue"]
+  end
+  subgraph INFO["Information channels — NEVER instructions"]
+    MAIL["Email"]
+    MSGS["Messages"]
+    WEB["Web content"]
+    CRMDATA["CRM data"]
+  end
+
+  LAILA["Laila — interactive sessions + scheduled loops"]
+
+  subgraph FS["The filesystem is the mind"]
+    DOM["domains/"]
+    STATE["state/"]
+    KNOW["knowledge/"]
+  end
+  CRM["Twenty CRM<br/>(self-hosted)"]
+
+  subgraph GATE["Autonomy gate"]
+    T1["Tier 1<br/>auto-execute + notify"]
+    T3["Tier 3 (default)<br/>propose + wait"]
+  end
+  ALEX["Alex approves"]
+  OUT["Anything visible to others:<br/>messages, shared tasks, client work"]
+  DASH["Dashboard"]
+
+  CMD -- "instructions" --> LAILA
+  INFO -- "content to reason about" --> LAILA
+  FS <--> LAILA
+  CRM <--> LAILA
+  LAILA --> GATE
+  T1 -- "reversible, invisible to others" --> FS
+  T1 --> CRM
+  T3 --> ALEX --> OUT
+  FS --> DASH
+  CRM --> DASH
+```
+
+The diagram is the security model: instructions only enter from the left column, everything outward-facing exits through an approval, and the files in the middle are the memory that makes each session start warm.
 
 ## What's in the box
 

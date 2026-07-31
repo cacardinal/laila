@@ -58,8 +58,10 @@ KEY_PAT="BEGIN .*PRIVATE K""EY"
 KEYS=$(git grep -Il "$KEY_PAT" -- . 2>/dev/null)
 [ -n "$KEYS" ] && note "private-key material tracked in: $KEYS"
 
-# ── 4. Guard rails present ───────────────────────────────────────────────────
-[ -x ".git/hooks/pre-push" ] || note "pre-push secret-scan hook not installed (scripts/install-git-hooks.sh)"
+# ── 4. Guard rails present (skipped in CI — runners never have local hooks) ──
+if [ -z "${CI:-}" ]; then
+  [ -x ".git/hooks/pre-push" ] || note "pre-push secret-scan hook not installed (scripts/install-git-hooks.sh)"
+fi
 
 # ── Report ───────────────────────────────────────────────────────────────────
 if [ -n "$FINDINGS" ]; then

@@ -1,0 +1,60 @@
+name: checks
+
+# The repo enforces its own discipline: every push re-runs the security audit
+# (laila-os-judgment §7 — diff vs last-audited base, secret patterns, env
+# hygiene) plus syntax/validity checks on everything executable.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the audit diffs against the last-audited base SHA
+
+      - name: Security audit (diff vs audited base)
+        run: bash scripts/security-audit.sh
+
+      - name: JSON validity
+        run: |
+          python3 - <<'EOF'
+          import json, glob
+          files = glob.glob('config/*.json') + glob.glob('state/*.json') + glob.glob('domains/*/tracking/*.json')
+          for f in files:
+              json.load(open(f))
+          print(f"{len(files)} JSON files valid")
+          EOF
+
+      - name: Shell syntax
+        run: |
+          for f in scripts/*.sh; do bash -n "$f" && echo "ok $f"; done
+
+      - name: Python syntax
+        run: python3 -m py_compile scripts/*.py && echo "python ok"
+
+      - name: Node syntax
+        run: node --check dashboard/server.js && echo "node ok"
+
+      - name: Neutral paths resolve
+        run: |
+          test -f skills/session-wrap/SKILL.md
+          test -f agents/README.md
+          test -f AGENTS.md
+          grep -q '@AGENTS.md' CLAUDE.md
+          echo "portability layout intact"
+
+      - name: Registry ↔ disk consistency
+        run: |
+          python3 - <<'EOF'
+          import json, os, sys
+          cfg = json.load(open('config/domain-triggers.json'))
+          missing = [t['context_file'] for t in cfg['triggers'] if not os.path.isfile(t['context_file'])]
+          if missing:
+              sys.exit(f"registry points at missing context files: {missing}")
+          print(f"{len(cfg['triggers'])} domain context files resolve")
+          EOF
