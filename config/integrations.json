@@ -36,6 +36,15 @@
       "can_write": true,
       "last_verified": "2026-06-01",
       "reference_doc": null
+    },
+    {
+      "domain": "all",
+      "tool": "Twenty CRM (self-hosted)",
+      "mechanism": "GraphQL at localhost:3000/graphql; dashboard proxies /graphql server-side",
+      "auth": "api-key (CRM_API_KEY in .env, minted in Twenty Settings > Developers)",
+      "can_write": true,
+      "last_verified": "2026-07-31",
+      "reference_doc": "docs/crm-twenty.md"
     }
   ]
 }

@@ -2,6 +2,8 @@
 
 This file is a template. Replace it with the API mechanics of YOUR CRM so that agents (`crm-searcher`, `meeting-prep-assembler`) can read one authoritative reference instead of re-deriving query syntax every session.
 
+If you run the reference setup (self-hosted [Twenty](https://github.com/twentyhq/twenty)), start from `docs/crm-twenty.md` — it has working queries and the known gotchas; this file then only needs your instance's specifics (env var names, custom objects, anything you learned the hard way).
+
 Document at minimum:
 
 ## Endpoint + auth

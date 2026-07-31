@@ -36,6 +36,8 @@ knowledge/              The memory system: entity graph, tacit lessons,
 .claude/agents/         Subagent definitions: read-only critics and cheap
                         research workers, none with send tools
 scripts/                Heartbeat, hygiene scanner, notify wrapper
+dashboard/              Zero-dependency status page over the state files,
+                        with an optional live-CRM panel
 launchagents/           macOS launchd templates for the background loops
 templates/              Sync protocol, daily cadence, OKR architecture
 docs/                   Security model, background monitoring, trigger
@@ -47,6 +49,10 @@ docs/                   Security model, background monitoring, trigger
 The morning starts with a launchd job that runs a headless Claude session, assembles a daily brief (calendar, comms triage, domain status, cross-domain conflicts), and sends it to Telegram. During the day, you talk to the system through trigger phrases ("what's next?", "check career", "prep me for the 2pm"). Skills load domain context, subagents do the searching and reviewing so the main session stays sharp, and every decision lands in the decision log. At night a consolidation job reviews the day's notes and folds what mattered into the knowledge layer.
 
 Sessions end with `/session-wrap`, a mandatory ritual that proposes updates across every tracking surface and waits for approval. Skipping it is how things get dropped, so it isn't optional.
+
+## The CRM next door
+
+Flat files carry most of the system's truth, but contacts, pipeline, and goals outgrow markdown — they have real structure and want a real database. The reference setup runs [Twenty](https://github.com/twentyhq/twenty), an open-source CRM, in local Docker beside the repo. The agent reads and writes it over GraphQL (relationship notes, pipeline stages, task sync), the repo keeps generated exports of its data, and the bundled dashboard proxies to it for live counts. The split, the worked examples, and the gotchas are in `docs/crm-twenty.md`.
 
 ## The judgment layer
 
@@ -63,7 +69,7 @@ Every rule in that file was paid for once. The skill exists so nothing gets paid
 
 ## What's deliberately absent
 
-No credentials, no real integrations, no dashboard, and none of the original system's personal data or git history. This repo was assembled fresh; the private system it's modeled on stays private. Where an integration was too entangled to genericize (CRM GraphQL, browser credential automation), you'll find a clearly marked placeholder and a note on the pattern instead.
+No credentials, no OAuth tokens, and none of the original system's personal data or git history. This repo was assembled fresh; the private system it's modeled on stays private. Where an integration was too entangled to genericize (browser credential automation, account-specific mail plumbing), you'll find a clearly marked placeholder and a note on the pattern instead.
 
 ## License
 
