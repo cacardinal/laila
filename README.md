@@ -8,7 +8,7 @@ Harnesses like Claude Code, Codex, and YC's QM supply the engine agents run in. 
 
 Your data stays on your machine, in a private git repo you own. Nothing syncs to a cloud service and there is nothing to subscribe to. The security model assumes one user.
 
-This repo is a cleaned copy of a real system that has run daily since early 2026. The original has 20 domains, ~46 skills, ~50 scheduled jobs, and a self-hosted CRM. Everything personal was replaced with a fictional user named Alex.
+This repo is a cleaned copy of a real system that started in late 2025 as loose sessions in aider and LibreChat, with no repository. It became a versioned system in early 2026 and has run daily since. The original has 20 domains, ~46 skills, ~50 scheduled jobs, and a self-hosted CRM. Everything personal was replaced with a fictional user named Alex.
 
 ## Try it in 30 seconds
 
