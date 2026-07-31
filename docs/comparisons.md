@@ -24,7 +24,7 @@ Laila's architecture separates those streams. Email, messages, and web content a
 
 Hermes is the most self-improving of the three. It profiles its user over time, and it writes its own skills. On a fixed cadence it evaluates its performance, extracts reusable patterns, and loads new skill files it authored itself. Its memory system (dialectic user modeling, full-text search, procedural hot/cold storage) is more sophisticated than Laila's file layers, and its sandbox defaults plus prompt-injection scanning are genuinely conservative.
 
-Laila refuses the self-writing part on purpose. A Laila skill is a reviewed artifact that changes only in a session you supervised. That is slower than letting the agent rewrite itself, but its behavior only changes in sessions you reviewed. Hermes scans for injection, and scanning has a measurable bypass rate. Laila's information channels cannot carry instructions at all, by construction. That is a stronger guarantee over a narrower surface.
+Laila refuses the self-writing part on purpose. A Laila skill is a reviewed artifact that changes only in a session you supervised. That is slower than letting the agent rewrite itself, but its behavior only changes in sessions you reviewed. Laila scans too. The comms triage flags instruction-like content in email and messages (`injection_flag`), and the comms workflow surfaces every flag to you. The difference is what the scan protects. In a scanning-first design the scanner is the gate, so a bypass is a compromise. In Laila the flag is telemetry over a structural guarantee: information channels cannot carry instructions by construction, so an injection that slips past unflagged still commands nothing. The flag keeps you informed, and the guarantee holds even when the flag misses.
 
 ## Side by side
 
@@ -34,7 +34,7 @@ Laila refuses the self-writing part on purpose. A Laila skill is a reviewed arti
 | Memory | Workspace state, session-based | 4-layer with user profiling | 3-layer plain files; every write is a readable git diff |
 | Skills | SKILL.md + registry | Written by the agent itself | SKILL.md, human-reviewed |
 | Channels | 25+ | 20+ | 3, each authenticated |
-| Injection defense | Isolation + defaults | Scanning + isolation | Structural: information channels carry no instructions |
+| Injection defense | Isolation + defaults | Scanning + isolation | Structural (channels carry no instructions) plus advisory flagging |
 | Autonomy | Tools conditionally enabled | Conservative sandboxes | Per-action tiers, propose by default, append-only audit |
 | Data | Local-first workspace | Disk-first, small-VPS friendly | Plain files in a private git repo you own |
 

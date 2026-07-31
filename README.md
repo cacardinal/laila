@@ -51,7 +51,7 @@ Laila makes three commitments:
 | Memory | Workspace state, session-based | 4-layer with user profiling | Plain files; every write is a readable git diff |
 | Skills | SKILL.md + registry | Written by the agent itself | SKILL.md, human-reviewed |
 | Channels | 25+ | 20+ | 3, each authenticated |
-| Injection defense | Isolation + defaults | Scanning + isolation | Structural: information channels carry no instructions |
+| Injection defense | Isolation + defaults | Scanning + isolation | Structural (channels carry no instructions) plus advisory flagging |
 | Autonomy | Tools conditionally enabled | Conservative sandboxes | Per-action tiers, propose by default, append-only audit |
 
 Pick OpenClaw for reach, Hermes for self-improvement, QM for a team, and Laila when you want every memory readable, every action tiered and logged, and every instruction authenticated. The full comparison, including the published research on background-session memory pollution, is in `docs/comparisons.md`.
