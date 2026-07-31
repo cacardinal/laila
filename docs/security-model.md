@@ -83,3 +83,13 @@ of it continuously:
 The full discipline, including what to do when a leak is real (rewrite, and
 ROTATE — history rewrite does not un-cache the hosting provider), is in
 `skills/laila-judgment` §7.
+
+## Why there is no Tier 2
+
+The tiers skip from 1 to 3, and the gap is deliberate. The missing middle is easy to imagine. Notify first, then act on a timeout: "sending this in 15 minutes unless you stop me." Most autonomy schemes end up proposing it. This one refuses it, for three reasons.
+
+1. **A veto window converts silence into consent.** Tier 3 works because silence means no. With a timeout, missing one notification means the action happens, and the risk migrates onto your attention, the exact resource the system exists to protect.
+2. **It is the tier an attacker would choose.** A misclassified or injected action at Tier 3 sits inert forever. The same action at Tier 2 executes unless a human catches it inside the window. Tier 2 offers a race that can be won; Tier 3 offers a wall.
+3. **It erodes the bright line.** Two tiers force one clean question per action: could anyone besides you observe it? A middle tier invites negotiation, and tier inflation only ever runs toward more autonomy.
+
+Consent must be expressed. The numbering gap stays because renumbering to 1 and 2 would hide that a decision was made here.

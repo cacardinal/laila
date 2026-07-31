@@ -183,6 +183,7 @@
       "description": "Deterministic, low-risk, reversible. Execute immediately, log to audit, notify via the command channel.",
       "requires_approval": false
     },
+    "_why_no_tier_2": "Deliberately absent. The missing middle would be notify-first, act-on-timeout, which converts silence into consent. Consent here is expressed, never inferred from a timeout. Full reasoning: docs/security-model.md.",
     "3": {
       "name": "Propose-and-Wait",
       "description": "High-risk, irreversible, or visible to others. Propose in sync table, wait for explicit approval.",
