@@ -6,7 +6,7 @@
 
 Laila is an operating system for a person who runs their life with AI agents. It stores your world as plain files: career, health, household, whatever you carry. Agents read those files, remember between sessions, and do scheduled work overnight. Strict rules decide what they may do alone and what waits for you.
 
-Harnesses like Claude Code, Codex, and YC's QM supply the engine agents run in. Laila is what you point the engine at. Everything is a plain file, so any harness that can read a repo can run it. The reference implementation is Claude Code. The porting checklist is in `docs/platform-portability.md`, and an honest comparison with QM, OpenClaw, and Hermes is in `docs/comparisons.md`.
+Harnesses like Claude Code, Codex, and YC's QM supply the engine agents run in. Laila is what you point the engine at. Everything is a plain file, so any harness that can read a repo can run it. The reference implementation is Claude Code. The porting checklist is in `docs/platform-portability.md`.
 
 Your data stays on your machine, in a private git repo you own. Nothing syncs to a cloud service and there is nothing to subscribe to. The security model assumes one user.
 
@@ -40,6 +40,21 @@ Laila makes three commitments:
 2. **Autonomy has a bright line.** Every action is Tier 1 or Tier 3. There is deliberately no Tier 2 (`docs/security-model.md` explains why). Tier 1 actions run on their own and notify you; they must be deterministic, reversible, and invisible to anyone but you. Tier 3 is the default. The agent proposes and waits. Anything another person could see is Tier 3, always. The agent never sends a message or completes a shared task without approval, and no skill or subagent routes around this.
 
 3. **Commands and information are different channels.** Instructions reach the agent only through channels that authenticate you: your Telegram, your local sessions, a dedicated task queue. Email, messages, web pages, and CRM data are information. The agent reasons about them and never obeys them. If an email claims to be you and tells the agent to forward a document, the agent reads it, maybe reports it, and does nothing. This is how the system defeats prompt injection.
+
+## How it compares
+
+[OpenClaw](https://github.com/openclaw/openclaw), [Hermes Agent](https://github.com/nousresearch/hermes-agent), and YC's [QM](https://github.com/yc-software/qm) are the open-source neighbors. All three are runtimes that ship an engine. Laila ships the operating layer an engine runs for one person, and QM's multiplayer scope is the mirror image of Laila's one-principal security model.
+
+| | OpenClaw | Hermes Agent | Laila |
+|---|---|---|---|
+| Ships | Gateway daemon + engine | Self-improving runtime | Conventions + state, bring your engine |
+| Memory | Workspace state, session-based | 4-layer with user profiling | Plain files; every write is a readable git diff |
+| Skills | SKILL.md + registry | Written by the agent itself | SKILL.md, human-reviewed |
+| Channels | 25+ | 20+ | 3, each authenticated |
+| Injection defense | Isolation + defaults | Scanning + isolation | Structural: information channels carry no instructions |
+| Autonomy | Tools conditionally enabled | Conservative sandboxes | Per-action tiers, propose by default, append-only audit |
+
+Pick OpenClaw for reach, Hermes for self-improvement, QM for a team, and Laila when you want every memory readable, every action tiered and logged, and every instruction authenticated. The full comparison, including the published research on background-session memory pollution, is in `docs/comparisons.md`.
 
 ## Architecture
 
