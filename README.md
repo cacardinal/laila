@@ -2,9 +2,9 @@
 
 ![checks](https://github.com/cacardinal/laila/actions/workflows/checks.yml/badge.svg)
 
-Laila is a personal operating system for AI agents. It stores your life as plain files. An agent reads those files, remembers what happened last session, and runs scheduled jobs overnight. Strict rules decide what it may do alone and what waits for your approval.
+Laila is an operating system for a person who runs their life with AI agents. It stores your world as plain files: career, health, household, whatever you carry. Agents read those files, remember between sessions, and do scheduled work overnight. Strict rules decide what they may do alone and what waits for you.
 
-New agent harnesses ship every month. Claude Code, Codex, and company platforms like YC's QM supply the engine: sessions, tools, sandboxes. Laila supplies what the engine runs for one person. It says where memory lives, what the agent may do without asking, and why an email can never give it an order. Everything is a plain file, so any harness that can read a repo can run it. The reference implementation is Claude Code. The porting checklist is in `docs/platform-portability.md`.
+Harnesses like Claude Code, Codex, and YC's QM supply the engine agents run in. Laila is what you point the engine at. Everything is a plain file, so any harness that can read a repo can run it. The reference implementation is Claude Code. The porting checklist is in `docs/platform-portability.md`.
 
 A company installs a platform. You keep a repo. Your files stay on your machine, in private git, under a security model built for one person. It needs no cloud account and no subscription.
 
