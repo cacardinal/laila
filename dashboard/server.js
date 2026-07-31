@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Laila OS dashboard — zero-dependency Node server (Node 18+).
+// Laila dashboard — zero-dependency Node server (Node 18+).
 // Serves the static UI, aggregates state files into JSON endpoints, and
 // optionally proxies /graphql to a Twenty CRM instance so the browser
 // never sees the API key. See docs/crm-twenty.md.
@@ -135,5 +135,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, "127.0.0.1", () => {
-  console.log(`Laila OS dashboard: http://127.0.0.1:${PORT} (CRM proxy: ${CRM_URL && CRM_KEY ? "on" : "off"})`);
+  console.log(`Laila dashboard: http://127.0.0.1:${PORT} (CRM proxy: ${CRM_URL && CRM_KEY ? "on" : "off"})`);
 });

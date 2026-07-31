@@ -1,6 +1,6 @@
 # Subagents
 
-Subagent definitions for Laila OS. Each `.md` file in this directory defines one agent: frontmatter (name, description, model tier, tools) plus a body that is the agent's entire operating manual — subagents start with a fresh context window, so everything they need must be in the definition or the dispatch prompt.
+Subagent definitions for Laila. Each `.md` file in this directory defines one agent: frontmatter (name, description, model tier, tools) plus a body that is the agent's entire operating manual — subagents start with a fresh context window, so everything they need must be in the definition or the dispatch prompt.
 
 ## Why delegate
 

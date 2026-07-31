@@ -1,6 +1,6 @@
 #!/bin/bash
 # Installs the pre-push secret-scan hook into .git/hooks.
-# The hook applies laila-os-judgment §7 at the last possible boundary: it scans
+# The hook applies laila-judgment §7 at the last possible boundary: it scans
 # every commit about to leave the machine and blocks the push on a hit.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"

@@ -1,6 +1,6 @@
 #!/bin/bash
-# Laila OS security audit loop (monthly by default; also run before any publish).
-# Implements the secret-scan discipline from skills/laila-os-judgment §7:
+# Laila security audit loop (monthly by default; also run before any publish).
+# Implements the secret-scan discipline from skills/laila-judgment §7:
 #   1. Scan the diff against the last-AUDITED base, not just recent commits
 #   2. Secret patterns: hex 32-64 INCLUSIVE, sk-*, long base64
 #   3. Plus repo hygiene: env files untracked, permissions, private-key material

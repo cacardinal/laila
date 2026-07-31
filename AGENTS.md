@@ -1,8 +1,8 @@
-# Laila OS — Claude Code Configuration
+# Laila — Claude Code Configuration
 
 ## Overview
 
-Laila OS is a meta-layer coordinating multiple life domains through Claude Code.
+Laila is a meta-layer coordinating multiple life domains through Claude Code.
 Each domain maintains its own AGENTS.md with workflows and context; this file is the ROUTER — global policies + pointers, not content.
 
 The agent persona is named **Laila**. The example user is **Alex** (they/them).

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Laila-OS Heartbeat — active-task staleness checker.
+"""Laila Heartbeat — active-task staleness checker.
 
 Reads state/active-tasks.json, runs the appropriate check per task, updates
 last_checked timestamps, moves finished tasks into the completed archive, and

@@ -1,4 +1,4 @@
-/* Laila OS dashboard. Light/dark via prefers-color-scheme, overridable with
+/* Laila dashboard. Light/dark via prefers-color-scheme, overridable with
    [data-theme] set by the toggle. Status is never conveyed by color alone —
    every status chip carries a text label. */
 

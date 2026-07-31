@@ -1,26 +1,28 @@
-# Laila OS
+# Laila
 
-![checks](https://github.com/cacardinal/laila-os/actions/workflows/checks.yml/badge.svg)
+![checks](https://github.com/cacardinal/laila/actions/workflows/checks.yml/badge.svg)
 
-A working example of a personal operating system for AI agent harnesses. Life domains live as a filesystem, memory persists across sessions, autonomy comes with hard lines, and a named agent persona (Laila) runs background loops on your behalf.
+Laila is a personal operating system for AI agents. Your life becomes a filesystem the agent reads, and memory persists across sessions. Autonomy comes with hard lines, and a named agent persona runs background loops on your behalf while you sleep.
 
-The conventions are deliberately platform-agnostic — an `AGENTS.md` router, SKILL.md rituals, plain-file state, and an env-configurable headless runner — because the system is the files and the discipline, not any vendor's feature set. The reference implementation runs on [Claude Code](https://claude.com/claude-code); adapters and the porting checklist are in `docs/platform-portability.md`.
+New agent harnesses are shipping every month. Claude Code, Codex, and company-scale platforms like YC's QM all supply the engine, the sessions, tools, sandboxes, and place for agents to run. Laila sits one layer up and supplies what the engine runs for a single person. It defines where memory lives, how it consolidates, and which actions execute on their own versus wait for you. It also defines why an email can never give your agent an order, and the daily rituals that keep the whole thing coherent. The conventions are plain files (an `AGENTS.md` router, SKILL.md rituals, JSON state, an env-configurable headless runner), so Laila works on any harness that can read a repo. The reference implementation runs on [Claude Code](https://claude.com/claude-code); the porting checklist is in `docs/platform-portability.md`.
 
-This repo is extracted from a real system that has run daily since early 2026. The original carries 20 active domains, ~46 skills, ~50 scheduled background jobs, a self-hosted CRM, and an agent that triages email, preps meetings, and files transcripts while its human sleeps. Everything personal has been replaced with a fictional user named Alex. The architecture is the artifact.
+Where a company installs a platform, a life gets a repo you own. Everything stays in files on your machine, in a private git repo, with a security model designed for one principal. Nothing here needs a cloud account or a subscription.
+
+This repo is extracted from a real system that has run daily since early 2026. The original carries 20 active domains, ~46 skills, ~50 scheduled background jobs, a self-hosted CRM, and an agent that triages email, preps meetings, and files the day's records while its human sleeps. Everything personal has been replaced with a fictional user named Alex. The architecture is the artifact.
 
 ## Try it in 30 seconds
 
 No dependencies, no build step. The dashboard reads the fictional sample state directly:
 
 ```bash
-git clone https://github.com/cacardinal/laila-os && cd laila-os
+git clone https://github.com/cacardinal/laila && cd laila
 node dashboard/server.js
 # → http://127.0.0.1:5175
 ```
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/dashboard-dark.png">
-  <img alt="Laila OS dashboard: stat tiles, active tasks, pending comms with tier labels, background loops, domain cards" src="docs/images/dashboard-light.png">
+  <img alt="Laila dashboard: stat tiles, active tasks, pending comms with tier labels, background loops, domain cards" src="docs/images/dashboard-light.png">
 </picture>
 
 What you're looking at is the whole system in miniature: tasks with owners (Alex vs. the agent), comms items labeled by autonomy tier, background loops with dead-man-switch status, and one card per life domain.
@@ -29,7 +31,7 @@ What you're looking at is the whole system in miniature: tasks with owners (Alex
 
 Most "AI assistant" setups fail the same way. The model is smart but the *system* has no memory, no boundaries, and no structure, so every session starts from zero and every action needs babysitting.
 
-Laila OS answers with three design commitments:
+Laila answers with three design commitments:
 
 1. **The filesystem is the mind.** Domains, tracking files, daily notes, and a knowledge graph live as markdown and JSON in one repo. The agent reads state instead of asking you to repeat it, and any agent that can read a repo can run the system. Recall comes in tiers. Hybrid search covers the memory collections with BM25 plus embeddings, which amounts to RAG over your own files; a wikilink entity graph lets the agent walk connections by reading; grep sits underneath both and never breaks. Every piece of truth has exactly one authoritative file, everything else is a generated export, and there is deliberately no separate memory database to drift out of sync (`knowledge/README.md`).
 
@@ -129,7 +131,7 @@ Flat files carry most of the system's truth, but contacts, pipeline, and goals o
 
 ## The judgment layer
 
-The most transferable thing here may be `skills/laila-os-judgment`: a distillation of the working discipline this system learned from its own incidents. Evidence bars ("done" means verified against the live system, and a subagent's report is not that). Never-infer rules (run `date` for day-of-week, always). Secret-scan discipline for anything public. Stop-and-surface when reality contradicts the task description.
+The most transferable thing here may be `skills/laila-judgment`: a distillation of the working discipline this system learned from its own incidents. Evidence bars ("done" means verified against the live system, and a subagent's report is not that). Never-infer rules (run `date` for day-of-week, always). Secret-scan discipline for anything public. Stop-and-surface when reality contradicts the task description.
 
 Every rule in that file was paid for once. The skill exists so nothing gets paid for twice.
 

@@ -1,7 +1,7 @@
 name: checks
 
 # The repo enforces its own discipline: every push re-runs the security audit
-# (laila-os-judgment §7 — diff vs last-audited base, secret patterns, env
+# (laila-judgment §7 — diff vs last-audited base, secret patterns, env
 # hygiene) plus syntax/validity checks on everything executable.
 
 on:

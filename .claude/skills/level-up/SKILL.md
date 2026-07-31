@@ -44,7 +44,7 @@ Output: 1-3 candidates ranked by leverage, one line of "why" each. Ask Alex to p
 1. **Constraint:** which bottleneck does this solve? Tie back to Phase 0/1 evidence.
 2. **Eliminate first (Eliminate → Automate → Delegate):** *"What happens if we just stop doing this?"* If "nothing breaks" → exit cheerfully, mark the bottleneck row Eliminated, log the decision, STOP. Don't automate waste. Then Automate (aim for ~60% deterministic / 30% AI / 10% manual framing). Delegate last (suggest a person, log it, stop).
 3. **Process map — five elements:** trigger / data sources / transformations / decision points / destination. **Hard stop:** if Alex can't articulate any of the five — *"If you can't explain the process to a person, you can't explain it to an AI. Sketch it first, come back."*
-4. **Autonomy level → Laila OS tiers:**
+4. **Autonomy level → Laila tiers:**
 
    | Level | Maps to |
    |---|---|

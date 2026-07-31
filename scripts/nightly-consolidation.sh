@@ -14,7 +14,7 @@
 set -euo pipefail
 
 # ─── Configuration ───────────────────────────────────────────────────────────
-LAILA_OS_ROOT="${LAILA_OS_ROOT:-$HOME/laila-os}"
+LAILA_OS_ROOT="${LAILA_OS_ROOT:-$HOME/laila}"
 LOG_FILE="/tmp/lailaos-consolidation.log"
 
 # shellcheck disable=SC1091
@@ -63,7 +63,7 @@ fi
 # REQUIRED (a headless `claude --print` run silently denies every tool call
 # without it). Equivalents for other CLIs: docs/headless-sessions.md.
 AGENT_RUN="${AGENT_RUN:-claude --print --model sonnet --allowedTools Read,Glob,Grep,Edit,Write}"
-PROMPT="You are Laila running the nightly memory consolidation for Laila-OS
+PROMPT="You are Laila running the nightly memory consolidation for Laila
 (repo at $LAILA_OS_ROOT, which is your working directory).
 
 1. Read the most recent daily note(s) in state/daily-notes/.

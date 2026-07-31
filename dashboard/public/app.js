@@ -1,4 +1,4 @@
-// Laila OS dashboard client. Reads the aggregate endpoints and renders
+// Laila dashboard client. Reads the aggregate endpoints and renders
 // tiles + tables. Everything is text-first: status chips always carry a
 // label, numbers use tabular numerals, and identity never rides on color.
 

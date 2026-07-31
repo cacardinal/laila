@@ -1,4 +1,4 @@
-# Laila-OS OKR Architecture
+# Laila OKR Architecture
 
 **Reference:** John Doerr's "Measure What Matters" OKR framework, adapted for a personal operating system.
 

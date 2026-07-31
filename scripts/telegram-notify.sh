@@ -12,7 +12,7 @@
 # which resolves to $TELEGRAM_CHAT_ID.
 set -euo pipefail
 
-LAILA_OS_ROOT="${LAILA_OS_ROOT:-$HOME/laila-os}"
+LAILA_OS_ROOT="${LAILA_OS_ROOT:-$HOME/laila}"
 CONFIG="$LAILA_OS_ROOT/config/telegram-groups.json"
 
 # Source env for the bot token + chat IDs (see .env.example).

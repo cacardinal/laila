@@ -85,6 +85,6 @@ Then list the five council scores in one line: `Contrarian X/10 · Expansionist 
 - Every persona stays in character. None of them hedges or softens. The value is in the friction.
 - The Judge must make an actual call. "It depends" is not a verdict. Pick GO, RESHAPE, or KILL and own it.
 - Read-only. This skill never writes files, updates state, or sends anything.
-- This complements the "document the path, don't abort" working style (see laila-os-judgment §8): objections should imply a testable counter-path, not a veto.
+- This complements the "document the path, don't abort" working style (see laila-judgment §8): objections should imply a testable counter-path, not a veto.
 - The cheapest 48-hour test and the dated kill criteria are the most important outputs. They're how Alex finds out if they're right without building the whole thing.
 - Keep the final verdict skimmable. The council does the depth; the Judge does the decision.

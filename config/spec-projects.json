@@ -2,7 +2,7 @@
  "_description": "Project profiles for the /spec skill (BMAD-inspired story pipeline). Each entry is keyed by slug. /spec resolves a target project here to know where to write story packs, how to verify them, and which conventions the story-reviewer QA gate must enforce. Add a new entry when a project first uses /spec. 'stage': 'idea' = no repo yet, /spec produces planning story packs only (no code execution); 'code' = repo exists, /spec runs the full build+QA loop. Fields: repo (path or null), stories_dir (where packs are written), build_test (verification command or null), conventions (paths to voice/brand/style docs the QA gate enforces), constraints (one-line hard rules), tracking (file the sync phase updates). Paths are relative to this repo's root; projects living in their own repos use their own paths.",
  "projects": {
   "dashboard": {
-   "name": "Laila-OS Dashboard",
+   "name": "Laila Dashboard",
    "stage": "code",
    "repo": ".",
    "stories_dir": "dashboard/stories",

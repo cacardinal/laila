@@ -7,7 +7,7 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>__HOME__/laila-os/scripts/heartbeat.sh</string>
+        <string>__HOME__/laila/scripts/heartbeat.sh</string>
     </array>
 
     <!-- Every 30 minutes -->
@@ -30,6 +30,6 @@
     </dict>
 
     <key>WorkingDirectory</key>
-    <string>__HOME__/laila-os</string>
+    <string>__HOME__/laila</string>
 </dict>
 </plist>

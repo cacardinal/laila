@@ -8,7 +8,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>__HOME__/laila-os/scripts/security-audit.sh</string>
+    <string>__HOME__/laila/scripts/security-audit.sh</string>
   </array>
 
   <!-- Monthly, on the 1st at 06:30. Findings go to the command channel via

@@ -8,7 +8,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>__HOME__/.nvm/versions/node/__NODE_VERSION__/bin/node</string>
-    <string>__HOME__/laila-os/dashboard/server.js</string>
+    <string>__HOME__/laila/dashboard/server.js</string>
   </array>
 
   <key>RunAtLoad</key>

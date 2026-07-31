@@ -5,14 +5,14 @@
       "command": "npx",
       "args": ["-y", "YOUR-GMAIL-MCP-SERVER"],
       "env": {
-        "GMAIL_OAUTH_PATH": "${HOME}/.config/laila-os/gmail-personal-oauth.json"
+        "GMAIL_OAUTH_PATH": "${HOME}/.config/laila/gmail-personal-oauth.json"
       }
     },
     "gcal-personal": {
       "command": "npx",
       "args": ["-y", "YOUR-GCAL-MCP-SERVER"],
       "env": {
-        "GCAL_OAUTH_PATH": "${HOME}/.config/laila-os/gcal-personal-oauth.json"
+        "GCAL_OAUTH_PATH": "${HOME}/.config/laila/gcal-personal-oauth.json"
       }
     }
   }

@@ -1,15 +1,15 @@
 ---
-name: laila-os-headless-conduct
-description: Conduct manual for HEADLESS agent sessions inside Laila OS — the non-interactive agent-CLI jobs (`AGENT_RUN`) spawned by scheduled tasks (the Laila command-channel bot, the Laila email channel, the reminders queue, daily brief, nightly consolidation, and every other known-caller job). Use when you are running non-interactively with no human at the keyboard and need to know your context-window reality, channel security model, send rules, credential path, self-preservation constraints, or failure conduct. Trigger phrases such as "Use when running headless", "how should a scheduled agent job behave", "Laila conduct rules", "headless session rules". NOT infrastructure triage (that fixes the machinery; this skill is how to BEHAVE inside it). NOT laila-os-judgment (general working discipline for interactive sessions; this one is headless-specific). NOT /os-audit (system health scoring).
+name: laila-headless-conduct
+description: Conduct manual for HEADLESS agent sessions inside Laila — the non-interactive agent-CLI jobs (`AGENT_RUN`) spawned by scheduled tasks (the Laila command-channel bot, the Laila email channel, the reminders queue, daily brief, nightly consolidation, and every other known-caller job). Use when you are running non-interactively with no human at the keyboard and need to know your context-window reality, channel security model, send rules, credential path, self-preservation constraints, or failure conduct. Trigger phrases such as "Use when running headless", "how should a scheduled agent job behave", "Laila conduct rules", "headless session rules". NOT infrastructure triage (that fixes the machinery; this skill is how to BEHAVE inside it). NOT laila-judgment (general working discipline for interactive sessions; this one is headless-specific). NOT /os-audit (system health scoring).
 ---
 
-# /laila-os-headless-conduct — how to behave when you are the headless session
+# /laila-headless-conduct — how to behave when you are the headless session
 
 You are (probably) a non-interactive agent-CLI process (reference implementation: `claude --print`) spawned by a scheduled job on the always-on host machine. There is no interactive user. Alex is not watching your output scroll by. Everything you do is either logged, sent to the command channel, or silently lost — so behave accordingly: read on demand, never send to third parties, never kill your own host process, and fail loud.
 
 Jargon used below, defined once:
 
-- **Scheduled job** — a background job run by the OS scheduler (launchd on macOS, cron/systemd elsewhere). All Laila OS automation runs this way. Registry: `state/loops-registry.json`; reference: `docs/background-monitoring.md`.
+- **Scheduled job** — a background job run by the OS scheduler (launchd on macOS, cron/systemd elsewhere). All Laila automation runs this way. Registry: `state/loops-registry.json`; reference: `docs/background-monitoring.md`.
 - **TCC** — macOS Transparency, Consent, and Control: the per-app privacy permission system. Headless launchd contexts often LACK TCC grants (reminders, message databases) that an interactive terminal has. Equivalent permission barriers exist on other platforms.
 - **Tier 1 / Tier 3** — the autonomy model in `config/autonomy-rules.json`. Tier 1 = "Auto-Execute + Notify" (deterministic, low-risk, reversible; `requires_approval: false`). Tier 3 = "Propose-and-Wait" (`requires_approval: true`; scope includes sending ANY communication, strategic changes, events with attendees, spawning coding sessions, completing/deleting tasks, any action visible to people other than Alex). There is no Tier 2.
 - **DKIM** — cryptographic email signature; the Laila email channel verifies it in-process and requires the signing domain to align with the From domain before treating mail as commands.
@@ -17,7 +17,7 @@ Jargon used below, defined once:
 
 ## When NOT to use this
 
-- Interactive Claude Code session in a terminal or editor — you have MEMORY.md, a human, and the full permission system; use ordinary judgment, the root `AGENTS.md`, and **laila-os-judgment**.
+- Interactive Claude Code session in a terminal or editor — you have MEMORY.md, a human, and the full permission system; use ordinary judgment, the root `AGENTS.md`, and **laila-judgment**.
 - Fixing broken infrastructure (dead scheduled jobs, auth, Docker) — that is ops/debugging work done from an INTERACTIVE session, not from inside a headless run.
 - `/os-audit` (structural health score) and `/session-wrap` (interactive end-of-session protocol) are separate skills.
 

@@ -1,6 +1,6 @@
 # LaunchAgents — Background Loops (macOS)
 
-Every background loop in Laila-OS runs as a launchd LaunchAgent. The
+Every background loop in Laila runs as a launchd LaunchAgent. The
 `*.plist.template` files here are the repo copies; installed copies live in
 `~/Library/LaunchAgents/`. The repo is the source of truth — edit here,
 reinstall, never edit the installed copy directly.
@@ -19,7 +19,7 @@ for t in *.plist.template; do
       "$t" > ~/Library/LaunchAgents/"${t%.template}"
 done
 
-# 2. If your repo is not at ~/laila-os, also fix the paths inside each plist.
+# 2. If your repo is not at ~/laila, also fix the paths inside each plist.
 
 # 3. Load
 launchctl load ~/Library/LaunchAgents/com.lailaos.heartbeat.plist

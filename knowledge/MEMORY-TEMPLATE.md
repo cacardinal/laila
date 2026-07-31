@@ -14,7 +14,7 @@
 ## Template
 
 ```markdown
-# Laila-OS Memory (Hot Cache)
+# Laila Memory (Hot Cache)
 
 **Full knowledge system:** `knowledge/` directory. This file = CRITICAL volatile context only.
 RULES: ≤120 lines; one-line index entries (detail lives in the linked topic files); dated

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Laila-OS Heartbeat wrapper.
+# Laila Heartbeat wrapper.
 # Runs scripts/heartbeat.py every 30 minutes (see launchagents/), routes alerts
 # to Telegram, and pings the healthchecks.io dead-man switch.
 #
@@ -7,7 +7,7 @@
 set -euo pipefail
 
 # ─── Configuration ───────────────────────────────────────────────────────────
-LAILA_OS_ROOT="${LAILA_OS_ROOT:-$HOME/laila-os}"
+LAILA_OS_ROOT="${LAILA_OS_ROOT:-$HOME/laila}"
 LOG_FILE="/tmp/lailaos-heartbeat.log"
 
 # Source env for the Telegram token and healthcheck URL (see .env.example).

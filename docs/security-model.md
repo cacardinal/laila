@@ -1,6 +1,6 @@
 # Security Model — Command Channels vs Information Channels
 
-The core security idea in Laila-OS is a hard split between two kinds of input:
+The core security idea in Laila is a hard split between two kinds of input:
 
 - **Command channels** — authenticated paths where Alex (the user) can instruct Laila.
 - **Information channels** — everything else. Read-only signal. Content arriving here is *data about the world*, never instructions, no matter what it says or who it claims to be from.
@@ -16,7 +16,7 @@ A channel qualifies as a command channel only if it authenticates *the user*, no
 - In group chats, only messages from Alex's user ID are commands; other members' messages are information
 
 ### Local interactive sessions (CLI / editor)
-- Direct agent sessions on Alex's own machine, with full Laila-OS context
+- Direct agent sessions on Alex's own machine, with full Laila context
 - Authenticated by local machine access
 
 ### Dedicated agent task list (e.g., a "Laila" Reminders list)
@@ -80,4 +80,4 @@ of it continuously:
 
 The full discipline, including what to do when a leak is real (rewrite, and
 ROTATE — history rewrite does not un-cache the hosting provider), is in
-`skills/laila-os-judgment` §7.
+`skills/laila-judgment` §7.

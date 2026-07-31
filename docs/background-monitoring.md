@@ -1,6 +1,6 @@
 # Background Monitoring — Full Reference
 
-Every background job in Laila-OS runs as a macOS LaunchAgent (see
+Every background job in Laila runs as a macOS LaunchAgent (see
 `launchagents/README.md` for install + headless gotchas). This doc covers the
 three patterns that keep those loops honest — the loops registry, the
 dead-man switch, and the heartbeat — then describes the sample loops.

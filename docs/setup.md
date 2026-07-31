@@ -1,6 +1,6 @@
 # Setup — from clone to a running system
 
-The dashboard runs in 30 seconds with zero configuration. Everything else is wiring the system to YOUR channels, in dependency order. Each step ends with a verification — don't move on until it passes (that's the evidence bar in `skills/laila-os-judgment` §1, applied to setup).
+The dashboard runs in 30 seconds with zero configuration. Everything else is wiring the system to YOUR channels, in dependency order. Each step ends with a verification — don't move on until it passes (that's the evidence bar in `skills/laila-judgment` §1, applied to setup).
 
 ## 0. Make your copy PRIVATE before anything else
 
@@ -8,7 +8,7 @@ Your instance of this repo becomes the container for your actual life: daily not
 
 - **Private repo only.** Don't fork on GitHub (forks of public repos are public); clone and push to a fresh private repo instead:
   ```bash
-  git clone https://github.com/cacardinal/laila-os my-os && cd my-os
+  git clone https://github.com/cacardinal/laila my-os && cd my-os
   git remote set-url origin git@github.com:YOU/my-os-private.git
   git push -u origin main
   ```
@@ -92,4 +92,4 @@ Only after steps 2-5 verify: copy the `launchagents/*.template` plists, fill in 
 
 ## 9. First week
 
-Run the rituals manually before trusting them scheduled: a `daily-brief` in the morning, `session-wrap` at the end of every working session, and read `skills/laila-os-judgment` once end to end — it's the discipline the whole system assumes. Then check the autonomy audit log (`state/autonomy-audit.json`) after a few days: everything the system did on its own should be there, and nothing in it should surprise you. If something does, tighten `config/autonomy-rules.json` — the rules file is yours.
+Run the rituals manually before trusting them scheduled: a `daily-brief` in the morning, `session-wrap` at the end of every working session, and read `skills/laila-judgment` once end to end — it's the discipline the whole system assumes. Then check the autonomy audit log (`state/autonomy-audit.json`) after a few days: everything the system did on its own should be there, and nothing in it should surprise you. If something does, tighten `config/autonomy-rules.json` — the rules file is yours.

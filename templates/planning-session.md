@@ -1,4 +1,4 @@
-# Laila-OS Planning Session Protocol
+# Laila Planning Session Protocol
 
 High-level planning sessions for cross-domain strategy and architecture review.
 
@@ -10,7 +10,7 @@ High-level planning sessions for cross-domain strategy and architecture review.
 
 | Trigger | Scope | When to Use |
 |---------|-------|-------------|
-| "Laila-OS planning" | Full architecture review | Major changes, quarterly reviews |
+| "Laila planning" | Full architecture review | Major changes, quarterly reviews |
 | "Quarterly planning" | Goal setting across domains | Q1/Q2/Q3/Q4 transitions |
 | "Capacity planning" | Time allocation review | When feeling overcommitted |
 
@@ -50,7 +50,7 @@ Execute the full sync protocol (`templates/sync-protocol.md`):
 Present a unified analysis:
 
 ```markdown
-## Laila-OS Planning Analysis
+## Laila Planning Analysis
 
 ### Active Projects
 | Domain | Project | Status | Priority | Next Action |

@@ -1,12 +1,12 @@
 ---
 name: os-audit
-description: Scored Four-Cs health audit of Laila OS. Trigger on "os audit", "audit the OS", "system health score", "four Cs", "how healthy is the OS". NOT the command channel's /audit (that's the autonomy audit log). Read-only except one report file.
+description: Scored Four-Cs health audit of Laila. Trigger on "os audit", "audit the OS", "system health score", "four Cs", "how healthy is the OS". NOT the command channel's /audit (that's the autonomy audit log). Read-only except one report file.
 bike-method-phase: 2
 ---
 
 # OS Audit
 
-Score Laila OS 0-100 across the Four Cs (Context, Connections, Capabilities, Cadence — 25 each), rank the top 5 gaps by leverage, write one report artifact. Structural health only — "is the OS built and running right?", not "what could it do next."
+Score Laila 0-100 across the Four Cs (Context, Connections, Capabilities, Cadence — 25 each), rank the top 5 gaps by leverage, write one report artifact. Structural health only — "is the OS built and running right?", not "what could it do next."
 
 ## When to use
 

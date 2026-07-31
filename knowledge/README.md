@@ -1,4 +1,4 @@
-# Knowledge System — Laila-OS
+# Knowledge System — Laila
 
 ## Overview
 

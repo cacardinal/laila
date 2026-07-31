@@ -9,7 +9,7 @@
          the headless `AGENT_RUN` pattern a runner like this is built on. -->
     <key>ProgramArguments</key>
     <array>
-        <string>__HOME__/laila-os/scripts/daily-brief.sh</string>
+        <string>__HOME__/laila/scripts/daily-brief.sh</string>
     </array>
 
     <!-- Daily at 7:00am local time -->
@@ -34,6 +34,6 @@
     </dict>
 
     <key>WorkingDirectory</key>
-    <string>__HOME__/laila-os</string>
+    <string>__HOME__/laila</string>
 </dict>
 </plist>

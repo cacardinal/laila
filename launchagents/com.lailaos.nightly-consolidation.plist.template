@@ -7,7 +7,7 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>__HOME__/laila-os/scripts/nightly-consolidation.sh</string>
+        <string>__HOME__/laila/scripts/nightly-consolidation.sh</string>
     </array>
 
     <!-- Daily at 2:00am local time -->
@@ -34,6 +34,6 @@
     </dict>
 
     <key>WorkingDirectory</key>
-    <string>__HOME__/laila-os</string>
+    <string>__HOME__/laila</string>
 </dict>
 </plist>

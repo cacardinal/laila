@@ -1,8 +1,8 @@
-# The CRM next door: running Twenty alongside Laila OS
+# The CRM next door: running Twenty alongside Laila
 
-Laila OS keeps most truth in flat files, but three kinds of truth outgrow markdown fast: contacts, pipeline, and goals. Relationships have structure (people belong to companies, opportunities move through stages, goals decompose into initiatives), and that structure wants a real database with a UI.
+Laila keeps most truth in flat files, but three kinds of truth outgrow markdown fast: contacts, pipeline, and goals. Relationships have structure (people belong to companies, opportunities move through stages, goals decompose into initiatives), and that structure wants a real database with a UI.
 
-The reference setup uses [Twenty](https://github.com/twentyhq/twenty), an open-source CRM you self-host with Docker. It runs at `http://localhost:3000` next to the repo, and the two split the world cleanly along the one-home-per-fact rule (see `laila-os-judgment` §3):
+The reference setup uses [Twenty](https://github.com/twentyhq/twenty), an open-source CRM you self-host with Docker. It runs at `http://localhost:3000` next to the repo, and the two split the world cleanly along the one-home-per-fact rule (see `laila-judgment` §3):
 
 | Truth | Home |
 |---|---|

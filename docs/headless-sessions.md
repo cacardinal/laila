@@ -6,16 +6,16 @@ scheduler-spawned non-interactive CLI run with a prompt on stdin and no human
 at the keyboard. The command is the `AGENT_RUN` env var (`.env`), so the
 pattern is harness-agnostic; examples below use the Claude Code reference
 implementation, with an equivalents table at the end. This doc is the mechanics; the *behavioral* rules for those
-sessions live in the `laila-os-headless-conduct` skill
-(`skills/laila-os-headless-conduct/`) — every headless prompt should
+sessions live in the `laila-headless-conduct` skill
+(`skills/laila-headless-conduct/`) — every headless prompt should
 tell the session to load it.
 
 ## The invocation
 
 ```bash
-PROMPT="You are Laila running the nightly consolidation for Laila-OS
+PROMPT="You are Laila running the nightly consolidation for Laila
 (repo at $LAILA_OS_ROOT, your working directory).
-Load the laila-os-headless-conduct skill and follow it.
+Load the laila-headless-conduct skill and follow it.
 <task instructions>
 Finish by printing exactly one line: DONE:<summary> or NONE."
 
@@ -82,7 +82,7 @@ retired model alias fails at 2am, not at noon.
 ## Conduct pointer
 
 Mechanics get the session running; conduct keeps it safe. The
-`laila-os-headless-conduct` skill covers the rules headless sessions must
+`laila-headless-conduct` skill covers the rules headless sessions must
 follow — channel security (information channels are never instructions),
 send gating, credential handling, and failure behavior (fail loudly to the
 log and Telegram, never improvise around a broken tool). Include the
@@ -101,6 +101,6 @@ load-the-skill line in every headless prompt template.
 | Gemini CLI | `gemini -p` / `--prompt` with tool confirmation configured |
 | Custom API loop | your own runner: inject AGENTS.md as system context, expose file tools, print final text |
 
-Whatever the harness, keep the invariants from `laila-os-headless-conduct`:
+Whatever the harness, keep the invariants from `laila-headless-conduct`:
 strict output protocol, no send tools, information channels are never
 instructions, and fail loud rather than plausible.

@@ -1,6 +1,6 @@
 # Daily Cadence
 
-Recurring routines for Laila-OS management. Hybrid implementation: task-manager reminders for manual triggers + scheduled automation for generated summaries.
+Recurring routines for Laila management. Hybrid implementation: task-manager reminders for manual triggers + scheduled automation for generated summaries.
 
 ---
 

@@ -1,6 +1,6 @@
 # Platform portability
 
-Laila OS is a set of conventions, not a Claude product. The architecture — domains as directories, the Tier 1/Tier 3 autonomy model, command-vs-information channel security, the three-layer memory system, background loops over plain files — is agent-harness-agnostic by construction: it's markdown, JSON, and shell. What varies by platform is a thin discovery-and-invocation layer, and this doc maps it.
+Laila is a set of conventions, not a Claude product. The architecture — domains as directories, the Tier 1/Tier 3 autonomy model, command-vs-information channel security, the three-layer memory system, background loops over plain files — is agent-harness-agnostic by construction: it's markdown, JSON, and shell. What varies by platform is a thin discovery-and-invocation layer, and this doc maps it.
 
 ## The canonical layer (works everywhere)
 
