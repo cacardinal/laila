@@ -7,14 +7,18 @@ node dashboard/server.js
 # → http://127.0.0.1:5175
 ```
 
-## What it shows
+## Tabs
 
-- **Stat tiles** — active/stale tasks, pending comms, running-brief items, loop health
-- **Active tasks** — `state/active-tasks.json`, with owner and staleness
-- **Pending comms + brief** — `state/comms-queue.json` and `state/running-brief.json`, each row labeled Tier 1 (auto) or Tier 3 (propose)
-- **Background loops** — `state/loops-registry.json` with last-run and status
-- **Domains** — one card per `domains/*/tracking/status.md` (last-updated + current focus)
-- **CRM panel** — live People/Opportunities/Tasks counts from a self-hosted [Twenty](https://github.com/twentyhq/twenty) instance, via the server-side proxy
+- **Home** — stat tiles, active tasks with owners and staleness, domain cards, CRM counts
+- **Strategy** — `state/strategy.md`, rendered
+- **Briefs** — `state/briefs/daily/*.md`, latest first with a date picker
+- **Review** — the running brief (pending your call) and the autonomy audit (`state/autonomy-audit.json`, what ran on its own)
+- **Messages** — the comms queue, each row labeled Tier 1 (auto) or Tier 3 (propose)
+- **Calendar** — agenda view of `state/calendar-snapshot.json`
+- **Loops** — `state/loops-registry.json` with last-run and status
+- **House** — home automation: sample snapshot by default, live [Home Assistant](https://www.home-assistant.io/) via server-side proxy when configured; device/scene actions require `HA_ALLOW_ACTIONS=true`, hit a fixed domain allowlist (never locks), and append to the autonomy audit (`docs/home-automation.md`)
+
+The CRM panel uses the same pattern as before: server-side proxy to a self-hosted [Twenty](https://github.com/twentyhq/twenty), key never in the browser.
 
 ## CRM proxy
 

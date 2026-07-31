@@ -10,7 +10,17 @@
 <body>
   <header>
     <div class="wrap header-row">
-      <h1>Laila <span class="sub">status</span></h1>
+      <h1>Laila</h1>
+      <nav id="tabs" aria-label="Sections">
+        <button data-tab="home" class="active">Home</button>
+        <button data-tab="strategy">Strategy</button>
+        <button data-tab="briefs">Briefs</button>
+        <button data-tab="review">Review</button>
+        <button data-tab="messages">Messages</button>
+        <button data-tab="calendar">Calendar</button>
+        <button data-tab="loops">Loops</button>
+        <button data-tab="homeauto">House</button>
+      </nav>
       <div class="header-right">
         <span id="generated" class="muted"></span>
         <button id="theme-toggle" type="button" aria-label="Toggle color theme">◐</button>
@@ -19,32 +29,46 @@
   </header>
 
   <main class="wrap">
-    <section id="tiles" class="tiles" aria-label="Summary"></section>
+    <div id="view-home" class="view">
+      <section id="tiles" class="tiles" aria-label="Summary"></section>
+      <section><h2>Active tasks</h2><div id="tasks" class="card"></div></section>
+      <section><h2>Domains</h2><div id="domains" class="domain-grid"></div></section>
+      <section><h2>CRM (Twenty)</h2><div id="crm" class="card"></div></section>
+    </div>
 
-    <section aria-labelledby="h-tasks">
-      <h2 id="h-tasks">Active tasks</h2>
-      <div id="tasks" class="card"></div>
-    </section>
+    <div id="view-strategy" class="view hidden">
+      <section><h2>Strategy — the source of truth for priorities</h2><div id="strategy" class="card md"></div></section>
+    </div>
 
-    <section aria-labelledby="h-comms">
-      <h2 id="h-comms">Pending comms &amp; brief items</h2>
-      <div id="comms" class="card"></div>
-    </section>
+    <div id="view-briefs" class="view hidden">
+      <section>
+        <h2>Daily briefs <span id="brief-picker" class="muted"></span></h2>
+        <div id="brief" class="card md"></div>
+      </section>
+    </div>
 
-    <section aria-labelledby="h-loops">
-      <h2 id="h-loops">Background loops</h2>
-      <div id="loops" class="card"></div>
-    </section>
+    <div id="view-review" class="view hidden">
+      <section><h2>Running brief — pending your call</h2><div id="review-pending" class="card"></div></section>
+      <section><h2>Autonomy audit — what ran on its own</h2><div id="audit" class="card"></div></section>
+    </div>
 
-    <section aria-labelledby="h-domains">
-      <h2 id="h-domains">Domains</h2>
-      <div id="domains" class="domain-grid"></div>
-    </section>
+    <div id="view-messages" class="view hidden">
+      <section><h2>Comms queue</h2><div id="messages" class="card"></div></section>
+    </div>
 
-    <section aria-labelledby="h-crm">
-      <h2 id="h-crm">CRM (Twenty)</h2>
-      <div id="crm" class="card"></div>
-    </section>
+    <div id="view-calendar" class="view hidden">
+      <section><h2>Calendar <span id="cal-note" class="muted"></span></h2><div id="calendar" class="card"></div></section>
+    </div>
+
+    <div id="view-loops" class="view hidden">
+      <section><h2>Background loops</h2><div id="loops" class="card"></div></section>
+    </div>
+
+    <div id="view-homeauto" class="view hidden">
+      <section id="ha-alerts"></section>
+      <section><h2>Rooms &amp; devices <span id="ha-source" class="muted"></span></h2><div id="ha-rooms" class="domain-grid"></div></section>
+      <section><h2>Scenes</h2><div id="ha-scenes" class="card"></div></section>
+    </div>
   </main>
 
   <script src="/app.js"></script>

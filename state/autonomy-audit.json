@@ -1,0 +1,35 @@
+{
+  "_comment": "Append-only log of every autonomous (Tier 1) action. Reviewed via the dashboard Review tab or the daily brief. Sample data — the dashboard's home-automation actions append here too.",
+  "entries": [
+    {
+      "id": "AA-101",
+      "timestamp": "2026-07-24T16:20:00-05:00",
+      "tier": 1,
+      "actor": "laila",
+      "action": "crm.opportunity.stage",
+      "detail": "Acme Corp opportunity moved DISCOVERY -> PROPOSAL after verbal acceptance logged",
+      "reversible": true,
+      "rule": "discovery-call-scheduling"
+    },
+    {
+      "id": "AA-102",
+      "timestamp": "2026-07-31T08:44:00-05:00",
+      "tier": 1,
+      "actor": "laila",
+      "action": "calendar.create_solo_event",
+      "detail": "Blocked Mon 8/4 11:00-11:45 for the Verdant Grid discovery call (solo block; the shared invite stays Tier 3)",
+      "reversible": true,
+      "rule": "solo-calendar-blocking"
+    },
+    {
+      "id": "AA-103",
+      "timestamp": "2026-07-31T09:00:05-05:00",
+      "tier": 1,
+      "actor": "laila",
+      "action": "tracking.regenerate",
+      "detail": "Regenerated references/connections.md from config/integrations.json",
+      "reversible": true,
+      "rule": "agent_queue allowlist: regenerate"
+    }
+  ]
+}

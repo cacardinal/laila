@@ -1,0 +1,15 @@
+{
+  "_comment": "Read-only calendar snapshot, refreshed by a loop from the calendar of record. The no-API floor: when calendar tools are unreachable, agents read this file. Sample data consistent with the fixture universe.",
+  "generated_at": "2026-07-31T07:00:00-05:00",
+  "timezone": "America/Chicago",
+  "events": [
+    { "date": "2026-07-31", "start": "14:00", "end": "15:00", "title": "Weekly review + content sprint", "calendar": "personal" },
+    { "date": "2026-08-01", "start": "09:00", "end": "09:30", "title": "Send revised Acme SOW (deadline)", "calendar": "work" },
+    { "date": "2026-08-02", "start": "08:00", "end": "09:00", "title": "Long run", "calendar": "personal" },
+    { "date": "2026-08-04", "start": "11:00", "end": "11:45", "title": "Verdant Grid discovery call", "calendar": "work" },
+    { "date": "2026-08-04", "start": "14:00", "end": "15:00", "title": "Acme engagement kickoff", "calendar": "work" },
+    { "date": "2026-08-05", "start": "10:00", "end": "10:45", "title": "Market-mapping call: Priya (climate VC)", "calendar": "work" },
+    { "date": "2026-08-06", "start": "18:30", "end": "20:00", "title": "Dinner with Sam", "calendar": "shared" },
+    { "date": "2026-08-08", "start": "12:00", "end": "12:30", "title": "Biscuit vet checkup", "calendar": "shared" }
+  ]
+}

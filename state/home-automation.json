@@ -1,0 +1,83 @@
+{
+  "_comment": "Home-automation snapshot. Sample data by default; a loop (or the dashboard's live proxy) refreshes it from your hub \u2014 the reference pattern targets Home Assistant (docs/home-automation.md). Device actions from the dashboard are Tier 1: reversible, allowlisted by domain, and every action appends to state/autonomy-audit.json.",
+  "generated_at": "2026-07-31T09:00:00-05:00",
+  "source": "sample",
+  "rooms": [
+    {
+      "name": "Office",
+      "devices": [
+        {
+          "entity_id": "light.office_desk",
+          "name": "Desk light",
+          "domain": "light",
+          "state": "on"
+        },
+        {
+          "entity_id": "climate.office",
+          "name": "Thermostat",
+          "domain": "climate",
+          "state": "cool",
+          "attributes": {
+            "current_temperature": 74,
+            "target": 72
+          }
+        }
+      ]
+    },
+    {
+      "name": "Living room",
+      "devices": [
+        {
+          "entity_id": "light.living_room",
+          "name": "Lamps",
+          "domain": "light",
+          "state": "off"
+        },
+        {
+          "entity_id": "media_player.living_room",
+          "name": "Speaker",
+          "domain": "media_player",
+          "state": "idle"
+        }
+      ]
+    },
+    {
+      "name": "Entry",
+      "devices": [
+        {
+          "entity_id": "lock.front_door",
+          "name": "Front door",
+          "domain": "lock",
+          "state": "unlocked",
+          "flag": "40+ min"
+        },
+        {
+          "entity_id": "binary_sensor.garage",
+          "name": "Garage door",
+          "domain": "binary_sensor",
+          "state": "closed"
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "entity_id": "scene.morning",
+      "name": "Morning"
+    },
+    {
+      "entity_id": "scene.focus",
+      "name": "Focus"
+    },
+    {
+      "entity_id": "scene.away",
+      "name": "Away"
+    }
+  ],
+  "alerts": [
+    {
+      "severity": "warn",
+      "text": "Front door has been unlocked for 40+ minutes with nobody home per presence sensors"
+    }
+  ]
+}

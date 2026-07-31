@@ -25,7 +25,7 @@ node dashboard/server.js
   <img alt="Laila dashboard: stat tiles, active tasks, pending comms with tier labels, background loops, domain cards" src="docs/images/dashboard-light.png">
 </picture>
 
-The dashboard shows tasks with owners, comms items labeled by autonomy tier, background loops with their dead-man status, and one card per life domain.
+The dashboard has eight tabs: Home (tasks, domains, CRM), Strategy, Briefs, Review (the running brief plus the autonomy audit), Messages, Calendar, Loops, and House. House manages home automation through an optional Home Assistant proxy — reads are free, actions sit behind an allowlist and an explicit env flag, and every action lands in the audit log (`docs/home-automation.md`).
 
 ## The core idea
 
@@ -110,13 +110,13 @@ agents/                 Subagent definitions: read-only critics and cheap
                         (skills/ and agents/ are the neutral paths; the
                         files live in .claude/ for the reference harness)
 scripts/                Heartbeat, hygiene scanner, notify wrapper
-dashboard/              Zero-dependency status page over the state files,
-                        with an optional live-CRM panel
+dashboard/              Zero-dependency web UI over the state files: eight
+                        tabs, optional live CRM and Home Assistant proxies
 launchagents/           macOS launchd templates for the background loops
 templates/              Sync protocol, daily cadence, OKR architecture
 docs/                   Setup walkthrough, security model, platform
-                        portability, background monitoring, how to add
-                        a domain
+                        portability, home automation, background
+                        monitoring, how to add a domain
 ```
 
 ## How a day works
