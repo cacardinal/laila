@@ -4,14 +4,14 @@
   "tasks": [
     {
       "id": "AT-001",
-      "title": "Prepare Verdant Grid phone screen (Mon 8/4 11:00)",
+      "title": "Prep Verdant Grid discovery call (Mon 8/4 11:00)",
       "owner": "alex",
       "status": "in_progress",
       "domain": "career",
       "created": "2026-07-29",
       "updated": "2026-07-31",
       "next_check": "2026-08-02T09:00:00-05:00",
-      "notes": "Laila reminds; prep doc due Sunday evening. Company research brief already in the application folder.",
+      "notes": "Laila reminds; prep doc due Sunday evening. Prospect research brief already in the pursuit folder.",
       "last_checked": "2026-07-31T14:14:42.394877+00:00"
     },
     {

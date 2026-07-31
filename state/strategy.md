@@ -8,33 +8,36 @@
 
 ## Global Priorities (ordered)
 
-### 1. Career change: land a climate-tech product role by end of Q3
+### 1. Deliver the Acme engagement flawlessly (6 weeks, hard-scoped)
 
-The main quest. Pipeline health beats application volume — 3 well-researched
-applications a week with warm paths where possible. Networking calls count as
-progress; doomscrolling job boards does not.
+The anchor client of the practice's first year. Shipping their Q4 AI-dispatching
+feature on time IS the marketing — it becomes the case study that sells engagement
+#2. Scope creep here is a strategy violation, not a sales opportunity.
 
-### 2. Deliver the Acme engagement (6 weeks, hard-scoped)
+### 2. Line up engagement #2 for a mid-September start
 
-The one carve-out from the side-project freeze (2026-07-24 decision): a fixed
-engagement shipping Acme's Q4 AI-dispatching feature. It feeds priority 1 — live
-AI-shipping stories for interviews — and it has an end date. Scope creep here is a
-strategy violation, not a sales opportunity.
+Pipeline health beats outreach volume — a few well-researched, warm-path pursuits
+in operations-heavy software (`domains/career/`). Discovery and market-mapping calls
+count as progress; cold-blasting a prospect list does not. No overlapping delivery:
+engagement #2 starts after Acme closes.
 
-### 3. Stay healthy and present through the transition
+### 3. Stay healthy and present while the practice ramps
 
-The career push does not get to cannibalize sleep, the running habit, or evenings
-with Sam and Biscuit. If a week's schedule forces a trade, this priority is the
-tiebreaker — the job search and the engagement flex, not the fundamentals.
+The practice does not get to cannibalize sleep, the running habit, or evenings with
+Sam and Biscuit. If a week's schedule forces a trade, this priority is the
+tiebreaker — the pipeline and the engagement flex, not the fundamentals.
 
-### 4. Build the public learning trail (content)
+### 4. Build the practice in public (content)
 
-One post per week documenting the transition. This compounds into the career priority
-(visibility, credibility, conversation starters) but is deliberately ranked last:
-it supports the change, it is not the change.
+One post per week documenting what shipping AI features in operations software
+actually looks like. This compounds into priorities 1-2 (visibility, credibility,
+inbound conversations) but is deliberately ranked last: it supports the practice,
+it is not the practice.
 
 ## Explicit Non-Priorities (for now)
 
-- Side-project revenue beyond the Acme carve-out — parked until the career change
-  resolves. Ideas get validated, not committed (`domains/ideas/` strategy gate).
+- Productized side projects — the practice is services this year. Ideas get
+  validated, not committed (`domains/ideas/` strategy gate).
+- Full-time roles. Inbound approaches get a polite decline; the practice
+  is the plan.
 - Home renovation beyond safety/maintenance items.

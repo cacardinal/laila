@@ -7,7 +7,7 @@
 Close the paperwork and land the kickoff. Verbal yes received 7/24; the revised SOW
 (reflecting final terms: 6 weeks, dispatching feature only, weekly Jordan check-ins)
 is due to Jordan by Friday 8/1. Kickoff scheduled 8/4, same day as the Verdant Grid
-phone screen — calendar is already blocked for both.
+discovery call — calendar is already blocked for both.
 
 ## Active Items
 

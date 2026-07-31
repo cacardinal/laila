@@ -2,48 +2,55 @@
 
 ## Overview
 
-Alex's career-change pipeline: moving from a generalist product manager role toward
-product roles in climate tech. This domain owns the application pipeline, networking
-tracker, resume/cover-letter source documents, and interview prep materials.
+Alex's independent product practice: after nine years as an in-house PM, Alex went
+independent in March 2026, helping operations-heavy software companies (logistics,
+energy, climate ops) ship AI features. This domain owns the prospect pipeline,
+positioning and case-study materials, and the professional-development track. Active
+client delivery lives in its own engagement domain (currently `domains/acme/`) —
+this domain is about the NEXT engagement, not the current one.
 
 ## Tracking
 
-- **Status file:** `tracking/status.md` — current focus, active applications, networking threads
-- **Applications:** `applications/[Company-Role]/` — one folder per application (JD, tailored resume, notes)
-- **Source documents:** `source-documents/` — master resume, skills inventory, story bank
+- **Status file:** `tracking/status.md` — current focus, prospect pipeline, networking threads
+- **Prospects:** `prospects/[Company]/` — one folder per pursuit (notes, pitch, proposal drafts)
+- **Source documents:** `source-documents/` — practice one-pager, case-study bank, bio
 
 ## "Check Career" Workflow
 
 When triggered, execute IN ORDER:
 
-1. **Read** `tracking/status.md` — active applications and their stages.
+1. **Read** `tracking/status.md` — active prospects and their stages.
 2. **Sync** external sources:
-   - Email: recruiter replies, interview invites, rejections
-   - Calendar: upcoming interviews or networking calls in the next 7 days
+   - Email: prospect replies, referral intros, declines
+   - Calendar: discovery calls or networking calls in the next 7 days
 3. **Detect** issues:
-   - Applications with no activity in 10+ days (candidates for a polite nudge)
-   - Interviews in the next 48 hours without a prep document
-   - Networking follow-ups that are past their promised date
+   - Prospects with no activity in 10+ days (candidates for a polite nudge)
+   - Discovery calls in the next 48 hours without a prep document
+   - Promised follow-ups past their date
 4. **Act** on findings:
    - Update stages in `tracking/status.md`
    - Draft follow-up messages (Tier 3 — present for approval, never send)
-   - Create prep outlines for imminent interviews
+   - Create prep outlines for imminent calls
 5. **Report** a short summary: pipeline by stage, items needing Alex's attention, next actions.
 
 ## Domain Rules
 
-- **Never overstate ownership verbs in application materials.** "Contributed to" and "led"
-  are different claims — use the one the evidence supports. Alex reviews every verb.
-- **Every application gets a folder before it gets a submission.** No folder, no apply.
-- **Outbound messages (recruiters, referrals, thank-yous) are always Tier 3.** Draft
+- **Never overstate ownership verbs in case studies, proposals, or the bio.**
+  "Contributed to" and "led" are different claims — use the one the evidence supports.
+  Buyers probe claims on live calls; Alex reviews every verb.
+- **Every prospect gets a folder before it gets a pitch.** No folder, no outreach.
+- **Outbound messages (prospects, referrers, thank-yous) are always Tier 3.** Draft
   inline in chat; Alex sends manually.
-- **Salary/location filters are hard gates.** Remote-first or within commuting distance
-  only; do not tailor materials for roles that fail the gate.
-- **Rejections are logged, not deleted.** Move the folder to `applications/_closed/` and
+- **Fit filters are hard gates.** Scoped engagements with a named internal owner only;
+  do not draft proposals for open-ended "AI transformation" asks — see the Acme
+  rescope decision for why.
+- **Declines are logged, not deleted.** Move the folder to `prospects/_closed/` and
   record the reason — the pattern data matters more than the individual outcome.
+- **One anchor at a time.** While an engagement is in delivery, pipeline work targets
+  a start date after its close; overlapping delivery is a strategy change (Tier 3).
 
 ## Trigger Phrases
 
 - "Check career" — run the workflow above
-- "Process this job" — capture a JD and open an application folder
-- "Prep me for [interview]" — build an interview prep document
+- "Help me pitch" — capture a prospect and open a pursuit folder
+- "Prep me for [call]" — build a discovery/networking call prep document

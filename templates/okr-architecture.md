@@ -19,8 +19,8 @@
 │    Qualitative • Aspirational • Memorable • 3-5 per quarter         │
 │    File: state/goals.md → "Q3 2026 Objectives"                      │
 │                                                                     │
-│    Example: "Land a role where I can lead product for a             │
-│              mission-driven company"                                │
+│    Example: "Make the practice the obvious call for ops-software    │
+│              teams shipping AI features"                                │
 └───────────────────────────────┬─────────────────────────────────────┘
                                 │
                                 ▼
@@ -227,9 +227,9 @@ O: Establish myself as a sought-after product leader
 
 ```
 OBJECTIVE (Q3)
-├── "Land a role where I can lead product for a mission-driven company"
+├── "Make the practice the obvious call for ops-software teams shipping AI"
 │
-├── KEY RESULT 1: "Receive 2+ offers at target compensation by Sep 30"
+├── KEY RESULT 1: "One signed engagement #2 at target rate by Sep 30"
 │   │
 │   ├── PROJECT: C-001 Acme Corp Engagement
 │   │   ├── Task: Prepare for scoping call
@@ -238,14 +238,14 @@ OBJECTIVE (Q3)
 │   │
 │   ├── PROJECT: C-002 Referral Pipeline
 │   │   ├── Task: Follow up with former teammates for intel
-│   │   └── Task: Tailor resume for the platform PM opening
+│   │   └── Task: Tailor the one-pager for the platform-modernization pitch
 │   │
-│   └── PROJECT: C-007 Weekly Application Target
-│       ├── Task: Submit application #1 (done)
-│       ├── Task: Submit application #2
+│   └── PROJECT: C-007 Weekly Outreach Target
+│       ├── Task: Send warm-path outreach #1 (done)
+│       ├── Task: Send warm-path outreach #2
 │       └── Task: Research 3 more target companies
 │
-├── KEY RESULT 2: "Complete 15+ qualified interviews by Sep 30"
+├── KEY RESULT 2: "Complete 15+ qualified discovery calls by Sep 30"
 │   │
 │   └── (The same projects contribute to multiple KRs)
 │

@@ -26,8 +26,8 @@ Generates a prioritized recommendation of 3-5 actions based on strategy, tasks, 
 9. **Output:** Numbered list of 3-5 recommended actions:
    ```
    Recommended next actions:
-   1. [P1/Career] Prep for the Acme Health next round — interview advancing
-   2. [P1/Career] Tailor resume for the platform-engineer posting — drives "5 applications" goal
+   1. [P1/Acme] Resolve the SOW IP clause — blocks the Friday send
+   2. [P2/Career] Prep doc for the Verdant Grid discovery call — drives "3 warm pursuits" goal
    3. [P2/Household] Call plumber for water line quote — waiting since Feb 18
    4. [P2/Content] Draft first newsletter post — 0/10 KPI, not started
    5. [P3/Health] Book annual physical — due this month

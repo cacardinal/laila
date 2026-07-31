@@ -12,7 +12,7 @@ argument-hint: []
 
 **Step 1: Review what changed this session.** Identify:
 - Tasks completed or discovered
-- Status changes (projects, applications, domain items)
+- Status changes (projects, pursuits, domain items)
 - New information that affects goals or priorities
 - Files that were read but not updated with new info
 
@@ -32,7 +32,7 @@ argument-hint: []
 
 **What to check (system-of-record-first sync order):**
 - **Task system:** Complete done items, add new action items, reschedule overdue ones. *(Query your task/reminders system here — Apple Reminders, Todoist, a CRM task object, etc.)*
-- **Pipeline / CRM records (FIRST):** If a domain keeps its pipeline in an external system (e.g. the career domain's application pipeline in a CRM), update stages there first, then regenerate any derived tracking files from it. The external system is authoritative; the markdown file is the export.
+- **Pipeline / CRM records (FIRST):** If a domain keeps its pipeline in an external system (e.g. the career domain's prospect pipeline in a CRM), update stages there first, then regenerate any derived tracking files from it. The external system is authoritative; the markdown file is the export.
 - **Goals (FIRST):** Update goal progress in whatever system is authoritative for goals, then regenerate any exported goals file.
 - **Domain status.md:** Update `domains/<name>/tracking/status.md` for any domain whose status changed (new info, completed items, blockers resolved). **MANDATORY stamp:** any domain whose files were touched this session gets its `tracking/status.md` "Last updated" header stamped with today's date — even if the status content itself didn't change.
 - **state/strategy.md:** Flag if strategic priorities shifted (rare — only when focus areas change).

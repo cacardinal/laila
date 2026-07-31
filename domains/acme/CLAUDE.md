@@ -28,7 +28,7 @@ When Alex says "check acme" or a trigger phrase fires:
 1. **Scope is the product.** Any request outside the Q4 dispatching feature gets logged to `tracking/status.md` under "Expansion signals" and answered with "let's capture that for phase 2" — never absorbed silently. A scope change requires a decision entry.
 2. **Everything client-visible is Tier 3.** No exceptions for "small" replies; Jordan reads tone.
 3. **Client material stays in this domain.** Acme's internal docs, metrics, and names never leak into content posts (`domains/content/`) — even anonymized, ask first.
-4. **The engagement serves priority 1 too.** Wins here become interview stories; log them to `knowledge/` when they land, with client-confidential details stripped.
+4. **The engagement is the marketing.** Wins here become the practice's case study (`state/goals.md` O1); log them to `knowledge/` when they land, with client-confidential details stripped.
 
 ## Trigger Phrases
 

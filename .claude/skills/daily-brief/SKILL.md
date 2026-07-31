@@ -28,10 +28,10 @@ When triggered:
 6. **Check messaging channels** — any configured messaging queue or capture file (e.g. `state/comms-queue.json`); respect per-channel allowlists
 7. **Check news subscriptions** for the last 24h — read your configured news-sources list for senders and categories. Deep-read full bodies and extract articles with links + summaries.
 8. **Check the pipeline system** — *(query your CRM/task system here)* for the career pipeline:
-   - Applications in Interview/Screening/Applied stage (for company news search)
-   - Stale applications (>7 days no activity)
+   - Prospects in Discovery/Proposal/Scoping stage (for company news search)
+   - Stale pursuits (>7 days no activity)
    - Recently changed stages (rejections, advances)
-9. **Web search** for news on companies in Interview/Screening/Applied status
+9. **Web search** for news on companies in Discovery/Proposal/Scoping status
 10. **Meeting prep** — for each external meeting on today's calendar, assemble (or dispatch a subagent to assemble) a short prep brief from domain files and contact notes; include it in the calendar section.
 11. **Read domain tracking files** — each domain's `tracking/status.md`. Skip domains whose `state` in `config/domain-triggers.json` is not `active`.
 11b. **Domain status hygiene (Fridays only)** — run the `/domain-hygiene` scan and include flagged domains in the Infrastructure section. Do NOT auto-fix; surface as a short list so Alex can trigger `/domain-hygiene cleanup` for a batch pass.
@@ -40,7 +40,7 @@ When triggered:
 13. **Action generation:**
     - For any Running Brief item requiring response: draft a reply (drafts only — never send)
     - For any email requiring response: draft a reply
-    - For any application >7 days stale: draft a follow-up email
+    - For any pursuit >7 days stale: draft a follow-up email
     - For any overdue task: propose completion or a new due date
     - For any goal at risk: flag with a specific recovery action
 14. **State updates:**

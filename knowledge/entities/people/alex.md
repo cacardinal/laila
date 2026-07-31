@@ -7,7 +7,7 @@ The system's principal. This entity holds the facts skills need when reasoning a
 
 ## Profile
 
-- Product manager, 9 years, currently exploring a move into climate tech
+- Independent product consultant since March 2026, after 9 years as an in-house PM; practice focus: AI features for operations-heavy software (logistics, energy, climate ops)
 - Partner: Sam. Dog: Biscuit.
 - Timezone: America/Chicago (sample)
 
@@ -21,10 +21,10 @@ Scored Good / Acceptable / Bad for venture-fit evaluation. Re-score if older tha
 | Stakeholder management | Good | Cross-functional teams up to ~40 people |
 | Data analysis (SQL, spreadsheets) | Acceptable | Self-serve level, not modeling-grade |
 | Frontend prototyping | Acceptable | Can ship a demo, not production code |
-| Sales / cold outreach | Bad | Avoids it; a venture requiring founder-led sales needs a partner |
+| Sales / cold outreach | Bad | The practice's weak muscle — warm paths only; a venture requiring cold founder-led sales needs a partner |
 | Hardware / manufacturing | Bad | No experience |
 
 ## Constraints
 
-- Available: ~10 hrs/week outside the day job
+- Idea-validation budget: ~10 hrs/week outside client delivery and pipeline work
 - Capital comfortable to risk on validation: $2,000 per idea before a kill decision

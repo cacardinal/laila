@@ -1,7 +1,7 @@
 # Verdant Grid
 
 **Type:** Company
-**Domain:** career (active application)
+**Domain:** career (prospect — active pursuit)
 **Updated:** 2026-07-31
 
 ## What they do
@@ -10,14 +10,15 @@ Grid-optimization software for utility-scale renewables — dispatch and curtail
 
 ## Pipeline state
 
-Senior PM application, phone screen scheduled **Mon 8/4 11:00** (AT-001). Came through a warm path: Marcus (climate-PM community organizer) intro'd after the 7/26 networking call.
+Prospective advisory engagement around their dispatch product. Discovery call **Mon 8/4 11:00** (AT-001). Came through a warm path: Marcus (climate-PM community organizer) intro'd after the 7/26 networking call.
 
 ## Prep notes
 
-- The role sits between the forecasting team and the trading desk — the JD emphasizes "translating model uncertainty for commercial stakeholders." Alex's Q2 platform-launch story maps well; rehearse the version where the model was wrong and the comms plan absorbed it.
-- Overlap flag: the Acme engagement is dispatching for logistics; Verdant is dispatching for energy. The pattern transfer is a genuine interview asset — use it, but keep Acme's specifics confidential per the acme domain rules.
+- Their pain (per Marcus, secondhand): the forecasting team and the trading desk disagree about how model uncertainty should drive curtailment calls — a translation problem more than a modeling problem. That's squarely the practice's lane.
+- The Acme overlap is the pitch: dispatching for logistics and dispatching for energy rhyme. Use the pattern, keep Acme's specifics confidential per the acme domain rules.
+- Likely scope shape: a short diagnostic sprint before any longer engagement — matches the fit filter (scoped, named owner).
 
 ## Open questions
 
-- Remote policy for the role (listing ambiguous; ask in screen).
-- Who is the hiring manager? Marcus thinks it's the VP Product but wasn't sure.
+- Who owns the budget — product or the trading desk?
+- Timing: they may want a start before Acme closes (~9/15). One-anchor rule applies; be upfront about the earliest start date.

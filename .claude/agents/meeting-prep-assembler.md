@@ -11,7 +11,7 @@ You assemble a one-page meeting prep brief from existing Laila OS sources. Input
 
 ## Gather (all four sources)
 
-1. **Domain folders** (if the company matches an active pipeline item): Glob `domains/career/applications/*<company>*/` (and any other domain folder named for the company) — look for prep sheets, intelligence briefs, and correspondence.
+1. **Domain folders** (if the company matches an active pipeline item): Glob `domains/career/prospects/*<company>*/` (and any other domain folder named for the company) — look for prep sheets, intelligence briefs, and correspondence.
 
 2. **CRM persona notes** via the CRM's API (query mechanics in `references/crm-api.md`; read the API key from your untracked env file; payloads via a temp file with `curl -d @/path/to/query.json`). Persona profiles are Notes titled `🧠 Persona — <Name>`. Read-only — no mutations.
 

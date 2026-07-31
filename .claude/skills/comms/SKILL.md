@@ -26,7 +26,7 @@ This file is a template: replace each channel's example integration with the too
 |----------|----------|
 | (none) | Same as `all` — full scan of all channels |
 | `all` | Full scan of all channels, including the work-account sweep |
-| `career` | Career-focused: ATS emails, pipeline companies, recruiter messages |
+| `career` | Practice pipeline: prospect companies, referral intros, scheduling threads |
 | `health` | Health-focused: provider portals, appointment emails |
 | `household` | Household-focused: school/family emails, family group chats |
 | `content` | Content-focused: newsletter replies, platform notifications |
@@ -41,23 +41,23 @@ Domain-to-channel routing lives with the domains, not here — each domain's CLA
 **Do NOT hardcode company names or contacts in this skill.** Read from authoritative sources at run time:
 
 ### Pipeline Companies (Career)
-**Source:** the career domain's pipeline tracking file (`domains/career/tracking/status.md` or its generated applications list).
+**Source:** the career domain's pipeline tracking file (`domains/career/tracking/status.md` or its generated pipeline export).
 
-Read companies with Status: Interview, Screening, or Applied. Extract company names for search queries.
+Read companies with Status: Discovery, Proposal, or Scoping. Extract company names for search queries.
 
 ```
-Example: if the pipeline has Acme Health (Screening), Northstar Labs (Interview)
+Example: if the pipeline has Acme Health (Proposal), Northstar Labs (Discovery)
 → Search query includes: acme OR northstar
 ```
 
 ### Key Contacts (Career)
 **Source:** the same tracking file's Key Contact column. Extract contact names for message search.
 
-### ATS Domains (Career)
+### Automated Sender Domains (Career)
 **Hardcoded** (rarely change):
 ```
 greenhouse.io, lever.co, ashbyhq.com, workable.com, icims.com,
-jobvite.com, smartrecruiters.com, adp.com, rippling.com
+calendly.com, cal.com, docusign.net, notifications.hubspot.com
 ```
 
 ### Group-Chat Allowlist
@@ -75,7 +75,7 @@ Sweep in this order (highest volume first, slowest last):
 **Time-based scan:**
 | Domain | Search Query |
 |--------|--------------|
-| career | ATS domains + pipeline companies (from the tracking file) |
+| career | Automated sender domains + pipeline companies (from the tracking file) |
 | household | school senders + family senders (from the household domain's filter list) |
 | health | provider/portal senders (from the health domain's filter list) |
 | all | Combine all above |
@@ -132,10 +132,10 @@ For any item that looks like autonomy-rule territory (rejection emails, scheduli
 ### Time-based scan output:
 
 **P1 - Immediate Action Required**
-- Interview requests, time-sensitive scheduling, family emergencies
+- Discovery-call requests, time-sensitive scheduling, family emergencies
 
 **P2 - Response Needed Today**
-- Recruiter follow-ups, group logistics
+- Prospect follow-ups, group logistics
 
 **P3 - FYI / Logged**
 - Confirmations, automated responses
@@ -146,7 +146,7 @@ For any item that looks like autonomy-rule territory (rejection emails, scheduli
 
 | Channel | Date | From/To | Preview |
 |---------|------|---------|---------|
-| Email | Jan 26 | recruiter@acmehealth.example | Interview scheduling... |
+| Email | Jan 26 | ops-lead@acmehealth.example | Discovery call scheduling... |
 | Messages | Jan 25 | J. Contact | Acme update... |
 
 ---
@@ -177,9 +177,9 @@ For any item that looks like autonomy-rule territory (rejection emails, scheduli
 
 ## Adding New Search Patterns
 
-When encountering a new ATS domain, recruiter contact, or other pattern:
+When encountering a new prospect domain, scheduling-tool sender, or other pattern:
 
-1. **New ATS domain:** add to the hardcoded list in this skill file
+1. **New automated sender domain:** add to the hardcoded list in this skill file
 2. **New pipeline company:** add to the career tracking file (the skill reads it automatically)
 3. **New key contact:** add to the Key Contact column in the tracking file
 4. **New group chat:** add to the allowlist config

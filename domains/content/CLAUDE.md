@@ -3,7 +3,7 @@
 ## Overview
 
 Alex's public writing: a personal blog and occasional LinkedIn posts documenting the
-career-change journey ("PM learning climate tech in public"). This domain owns the idea
+practice in public ("what shipping AI features in ops software actually looks like"). This domain owns the idea
 backlog, drafts, the publishing cadence, and voice consistency.
 
 ## Tracking
@@ -19,7 +19,7 @@ When triggered, execute IN ORDER:
 1. **Read** `tracking/status.md` — pipeline state and the publishing cadence target.
 2. **Sync** external sources:
    - Recent daily notes: anything Alex did this week worth writing about
-   - Career domain: milestones that could become posts (interviews are OFF LIMITS — see rules)
+   - Career domain: milestones that could become posts (live pursuits are OFF LIMITS — see rules)
 3. **Detect** issues:
    - No draft in progress with a publish date inside the next 7 days
    - Drafts stalled in review for 10+ days
@@ -35,8 +35,9 @@ When triggered, execute IN ORDER:
   Tier 3 the moment it would leave the machine.
 - **Voice check is mandatory.** Every draft is reviewed against `voice/voice-profile.md`
   before Alex sees it — flag violations, don't silently fix them.
-- **Never write about active interviews or named companies in the pipeline.** Career-change
-  content stays at the lessons-learned level until a process is fully closed.
+- **Never write about live pursuits, named prospects, or client internals.** Practice
+  content stays at the lessons-learned level until a pursuit or engagement is fully closed
+  (and client material additionally needs the acme-domain ask-first rule).
 - **Mine real work, don't invent takes.** Post angles come from what Alex actually did or
   learned that week — no hot-take generation from thin air.
 - **One piece per week is the cadence, not the quota.** A skipped week is logged and

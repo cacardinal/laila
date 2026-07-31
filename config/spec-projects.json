@@ -23,18 +23,18 @@
    "_tracking_note": "Created on first /spec run, alongside the packs — the dashboard is OS tooling, not a life domain, so it carries its own PROGRESS file.",
    "_stories_note": "stories_dir and tracking are created by the skill on first use."
   },
-  "climate-role-radar": {
+  "climate-radar": {
    "name": "Climate Role Radar",
    "stage": "idea",
    "idea_id": "IDEA-001",
    "repo": null,
-   "stories_dir": "domains/ideas/stories/climate-role-radar",
+   "stories_dir": "domains/ideas/stories/climate-radar",
    "build_test": null,
    "conventions": [
     "domains/ideas/CLAUDE.md"
    ],
    "constraints": [
-    "Strategy gate applies (see the idea's pipeline.json entry): validate only, no build commitment until the career change resolves",
+    "Strategy gate applies (see the idea's pipeline.json entry): validate only, no build commitment — the practice is services this year",
     "Story packs are planning artifacts until the project graduates to stage: code",
     "Digest copy follows Alex's voice profile (domains/content/voice/voice-profile.md); no dark-pattern engagement mechanics"
    ],

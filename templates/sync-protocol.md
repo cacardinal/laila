@@ -29,7 +29,7 @@ Domain-specific filters (email queries, messaging allowlists, task lists) live i
 - Bills, invoices, payments
 - Appointments, prescriptions
 - Meeting invites, reschedules
-- Client or recruiter outreach
+- Client or prospect outreach
 
 **P3 (FYI):**
 - All other unread items

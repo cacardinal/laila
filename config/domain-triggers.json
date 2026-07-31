@@ -4,7 +4,7 @@
     {
       "patterns": [
         "Check career",
-        "Help me apply"
+        "Help me pitch"
       ],
       "claude_md": "domains/career/CLAUDE.md",
       "state": "active",
@@ -25,9 +25,9 @@
           "Heliotrope"
         ],
         "title_keywords": [
-          "interview",
-          "screening",
-          "phone screen"
+          "discovery",
+          "proposal",
+          "scoping"
         ],
         "filing": {
           "correspondence_dir": "domains/career/correspondence"

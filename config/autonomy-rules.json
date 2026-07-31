@@ -1,14 +1,24 @@
 {
   "version": 1,
-  "description": "Laila autonomy rules — maps information channel signals to auto-executable actions",
+  "description": "Laila autonomy rules \u2014 maps information channel signals to auto-executable actions",
   "rules": [
     {
-      "id": "rejection-email",
-      "description": "Career application rejection detected",
+      "id": "prospect-decline-email",
+      "description": "Prospect decline detected",
       "tier": 1,
       "trigger": {
         "channel": "email",
-        "sender_patterns": ["greenhouse.io", "lever.co", "ashbyhq.com", "workable.com", "icims.com", "smartrecruiters.com", "jobvite.com", "breezy.hr", "wellfound.com"],
+        "sender_patterns": [
+          "greenhouse.io",
+          "lever.co",
+          "ashbyhq.com",
+          "workable.com",
+          "icims.com",
+          "smartprospects.com",
+          "jobvite.com",
+          "breezy.hr",
+          "wellfound.com"
+        ],
         "content_patterns": [
           "decided not to move forward",
           "unfortunately.*not be advancing",
@@ -20,22 +30,47 @@
         ]
       },
       "actions": [
-        {"type": "crm_stage_update", "entity": "opportunity", "match_by": "company_from_subject", "new_stage": "REJECTED"},
-        {"type": "regenerate_file", "path": "domains/career/tracking/applications.md"},
-        {"type": "update_entity", "file": "knowledge/entities/companies.md"},
-        {"type": "append_decision_log", "template": "Career rejection received from {company}. Pipeline stage updated to REJECTED."}
+        {
+          "type": "crm_stage_update",
+          "entity": "opportunity",
+          "match_by": "company_from_subject",
+          "new_stage": "REJECTED"
+        },
+        {
+          "type": "regenerate_file",
+          "path": "domains/career/tracking/pipeline.md"
+        },
+        {
+          "type": "update_entity",
+          "file": "knowledge/entities/companies.md"
+        },
+        {
+          "type": "append_decision_log",
+          "template": "Career decline received from {company}. Pipeline stage updated to REJECTED."
+        }
       ],
       "confidence_required": "high"
     },
     {
-      "id": "interview-scheduling",
-      "description": "Interview scheduling or advancement detected",
+      "id": "discovery-call-scheduling",
+      "description": "Discovery-call scheduling or pipeline advancement detected",
       "tier": 1,
       "trigger": {
         "channel": "email",
-        "sender_patterns": ["greenhouse.io", "lever.co", "ashbyhq.com", "workable.com", "icims.com", "smartrecruiters.com", "jobvite.com", "breezy.hr", "wellfound.com", "calendly.com"],
+        "sender_patterns": [
+          "greenhouse.io",
+          "lever.co",
+          "ashbyhq.com",
+          "workable.com",
+          "icims.com",
+          "smartprospects.com",
+          "jobvite.com",
+          "breezy.hr",
+          "wellfound.com",
+          "calendly.com"
+        ],
         "content_patterns": [
-          "schedule.*interview",
+          "schedule.*discovery call",
           "next round",
           "would like to invite you",
           "pleased to advance",
@@ -43,7 +78,12 @@
         ]
       },
       "actions": [
-        {"type": "crm_stage_update", "entity": "opportunity", "match_by": "company_from_subject", "new_stage": "INTERVIEW"}
+        {
+          "type": "crm_stage_update",
+          "entity": "opportunity",
+          "match_by": "company_from_subject",
+          "new_stage": "DISCOVERY"
+        }
       ],
       "confidence_required": "high"
     },
@@ -66,7 +106,12 @@
         ]
       },
       "actions": [
-        {"type": "propose_calendar_event", "via": "command_channel", "duration_minutes": 60, "slots_to_suggest": 3}
+        {
+          "type": "propose_calendar_event",
+          "via": "command_channel",
+          "duration_minutes": 60,
+          "slots_to_suggest": 3
+        }
       ],
       "confidence_required": "medium"
     },
@@ -79,7 +124,11 @@
         "condition": "unscheduled_blocks_available"
       },
       "actions": [
-        {"type": "create_calendar_event", "calendar": "primary", "no_attendees": true}
+        {
+          "type": "create_calendar_event",
+          "calendar": "primary",
+          "no_attendees": true
+        }
       ],
       "constraints": {
         "max_events_per_day": 3,
@@ -87,7 +136,12 @@
         "respect_existing_events": true,
         "min_block_minutes": 60,
         "default_duration_minutes": 90,
-        "allowed_block_types": ["Focus: Career", "Focus: Content", "Admin Time", "Training"]
+        "allowed_block_types": [
+          "Focus: Career",
+          "Focus: Content",
+          "Admin Time",
+          "Training"
+        ]
       }
     },
     {
@@ -99,7 +153,10 @@
         "condition": "follow_up_detected"
       },
       "actions": [
-        {"type": "create_reminder", "list_mapping": "domain_to_list"}
+        {
+          "type": "create_reminder",
+          "list_mapping": "domain_to_list"
+        }
       ],
       "constraints": {
         "never_complete_existing": true,

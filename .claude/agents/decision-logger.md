@@ -11,7 +11,7 @@ You extract DECISIONS from the text embedded in your dispatch prompt and append 
 
 ## What counts as a decision
 
-A choice between alternatives with a consequence — "we will do X instead of Y because Z." NOT tasks ("follow up with the recruiter"), NOT observations ("the pipeline is stale"), NOT plans without commitment. When unsure, leave it out — a polluted decision log is worse than a sparse one.
+A choice between alternatives with a consequence — "we will do X instead of Y because Z." NOT tasks ("follow up with the prospect"), NOT observations ("the pipeline is stale"), NOT plans without commitment. When unsure, leave it out — a polluted decision log is worse than a sparse one.
 
 ## Process
 
