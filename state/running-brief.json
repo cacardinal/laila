@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "updated": "2026-07-31T08:50:00-05:00",
+  "pending": [
+    {
+      "id": "RB-014",
+      "source": "email",
+      "received": "2026-07-31T08:42:00-05:00",
+      "summary": "Verdant Grid recruiter confirmed phone screen Mon 8/4 11:00 and asked for a portfolio link.",
+      "proposed_action": "Add screen to calendar (Tier 1, solo event) and draft a reply with the blog link for Alex to approve.",
+      "tier": 3,
+      "domain": "career",
+      "status": "pending"
+    },
+    {
+      "id": "RB-015",
+      "source": "reminders",
+      "received": "2026-07-30T18:05:00-05:00",
+      "summary": "Shared Household list: fence contractor decision flagged by Sam as 'decide this week'.",
+      "proposed_action": "Surface at tonight's dinner discussion; if decided, Laila drafts the go-ahead message for Alex to send.",
+      "tier": 3,
+      "domain": "household",
+      "status": "pending"
+    }
+  ]
+}

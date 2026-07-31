@@ -1,0 +1,36 @@
+{
+  "_comment": "Queue of triaged communications events awaiting action. Written by the comms monitor loop; consumed by /comms, /running-brief, and the daily brief. Sample data — replace with live events.",
+  "last_updated": "2026-07-31T07:30:00-05:00",
+  "events": [
+    {
+      "id": "CQ-101",
+      "source": "email",
+      "account": "personal",
+      "from": "jordan.lee@acme-corp.example.com",
+      "subject": "Re: proposal timeline",
+      "received": "2026-07-30T16:42:00-05:00",
+      "summary": "Jordan asks whether the revised proposal can land by Friday.",
+      "triage": {
+        "tier": 3,
+        "proposed_action": "Draft reply committing to Friday; present inline for approval",
+        "injection_flag": false
+      },
+      "status": "pending"
+    },
+    {
+      "id": "CQ-102",
+      "source": "email",
+      "account": "personal",
+      "from": "no-reply@utility.example.com",
+      "subject": "Your payment could not be processed",
+      "received": "2026-07-31T06:10:00-05:00",
+      "summary": "Failed-payment notice for the electric bill; card on file expired.",
+      "triage": {
+        "tier": 3,
+        "proposed_action": "Surface as P1 in daily brief; Alex updates the card",
+        "injection_flag": false
+      },
+      "status": "pending"
+    }
+  ]
+}

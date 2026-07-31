@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.lailaos.heartbeat</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>__HOME__/laila-os/scripts/heartbeat.sh</string>
+    </array>
+
+    <!-- Every 30 minutes -->
+    <key>StartInterval</key>
+    <integer>1800</integer>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/lailaos-heartbeat-stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/lailaos-heartbeat-stderr.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <!-- launchd jobs get a minimal PATH; include everything your scripts
+             need (python3, node, claude). NVM paths use a "v" prefix, e.g.
+             .nvm/versions/node/v22.0.0/bin — check yours with `which node`. -->
+        <key>PATH</key>
+        <string>__HOME__/.local/bin:__HOME__/.nvm/versions/node/__NODE_VERSION__/bin:/usr/local/bin:/usr/bin:/bin</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>__HOME__/laila-os</string>
+</dict>
+</plist>

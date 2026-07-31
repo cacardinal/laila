@@ -1,0 +1,16 @@
+# Secrets — never commit env files (the .env.example template IS committed)
+.env*
+!.env.example
+
+# Logs
+*.log
+
+# Dependencies
+node_modules/
+
+# macOS
+.DS_Store
+
+# Private state
+state/secrets/
+.local/

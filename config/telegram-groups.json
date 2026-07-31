@@ -1,0 +1,8 @@
+{
+  "_description": "Maps notification domains to the NAME of the environment variable holding that group's Telegram chat id. Chat ids themselves live only in .env (see .env.example) — never in this repo. Unknown domains fall back to 'default'.",
+  "default": { "chat_id_env": "TELEGRAM_CHAT_ID" },
+  "career": { "chat_id_env": "TELEGRAM_CHAT_ID" },
+  "health": { "chat_id_env": "TELEGRAM_CHAT_ID" },
+  "household": { "chat_id_env": "TELEGRAM_HOUSEHOLD_CHAT_ID" },
+  "content": { "chat_id_env": "TELEGRAM_CHAT_ID" }
+}

@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "updated": "2026-07-31T09:15:00-05:00",
+  "tasks": [
+    {
+      "id": "AT-001",
+      "title": "Prepare Verdant Grid phone screen (Mon 8/4 11:00)",
+      "owner": "alex",
+      "status": "in_progress",
+      "domain": "career",
+      "created": "2026-07-29",
+      "updated": "2026-07-31",
+      "next_check": "2026-08-02T09:00:00-05:00",
+      "notes": "Laila reminds; prep doc due Sunday evening. Company research brief already in the application folder.",
+      "last_checked": "2026-07-31T14:14:42.394877+00:00"
+    },
+    {
+      "id": "AT-002",
+      "title": "Nudge Solstice Analytics if no reply by 8/7",
+      "owner": "laila",
+      "status": "monitoring",
+      "domain": "career",
+      "created": "2026-07-24",
+      "updated": "2026-07-31",
+      "next_check": "2026-08-07T09:00:00-05:00",
+      "notes": "If quiet on 8/7, draft a short follow-up for Alex to approve (Tier 3 \u2014 never auto-send).",
+      "last_checked": "2026-07-31T14:14:42.394877+00:00"
+    }
+  ],
+  "completed": [],
+  "last_updated": "2026-07-31T14:14:42.394877+00:00"
+}

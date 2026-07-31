@@ -1,0 +1,66 @@
+{
+  "_description": "Maps trigger phrases to domain CLAUDE.md files for context loading. 'state' is the domain lifecycle: active | dormant | complete | killed | archived. Do NOT execute a domain's Check workflow unless state is 'active' — surface the state instead. 'nested_git' marks domains that are their own gitignored git repo inside this repo (other-worlds pattern), with a compatibility symlink at code_alias. Optional 'meeting_routing' makes a transcript processor auto-file meeting transcripts to the domain: email_domains (participant handle domains), people (full names), company_names, title_keywords are match signals; filing.correspondence_dir is the stub destination (repo-relative). Only active domains participate.",
+  "triggers": [
+    {
+      "patterns": [
+        "Check career",
+        "Help me apply"
+      ],
+      "claude_md": "domains/career/CLAUDE.md",
+      "state": "active",
+      "nested_git": true,
+      "code_alias": "~/Code/job-application-tool",
+      "meeting_routing": {
+        "email_domains": [
+          "example-employer.com"
+        ],
+        "people": [
+          "Jordan Sample",
+          "Casey Example"
+        ],
+        "company_names": [
+          "Example Employer Inc"
+        ],
+        "title_keywords": [
+          "interview",
+          "screening"
+        ],
+        "filing": {
+          "correspondence_dir": "domains/career/correspondence"
+        }
+      }
+    },
+    {
+      "patterns": [
+        "Check health"
+      ],
+      "claude_md": "domains/health/CLAUDE.md",
+      "state": "active"
+    },
+    {
+      "patterns": [
+        "Check household",
+        "Check smart home",
+        "Smart home maintenance"
+      ],
+      "claude_md": "domains/household/CLAUDE.md",
+      "state": "active"
+    },
+    {
+      "patterns": [
+        "Content ideas",
+        "Write for LinkedIn"
+      ],
+      "claude_md": "domains/content/CLAUDE.md",
+      "state": "active"
+    }
+  ],
+  "archived": [
+    {
+      "domain": "example-retired-project",
+      "state": "archived",
+      "killed": "2026-01-01",
+      "path": "domains/_archive/example-retired-project-killed-2026-01-01/"
+    }
+  ]
+}

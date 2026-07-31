@@ -1,0 +1,41 @@
+{
+  "_description": "Registry of every external data connection. references/connections.md is GENERATED from this file by scripts/generate-connections.py \u2014 edit here and re-run, never edit the output. Update last_verified (YYYY-MM-DD) whenever you confirm a connection actually works; rows older than 30 days get flagged as stale.",
+  "connections": [
+    {
+      "domain": "all",
+      "tool": "Telegram Bot API",
+      "mechanism": "curl in scripts/telegram-notify.sh",
+      "auth": "api-key (TELEGRAM_BOT_TOKEN in .env)",
+      "can_write": true,
+      "last_verified": "2026-07-30",
+      "reference_doc": "docs/background-monitoring.md"
+    },
+    {
+      "domain": "all",
+      "tool": "healthchecks.io",
+      "mechanism": "dead-man-switch pings from background scripts",
+      "auth": "per-check ping URL (HC_* vars in .env)",
+      "can_write": true,
+      "last_verified": "2026-07-30",
+      "reference_doc": "docs/background-monitoring.md"
+    },
+    {
+      "domain": "career",
+      "tool": "Gmail",
+      "mechanism": "local MCP server (read + draft)",
+      "auth": "oauth (stored refresh token)",
+      "can_write": false,
+      "last_verified": "2026-07-10",
+      "reference_doc": null
+    },
+    {
+      "domain": "household",
+      "tool": "Google Calendar",
+      "mechanism": "local MCP server",
+      "auth": "oauth (stored refresh token)",
+      "can_write": true,
+      "last_verified": "2026-06-01",
+      "reference_doc": null
+    }
+  ]
+}

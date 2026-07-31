@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "description": "Laila autonomy rules — maps information channel signals to auto-executable actions",
+  "rules": [
+    {
+      "id": "rejection-email",
+      "description": "Career application rejection detected",
+      "tier": 1,
+      "trigger": {
+        "channel": "email",
+        "sender_patterns": ["greenhouse.io", "lever.co", "ashbyhq.com", "workable.com", "icims.com", "smartrecruiters.com", "jobvite.com", "breezy.hr", "wellfound.com"],
+        "content_patterns": [
+          "decided not to move forward",
+          "unfortunately.*not be advancing",
+          "after careful consideration.*not moving",
+          "position has been filled",
+          "selected other candidates",
+          "not moving forward with your candidacy",
+          "will not be proceeding"
+        ]
+      },
+      "actions": [
+        {"type": "crm_stage_update", "entity": "opportunity", "match_by": "company_from_subject", "new_stage": "REJECTED"},
+        {"type": "regenerate_file", "path": "domains/career/tracking/applications.md"},
+        {"type": "update_entity", "file": "knowledge/entities/companies.md"},
+        {"type": "append_decision_log", "template": "Career rejection received from {company}. Pipeline stage updated to REJECTED."}
+      ],
+      "confidence_required": "high"
+    },
+    {
+      "id": "interview-scheduling",
+      "description": "Interview scheduling or advancement detected",
+      "tier": 1,
+      "trigger": {
+        "channel": "email",
+        "sender_patterns": ["greenhouse.io", "lever.co", "ashbyhq.com", "workable.com", "icims.com", "smartrecruiters.com", "jobvite.com", "breezy.hr", "wellfound.com", "calendly.com"],
+        "content_patterns": [
+          "schedule.*interview",
+          "next round",
+          "would like to invite you",
+          "pleased to advance",
+          "moving you forward"
+        ]
+      },
+      "actions": [
+        {"type": "crm_stage_update", "entity": "opportunity", "match_by": "company_from_subject", "new_stage": "INTERVIEW"}
+      ],
+      "confidence_required": "high"
+    },
+    {
+      "id": "scheduling-email-proposal",
+      "description": "Propose calendar event when scheduling request detected in email",
+      "tier": 3,
+      "trigger": {
+        "channel": "email",
+        "content_patterns": [
+          "schedule.*call",
+          "schedule.*meeting",
+          "are you available",
+          "time.*work.*for you",
+          "book.*time",
+          "set up.*meeting",
+          "find.*time.*connect",
+          "calendly\\.com",
+          "cal\\.com"
+        ]
+      },
+      "actions": [
+        {"type": "propose_calendar_event", "via": "command_channel", "duration_minutes": 60, "slots_to_suggest": 3}
+      ],
+      "confidence_required": "medium"
+    },
+    {
+      "id": "solo-calendar-blocking",
+      "description": "Create focus time blocks based on strategy allocation",
+      "tier": 1,
+      "trigger": {
+        "source": "daily-brief",
+        "condition": "unscheduled_blocks_available"
+      },
+      "actions": [
+        {"type": "create_calendar_event", "calendar": "primary", "no_attendees": true}
+      ],
+      "constraints": {
+        "max_events_per_day": 3,
+        "no_weekends": true,
+        "respect_existing_events": true,
+        "min_block_minutes": 60,
+        "default_duration_minutes": 90,
+        "allowed_block_types": ["Focus: Career", "Focus: Content", "Admin Time", "Training"]
+      }
+    },
+    {
+      "id": "reminder-creation",
+      "description": "Create reminders for follow-up items detected in comms",
+      "tier": 1,
+      "trigger": {
+        "source": "comms-monitor",
+        "condition": "follow_up_detected"
+      },
+      "actions": [
+        {"type": "create_reminder", "list_mapping": "domain_to_list"}
+      ],
+      "constraints": {
+        "never_complete_existing": true,
+        "never_delete_existing": true,
+        "deduplicate_by_name": true
+      }
+    }
+  ],
+  "agent_queue": {
+    "description": "Items in the 'Laila' reminders list (see config/reminders-lists.json) are the agent task queue. Default classification is Tier 3 propose; only tasks whose leading verb is on this deterministic allowlist auto-execute as Tier 1.",
+    "deterministic_verb_allowlist": [
+      "regenerate",
+      "update tracking",
+      "log",
+      "file",
+      "archive",
+      "summarize"
+    ],
+    "default_tier": 3
+  },
+  "tier_definitions": {
+    "1": {
+      "name": "Auto-Execute + Notify",
+      "description": "Deterministic, low-risk, reversible. Execute immediately, log to audit, notify via the command channel.",
+      "requires_approval": false
+    },
+    "3": {
+      "name": "Propose-and-Wait",
+      "description": "High-risk, irreversible, or visible to others. Propose in sync table, wait for explicit approval.",
+      "requires_approval": true,
+      "scope": [
+        "Sending ANY communication (email, text message, chat)",
+        "Strategic changes (strategy.md, vision.md, goals restructuring)",
+        "Creating events with attendees or modifying existing events",
+        "Spawning coding sessions",
+        "Completing or deleting tasks/reminders",
+        "Any action visible to people other than Alex"
+      ]
+    }
+  }
+}
