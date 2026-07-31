@@ -80,4 +80,4 @@ of it continuously:
 
 The full discipline, including what to do when a leak is real (rewrite, and
 ROTATE — history rewrite does not un-cache the hosting provider), is in
-`.claude/skills/laila-os-judgment` §7.
+`skills/laila-os-judgment` §7.

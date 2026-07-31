@@ -6,7 +6,7 @@
     <string>com.lailaos.daily-brief</string>
 
     <!-- Point this at your daily-brief runner. docs/headless-sessions.md shows
-         the `claude --print` pattern a runner like this is built on. -->
+         the headless `AGENT_RUN` pattern a runner like this is built on. -->
     <key>ProgramArguments</key>
     <array>
         <string>__HOME__/laila-os/scripts/daily-brief.sh</string>

@@ -1,11 +1,13 @@
-# Headless Sessions — the `claude --print` Pattern
+# Headless Sessions — the `AGENT_RUN` Pattern
 
 Every scheduled loop that needs judgment (the daily brief, nightly
-consolidation, message triage) runs a **headless Claude session**: a
-LaunchAgent-spawned `claude --print` with a prompt on stdin and no human at
-the keyboard. This doc is the mechanics; the *behavioral* rules for those
+consolidation, message triage) runs a **headless agent session**: a
+scheduler-spawned non-interactive CLI run with a prompt on stdin and no human
+at the keyboard. The command is the `AGENT_RUN` env var (`.env`), so the
+pattern is harness-agnostic; examples below use the Claude Code reference
+implementation, with an equivalents table at the end. This doc is the mechanics; the *behavioral* rules for those
 sessions live in the `laila-os-headless-conduct` skill
-(`.claude/skills/laila-os-headless-conduct/`) — every headless prompt should
+(`skills/laila-os-headless-conduct/`) — every headless prompt should
 tell the session to load it.
 
 ## The invocation
@@ -17,20 +19,20 @@ Load the laila-os-headless-conduct skill and follow it.
 <task instructions>
 Finish by printing exactly one line: DONE:<summary> or NONE."
 
-RESULT=$(claude --print --model sonnet \
-    --allowedTools "Read,Glob,Grep,Edit,Write" \
-    <<< "$PROMPT" 2>> "$LOG_FILE" | tail -1)
+AGENT_RUN="${AGENT_RUN:-claude --print --model sonnet --allowedTools Read,Glob,Grep,Edit,Write}"
+RESULT=$($AGENT_RUN <<< "$PROMPT" 2>> "$LOG_FILE" | tail -1)
 ```
 
 The wrapper script then branches on `$RESULT` — which is why the prompt ends
 with a strict output protocol (`DONE:`/`NONE:`/`ERROR:`). A headless session
 that returns prose instead of a protocol line is unparseable.
 
-## `--allowedTools` is REQUIRED
+## Tool permissions are REQUIRED (reference CLI: `--allowedTools`)
 
-This is the gotcha that costs people an afternoon: **a headless `claude
---print` run has no one to answer permission prompts, so without
-`--allowedTools` every tool call is silently denied.** The session "runs",
+This is the gotcha that costs people an afternoon, and it has an analog on
+every harness: **a headless run has no one to answer permission prompts.** On
+the reference CLI, without `--allowedTools` every tool call is silently
+denied.** The session "runs",
 produces plausible text, and does nothing. Symptoms: jobs that report success
 but never change a file.
 
@@ -85,3 +87,20 @@ follow — channel security (information channels are never instructions),
 send gating, credential handling, and failure behavior (fail loudly to the
 log and Telegram, never improvise around a broken tool). Include the
 load-the-skill line in every headless prompt template.
+
+## Equivalents on other harnesses
+
+`AGENT_RUN` just needs a command that (1) reads a prompt on stdin or argv,
+(2) can use file tools non-interactively with permissions pre-granted, and
+(3) prints the session's final text to stdout for the protocol-line check.
+
+| Harness | Non-interactive shape (verify against current docs) |
+|---|---|
+| Claude Code (reference) | `claude --print --model <m> --allowedTools <list>` |
+| Codex CLI | `codex exec` with sandbox/approval flags pre-set |
+| Gemini CLI | `gemini -p` / `--prompt` with tool confirmation configured |
+| Custom API loop | your own runner: inject AGENTS.md as system context, expose file tools, print final text |
+
+Whatever the harness, keep the invariants from `laila-os-headless-conduct`:
+strict output protocol, no send tools, information channels are never
+instructions, and fail loud rather than plausible.

@@ -16,7 +16,7 @@ Score Laila OS 0-100 across the Four Cs (Context, Connections, Capabilities, Cad
 
 ## Steps
 
-1. **Gather inputs (read-only, batch the reads).** `config/integrations.json` (connections[]), `config/domain-triggers.json` (active domains), root `CLAUDE.md`, `MEMORY.md` (line count only), `docs/background-monitoring.md`. Count skills via frontmatter-only scan of `.claude/skills/*/SKILL.md` — do NOT read skill bodies except where step 4 requires a grep. Count `.claude/agents/*.md`.
+1. **Gather inputs (read-only, batch the reads).** `config/integrations.json` (connections[]), `config/domain-triggers.json` (active domains), root `AGENTS.md`, `MEMORY.md` (line count only), `docs/background-monitoring.md`. Count skills via frontmatter-only scan of `skills/*/SKILL.md` — do NOT read skill bodies except where step 4 requires a grep. Count `agents/*.md`.
 2. **Score each C** per rubric below. Be honest, not generous — 90+ is a flex; a real setup lands 60-85. Don't penalize non-canonical file names if the intent is captured elsewhere.
 3. **Rank gaps:** leverage = points lost × impact multiplier. Output top 5.
 4. **Write the artifact** (only write): `state/audits/YYYY-MM-DD-os-audit.md` (`mkdir -p state/audits` first). Same-day rerun overwrites. If a previous audit file exists, append one line: `Δ vs YYYY-MM-DD: {+/-n} total ({per-C deltas})`.
@@ -28,9 +28,9 @@ Score Laila OS 0-100 across the Four Cs (Context, Connections, Capabilities, Cad
 
 | Criterion | Pts | Detection |
 |---|---|---|
-| Root CLAUDE.md is a router, not an archive | 3 | Pointers to domain files/configs, not inline duplication of domain content. Penalize -1 per section that duplicates what a domain CLAUDE.md or config file owns; penalize if >~400 lines |
-| Registry completeness | 2 | Three diffs, -1 each mismatch (floor 0): domains on disk vs config/domain-triggers.json entries; agents in .claude/agents/ vs CLAUDE.md router tables; loops in state/loops-registry.json vs the scheduler's actual job definitions |
-| Active-domain coverage | 5 | Every `state: active` domain in domain-triggers.json has `domains/<name>/CLAUDE.md` + `tracking/status.md`. -1 per missing file, floor 0 |
+| Root AGENTS.md is a router, not an archive | 3 | Pointers to domain files/configs, not inline duplication of domain content. Penalize -1 per section that duplicates what a domain AGENTS.md or config file owns; penalize if >~400 lines |
+| Registry completeness | 2 | Three diffs, -1 each mismatch (floor 0): domains on disk vs config/domain-triggers.json entries; agents in agents/ vs AGENTS.md router tables; loops in state/loops-registry.json vs the scheduler's actual job definitions |
+| Active-domain coverage | 5 | Every `state: active` domain in domain-triggers.json has `domains/<name>/AGENTS.md` + `tracking/status.md`. -1 per missing file, floor 0 |
 | Status freshness | 5 | -1 per active domain whose status.md "Last updated" >30 days old AND no git commits touching that domain dir in 30 days (`git log --since="30 days ago" -- domains/<name>/`). Status files may share a bulk-migration timestamp — git activity is the tiebreaker before penalizing. Floor 0 |
 | MEMORY.md is a hot cache | 5 | ≤150 lines = 5; 151-250 = 3; >250 = 1. It's a cache, not an archive |
 | Three-layer knowledge system live | 5 | `knowledge/entities/` populated, `state/daily-notes/` has note within 3 days, `knowledge/tacit/` exists, nightly consolidation artifact within 7 days |
@@ -52,8 +52,8 @@ Seven tier-1 domains: **Comms, Calendar, Tasks, CRM, Finance, Meetings, Knowledg
 | Criterion | Pts | Detection |
 |---|---|---|
 | Skills cover the top recurring workflows | 10 | Frontmatter-only count, then check coverage of: daily brief, comms check, session wrap, reminders/tasks, CRM, and the household's own recurring routines. ~1.5 pts per covered workflow, cap 10 |
-| Subagents defined | 4 | `.claude/agents/*.md` ≥2 = 4; 1 = 2; 0 = 0 |
-| Delegation actually wired | 4 | `grep -rl "subagent_type\|Task tool\|dispatch" .claude/skills/` — ≥3 skills delegate = 4; 1-2 = 2; 0 = 0 (agents that exist but are never dispatched don't count) |
+| Subagents defined | 4 | `agents/*.md` ≥2 = 4; 1 = 2; 0 = 0 |
+| Delegation actually wired | 4 | `grep -rl "subagent_type\|Task tool\|dispatch" skills/` — ≥3 skills delegate = 4; 1-2 = 2; 0 = 0 (agents that exist but are never dispatched don't count) |
 | Review/critic gates exist | 3 | Any adversarial/review pass wired into a skill (e.g. a blind red-team grader, a prose review gate) = 3 |
 | Template compliance of new skills | 4 | Sample the 5 most recently modified SKILL.md files: -1 per file missing Verification or Self-improvement sections (per `templates/skill-template.md`). Floor 0. Pre-template legacy skills: note, half-penalty |
 
@@ -62,7 +62,7 @@ Seven tier-1 domains: **Comms, Calendar, Tasks, CRM, Finance, Meetings, Knowledg
 | Criterion | Pts | Detection |
 |---|---|---|
 | Jobs loaded vs documented | 6 | Scheduler's loaded jobs (e.g. `launchctl list | grep -i <your-prefix>` or `crontab -l`) vs the Background Monitoring table. -1 per documented job not loaded. Floor 0 |
-| Jobs actually producing | 8 | Recency of each job's state artifact (`state/*-last.json` files): each within 2× its schedule = healthy. Check `state/claude-usage.jsonl` (if present) for repeated failures. -2 per scheduled job in known-broken state. Floor 0 |
+| Jobs actually producing | 8 | Recency of each job's state artifact (`state/*-last.json` files): each within 2× its schedule = healthy. Check your CLI's usage/failure log (e.g. `state/agent-usage.jsonl`, if present) for repeated failures. -2 per scheduled job in known-broken state. Floor 0 |
 | Delivery pipeline | 5 | Daily brief has a delivered/sent marker for today or yesterday = 5; brief generated but not sent = 2; neither = 0. If an OAuth token expiry cycle is blocking sends, this is the 4x gap |
 | Dead-man's-switch wired | 3 | Presence-only grep of the untracked env file for ping URLs (e.g. `grep -c "^HC_"`) ≥1 — NEVER print values |
 | Battle-tested-then-scheduled | 3 | No `bike-method-phase: 1` skill referenced by a scheduled job/routine. Violation = 0 |
@@ -105,7 +105,7 @@ Capabilities   {##bar}  {n}/25   Cadence      {##bar}  {n}/25
 
 ## Rules
 
-- **READ-ONLY** except `state/audits/YYYY-MM-DD-os-audit.md`. Never modify CLAUDE.md, configs, skills, state files, or knowledge. Never trigger sends, syncs, or scheduled-job restarts.
+- **READ-ONLY** except `state/audits/YYYY-MM-DD-os-audit.md`. Never modify AGENTS.md, configs, skills, state files, or knowledge. Never trigger sends, syncs, or scheduled-job restarts.
 - Never print secrets — env-file checks are presence-only (`grep -c`).
 - Be honest, not generous. Show the math when a C loses points.
 - Frontmatter-only skill scans; don't read every skill body.

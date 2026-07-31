@@ -32,7 +32,7 @@ This file is a template: replace each channel's example integration with the too
 | `content` | Content-focused: newsletter replies, platform notifications |
 | `search [term]` | Cross-channel search for an entity (company name, person name) |
 
-Domain-to-channel routing lives with the domains, not here — each domain's CLAUDE.md defines its email filters, and `config/domain-triggers.json` is the registry of active domains. Skip filters for domains that are not `active`.
+Domain-to-channel routing lives with the domains, not here — each domain's AGENTS.md defines its email filters, and `config/domain-triggers.json` is the registry of active domains. Skip filters for domains that are not `active`.
 
 ---
 

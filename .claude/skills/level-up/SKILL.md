@@ -23,7 +23,7 @@ Read, in one batch:
 1. `knowledge/tacit/bottlenecks.md` — rows from the last 14 days, plus any topic appearing 3+ times across the full history (count them)
 2. Last 7 days of `state/daily-notes/`
 3. `state/skill-feedback.jsonl` if present (skill corrections logged by session-wrap)
-4. `state/claude-usage.jsonl` if present — flag cost-heavy recurring jobs
+4. your CLI's usage log (e.g. `state/agent-usage.jsonl`) if present — flag cost-heavy recurring jobs
 5. Latest `state/audits/*.md` — the audit's top gaps are additional candidates
 
 Present the **top 3 observed bottlenecks with frequency counts**: *"Here's what the data says you keep doing manually — pick one or override."* Alex can override with their own candidate, but the data goes on the table first.
@@ -61,8 +61,8 @@ Boring-is-Beautiful ladder, in order — default = the lowest rung that solves i
 
 1. **Prompt-only** — saved trigger phrase, zero infrastructure
 2. **Deterministic script** in `scripts/` (+ a scheduled job if it needs to recur)
-3. **AI-assisted skill** in `.claude/skills/` — use `templates/skill-template.md`, including Verification + Self-improvement sections
-4. **Subagent** in `.claude/agents/` — LAST resort; read an existing agent file for format first
+3. **AI-assisted skill** in `skills/` — use `templates/skill-template.md`, including Verification + Self-improvement sections
+4. **Subagent** in `agents/` — LAST resort; read an existing agent file for format first
 
 Ship **exactly ONE artifact**. If it's a skill, frontmatter carries `bike-method-phase: 1` — manual validation first, never scheduled as a background job at phase 1.
 

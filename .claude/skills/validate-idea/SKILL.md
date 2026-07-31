@@ -220,13 +220,13 @@ Track: `customers_acquired`, `customer_target: 10`, `lean_mvp_description`
 When an idea is promoted from `categorizing` to `testing` **and** the work ahead includes any ongoing operational surface — partner outreach, sales conversations, content creation, code development, discovery-log tracking — create a domain for it. Pure validation-only work (still just testing price points via landing pages, no active GTM motion) does not require domain creation.
 
 **1. Decide the skeleton depth.**
-- **Minimal pattern:** CLAUDE.md + tracking/. Use when product code lives elsewhere (external repo) or isn't yet being built.
-- **Code-heavy pattern:** CLAUDE.md + tracking/ + build/server/etc. Use when code and tracking co-locate.
+- **Minimal pattern:** AGENTS.md + tracking/. Use when product code lives elsewhere (external repo) or isn't yet being built.
+- **Code-heavy pattern:** AGENTS.md + tracking/ + build/server/etc. Use when code and tracking co-locate.
 
 **2. Create the domain.**
 ```
 domains/<slug>/
-├── CLAUDE.md                 # onboarding, rules, working agreement
+├── AGENTS.md                 # onboarding, rules, working agreement
 └── tracking/
     ├── Next_Actions.md       # daily/weekly backlog (read first on any Check <Domain> trigger)
     ├── status.md             # domain health summary (authoritative for domain state)
@@ -246,8 +246,8 @@ Expand `Documents/` and `research/` subfolders as operational work demands (see 
 - `graduated_at` → today's ISO date
 
 **5. Update canonical references:**
-- Add the domain row to the root `CLAUDE.md` Domains list with a one-line purpose description.
-- Add a trigger entry to `config/domain-triggers.json` mapping `Check <Domain>` phrases to the domain's CLAUDE.md.
+- Add the domain row to the root `AGENTS.md` Domains list with a one-line purpose description.
+- Add a trigger entry to `config/domain-triggers.json` mapping `Check <Domain>` phrases to the domain's AGENTS.md.
 - If your dashboard/CRM tracks life domains, create the corresponding record for visibility.
 
 **6. Regenerate** `domains/ideas/tracking/status.md` and `matrix.md` so the matrix reflects the graduated phase.
@@ -286,7 +286,7 @@ Killed ideas that had a domain folder (`has_domain: true` in pipeline.json) must
    - `archived_path`: `"domains/_archive/<slug>-killed-<YYYY-MM-DD>/"`
 4. Remove the domain's entry from:
    - `config/domain-triggers.json` (trigger block)
-   - Root `CLAUDE.md` Domains list (row)
+   - Root `AGENTS.md` Domains list (row)
 5. `config/reminders-lists.json` — remove entry if one was added.
 
 Daily workflows (daily brief, what's-next, session-wrap) should skip `domains/_archive/**` — the underscore prefix is the universal skip signal.
@@ -304,7 +304,7 @@ When a killed idea becomes viable again (e.g., capital partner surfaces, skill g
    - `kill_date` → today + 30 days (fresh kill timer)
 4. If you run a CRM: move the Opportunity stage from `LOST` back to the appropriate stage.
 5. Restore the trigger block in `config/domain-triggers.json`.
-6. Restore the row in the root `CLAUDE.md` Domains list.
+6. Restore the row in the root `AGENTS.md` Domains list.
 7. Create a fresh 30-day kill reminder (same pattern as new-idea creation).
 8. Document revival reason + trigger in `domains/ideas/tracking/status.md` under a `## Revived` section.
 9. Regenerate the matrix.

@@ -30,7 +30,7 @@ state/goals.md              — Cross-domain goals, quarterly objectives
 ### Step 2: Domain Scan
 
 For each active domain, read:
-- `domains/{domain}/CLAUDE.md` — Domain instructions
+- `domains/{domain}/AGENTS.md` — Domain instructions
 - `domains/{domain}/tracking/status.md` — Current state
 - `domains/{domain}/tracking/goals.md` — Domain goals (if present)
 

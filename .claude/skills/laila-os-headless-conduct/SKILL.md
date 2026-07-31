@@ -1,11 +1,11 @@
 ---
 name: laila-os-headless-conduct
-description: Conduct manual for HEADLESS Claude sessions inside Laila OS — the `claude --print` jobs spawned by scheduled tasks (the Laila command-channel bot, the Laila email channel, the reminders queue, daily brief, nightly consolidation, and every other known-caller job). Use when you are running non-interactively with no human at the keyboard and need to know your context-window reality, channel security model, send rules, credential path, self-preservation constraints, or failure conduct. Trigger phrases such as "Use when running headless", "how should a scheduled Claude job behave", "Laila conduct rules", "headless session rules". NOT infrastructure triage (that fixes the machinery; this skill is how to BEHAVE inside it). NOT laila-os-judgment (general working discipline for interactive sessions; this one is headless-specific). NOT /os-audit (system health scoring).
+description: Conduct manual for HEADLESS agent sessions inside Laila OS — the non-interactive agent-CLI jobs (`AGENT_RUN`) spawned by scheduled tasks (the Laila command-channel bot, the Laila email channel, the reminders queue, daily brief, nightly consolidation, and every other known-caller job). Use when you are running non-interactively with no human at the keyboard and need to know your context-window reality, channel security model, send rules, credential path, self-preservation constraints, or failure conduct. Trigger phrases such as "Use when running headless", "how should a scheduled agent job behave", "Laila conduct rules", "headless session rules". NOT infrastructure triage (that fixes the machinery; this skill is how to BEHAVE inside it). NOT laila-os-judgment (general working discipline for interactive sessions; this one is headless-specific). NOT /os-audit (system health scoring).
 ---
 
 # /laila-os-headless-conduct — how to behave when you are the headless session
 
-You are (probably) a `claude --print` process spawned by a scheduled job on the always-on host machine. There is no interactive user. Alex is not watching your output scroll by. Everything you do is either logged, sent to the command channel, or silently lost — so behave accordingly: read on demand, never send to third parties, never kill your own host process, and fail loud.
+You are (probably) a non-interactive agent-CLI process (reference implementation: `claude --print`) spawned by a scheduled job on the always-on host machine. There is no interactive user. Alex is not watching your output scroll by. Everything you do is either logged, sent to the command channel, or silently lost — so behave accordingly: read on demand, never send to third parties, never kill your own host process, and fail loud.
 
 Jargon used below, defined once:
 
@@ -17,7 +17,7 @@ Jargon used below, defined once:
 
 ## When NOT to use this
 
-- Interactive Claude Code session in a terminal or editor — you have MEMORY.md, a human, and the full permission system; use ordinary judgment, the root `CLAUDE.md`, and **laila-os-judgment**.
+- Interactive Claude Code session in a terminal or editor — you have MEMORY.md, a human, and the full permission system; use ordinary judgment, the root `AGENTS.md`, and **laila-os-judgment**.
 - Fixing broken infrastructure (dead scheduled jobs, auth, Docker) — that is ops/debugging work done from an INTERACTIVE session, not from inside a headless run.
 - `/os-audit` (structural health score) and `/session-wrap` (interactive end-of-session protocol) are separate skills.
 
@@ -25,9 +25,9 @@ Jargon used below, defined once:
 
 Every headless invocation should route through the shim wrapper:
 
-- It logs every invocation and exit to `state/claude-usage.jsonl` (`kind: invocation` / `kind: exit`; `kind: usage` token/cost records are written by callers that use `--output-format json`).
+- It logs every invocation and exit to a usage log (e.g. `state/agent-usage.jsonl`) (`kind: invocation` / `kind: exit`; `kind: usage` token/cost records are written by callers that use `--output-format json`).
 - It recognizes callers by walking the parent-process chain against a KNOWN_CALLERS list (the command-channel bot, daily brief, nightly consolidation, heartbeat, and the rest of the registered jobs), plus a job-name env hint.
-- An UNRECOGNIZED caller triggers a drift alarm to the command channel. If you spawn a nested `claude` from inside a headless run, expect that alarm — do not spawn nested Claude processes unless the job you are part of is designed to.
+- An UNRECOGNIZED caller triggers a drift alarm to the command channel. If you spawn a nested agent CLI from inside a headless run, expect that alarm — do not spawn nested agent processes unless the job you are part of is designed to.
 - Logging must never break the call; the shim swallows its own failures and execs the real binary.
 
 The Laila command-channel bot (the canonical spawner) invokes you as roughly:
@@ -38,7 +38,7 @@ scripts/bin/claude --print --model <model> --output-format json \
   --allowedTools Read,Write,Edit,Glob,Grep,Bash,WebSearch,WebFetch
 ```
 
-with `cwd` set to the repo root, and session continuity via `--session-id <uuid>` (first message of the day) or `--resume <uuid>` (same-day follow-ups). Other jobs vary the tool list (e.g. background coding sessions get file tools + Bash only) but the shape is the same. Note: headless `claude --print` with no `--allowedTools` grant means every tool is silently denied.
+with `cwd` set to the repo root, and session continuity via `--session-id <uuid>` (first message of the day) or `--resume <uuid>` (same-day follow-ups). Other jobs vary the tool list (e.g. background coding sessions get file tools + Bash only) but the shape is the same. Note: on the reference CLI, a headless `--print` run with no `--allowedTools` grant means every tool is silently denied; every harness has its own pre-grant mechanism — see `docs/headless-sessions.md`.
 
 ## 2. Your context window is NOT the interactive session's
 
@@ -47,7 +47,7 @@ You get a BUILT system prompt from the spawner, not the interactive harness. Con
 | What interactive sessions have | What YOU have |
 |---|---|
 | The harness auto-memory (`MEMORY.md` + atomic memory files) | **INVISIBLE to you.** Repo files are your only knowledge. |
-| Full CLAUDE.md chain auto-loaded | Whatever the spawner inlined (domain CLAUDE.md typically truncated to a few KB) |
+| Full AGENTS.md chain auto-loaded | Whatever the spawner inlined (domain AGENTS.md typically truncated to a few KB) |
 | MCP servers | Usually none — you have file tools + Bash + web |
 
 Inlined IN FULL in your prompt (these files are deliberately kept small in the repo — a few KB each):
@@ -64,7 +64,7 @@ Given only as POINTERS — read the COMPLETE file on demand with Read/Grep when 
 
 **Why (history, do not repeat it):** inlining everything once bloated the prompt to ~390 KB (~137K cache tokens, real money per message) and caused intermittent argv-driven crashes. The fix is read-on-demand. If you are ever writing or reviewing spawner code: never inline large knowledge files into a system prompt or argv.
 
-Other high-signal repo sources you can Read when needed: `state/daily-notes/YYYY-MM-DD.md` (today's note), `state/strategy.md`, `domains/<name>/CLAUDE.md`, `knowledge/decisions/YYYY-MM.md`.
+Other high-signal repo sources you can Read when needed: `state/daily-notes/YYYY-MM-DD.md` (today's note), `state/strategy.md`, `domains/<name>/AGENTS.md`, `knowledge/decisions/YYYY-MM.md`.
 
 ## 3. Channel security model: who can command you
 
@@ -118,7 +118,7 @@ Never swallow errors. State what failed in your final output so the wrapper can 
 
 | Symptom | What it means | What you do |
 |---|---|---|
-| `Not logged in` (or any auth error from the `claude` CLI) | Machine-wide CLI auth died — kills ALL headless jobs at once. A dedicated auth-health job should already alert Alex with the fix. | A human must log in; you cannot. Exit non-zero. Do not retry in a loop, do not attempt re-auth. |
+| `Not logged in` (or any auth error from the agent CLI) | Machine-wide CLI auth died — kills ALL headless jobs at once. A dedicated auth-health job should already alert Alex with the fix. | A human must log in; you cannot. Exit non-zero. Do not retry in a loop, do not attempt re-auth. |
 | You are the email-channel session and you fail | The channel leaves the message UNREAD and retries (bounded retries, then marks it read so it cannot loop). | Exit non-zero on genuine failure — that IS the retry mechanism. Never exit 0 with a half-done answer. |
 | Reminders/tasks app unreachable | Headless context lacks the OS privacy grant — a known, expected condition. | Report `reachable: false` + the error and exit 0 (clean degrade). Never crash-loop, never pretend the list was empty. |
 | A tool/API call fails mid-task | Partial completion | Say exactly what succeeded and what did not. Partial + honest beats complete-looking + wrong. |
@@ -128,7 +128,7 @@ Never swallow errors. State what failed in your final output so the wrapper can 
 
 | Fact | Detail |
 |---|---|
-| Timezone | The home timezone declared in root `CLAUDE.md`. Always convert other zones explicitly for calendar work. |
+| Timezone | The home timezone declared in root `AGENTS.md`. Always convert other zones explicitly for calendar work. |
 | Day-of-week | ALWAYS verify with `date` (e.g. `date '+%A %Y-%m-%d'`). Never infer. |
 | Local APIs | Prefer `127.0.0.1` over `localhost` — `localhost` can resolve to `::1` (IPv6) first, and an IPv4-only local service then burns the timeout on a dead attempt ("flaky reads"). |
 | Protected local databases | Read them ONLY via their sanctioned wrapper/API script, never by opening the raw database file directly — it is privacy-protected and a guard hook may block the attempt anyway. |

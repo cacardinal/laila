@@ -1,8 +1,8 @@
 # Trigger Phrases — Full Reference
 
-The root `CLAUDE.md` stays a slim router: only the highest-frequency triggers
+The root `AGENTS.md` stays a slim router: only the highest-frequency triggers
 live there, and this file holds the full table. Keeping the table out of the
-router matters — everything in `CLAUDE.md` is loaded into every session, so
+router matters — everything in `AGENTS.md` is loaded into every session, so
 each row you inline is context spent on sessions that never use it.
 
 A trigger phrase is just a stable mapping from something Alex naturally says
@@ -27,19 +27,19 @@ re-derived each time.
 
 ## Domain triggers (sample domains)
 
-Domain triggers load the domain's `CLAUDE.md` first, then run its "Check
+Domain triggers load the domain's `AGENTS.md` first, then run its "Check
 [Domain]" workflow. The authoritative registry — patterns, paths, and
 lifecycle `state` — is `config/domain-triggers.json`; this table is the
 human-readable summary.
 
 | Trigger | Domain | Context file |
 | --- | --- | --- |
-| "Check career", "Help me apply" | Career | `domains/career/CLAUDE.md` |
-| "Check health" | Health | `domains/health/CLAUDE.md` |
-| "Check household", "Smart home maintenance" | Household | `domains/household/CLAUDE.md` |
-| "Content ideas", "Write for LinkedIn" | Content | `domains/content/CLAUDE.md` |
-| "Check acme", "Prep for Jordan", "Engagement status" | Acme (engagement) | `domains/acme/CLAUDE.md` |
-| "I have an idea", "Idea pipeline" | Ideas | `domains/ideas/CLAUDE.md` |
+| "Check career", "Help me apply" | Career | `domains/career/AGENTS.md` |
+| "Check health" | Health | `domains/health/AGENTS.md` |
+| "Check household", "Smart home maintenance" | Household | `domains/household/AGENTS.md` |
+| "Content ideas", "Write for LinkedIn" | Content | `domains/content/AGENTS.md` |
+| "Check acme", "Prep for Jordan", "Engagement status" | Acme (engagement) | `domains/acme/AGENTS.md` |
+| "I have an idea", "Idea pipeline" | Ideas | `domains/ideas/AGENTS.md` |
 
 Feature work on any registered project (dashboard, an idea, the engagement) goes
 through **`/spec`** — story packs, subagent implementation, story-reviewer QA gate.
@@ -51,6 +51,6 @@ the state instead.
 ## Maintenance
 
 When you add a skill or domain, add its trigger row here (and to the root
-`CLAUDE.md` only if it will be used near-daily). Periodically re-verify the
+`AGENTS.md` only if it will be used near-daily). Periodically re-verify the
 table against the actual skill list — a trigger that maps to a deleted skill
 is worse than no trigger.

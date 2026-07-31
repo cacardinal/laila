@@ -6,7 +6,7 @@ argument-hint: "[the plan or idea to roast]"
 
 ## What this does
 
-Claude's default is to agree with you. `/roast` is the opposite. It convenes a council of five independent persona agents who tear an idea apart and build it up from every angle, then a Judge synthesizes everything into one honest verdict. Use it before you sink time and money into building the wrong thing.
+An AI assistant's default is to agree with you. `/roast` is the opposite. It convenes a council of five independent persona agents who tear an idea apart and build it up from every angle, then a Judge synthesizes everything into one honest verdict. Use it before you sink time and money into building the wrong thing.
 
 The council is adversarial on purpose. No persona is allowed to hedge or be polite. The point is to surface what you can't see because you're too close to it. Agreement is failure: if the council can't find real problems, it must earn the conclusion that the plan is unusually sound.
 

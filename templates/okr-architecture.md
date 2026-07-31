@@ -274,4 +274,4 @@ OBJECTIVE (Q3)
 
 ---
 
-*This architecture is referenced by `CLAUDE.md` and informs daily/weekly/quarterly planning.*
+*This architecture is referenced by `AGENTS.md` and informs daily/weekly/quarterly planning.*

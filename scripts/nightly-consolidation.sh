@@ -1,10 +1,10 @@
 #!/bin/bash
 # Nightly Memory Consolidation
-# Reviews recent daily notes, extracts durable insights via a headless Claude
+# Reviews recent daily notes, extracts durable insights via a headless agent
 # session, and updates knowledge/ files. Runs at 2am via LaunchAgent
 # (launchagents/com.lailaos.nightly-consolidation.plist.template).
 #
-# Pattern: git pull -> headless `claude --print` over the day's notes ->
+# Pattern: git pull -> headless $AGENT_RUN pass over the day's notes ->
 # archive old notes -> commit + push -> healthcheck ping.
 #
 # SECURITY NOTE: this job auto-commits and auto-pushes the checked-out branch.
@@ -56,9 +56,13 @@ if [ ! -f "$NOTE_FILE" ] && [ -z "$YESTERDAY_NOTE" ]; then
     exit 0
 fi
 
-# ─── Headless Claude consolidation pass ──────────────────────────────────────
-# --allowedTools is REQUIRED: a headless `claude --print` run silently denies
-# every tool call without it. See docs/headless-sessions.md.
+# ─── Headless agent consolidation pass ───────────────────────────────────────
+# The runner is configurable so the loop is not tied to one vendor's CLI:
+#   AGENT_RUN — full non-interactive command reading the prompt on stdin.
+# Default is the Claude Code reference implementation, where --allowedTools is
+# REQUIRED (a headless `claude --print` run silently denies every tool call
+# without it). Equivalents for other CLIs: docs/headless-sessions.md.
+AGENT_RUN="${AGENT_RUN:-claude --print --model sonnet --allowedTools Read,Glob,Grep,Edit,Write}"
 PROMPT="You are Laila running the nightly memory consolidation for Laila-OS
 (repo at $LAILA_OS_ROOT, which is your working directory).
 
@@ -72,9 +76,7 @@ PROMPT="You are Laila running the nightly memory consolidation for Laila-OS
 5. Finish by printing exactly one line: CONSOLIDATED:<one-line summary>
    or NONE if there was nothing durable to extract."
 
-RESULT=$(claude --print --model sonnet \
-    --allowedTools "Read,Glob,Grep,Edit,Write" \
-    <<< "$PROMPT" 2>> "$LOG_FILE" | tail -1) || {
+RESULT=$($AGENT_RUN <<< "$PROMPT" 2>> "$LOG_FILE" | tail -1) || {
     log "ERROR: headless consolidation session failed"
     RESULT="SCRIPT_FAILED"
 }

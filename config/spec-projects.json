@@ -10,7 +10,7 @@
    "_build_test_note": "Zero-dependency Node server, no test suite. The syntax check is the floor; verify each story BEHAVIORALLY: run `node dashboard/server.js`, load http://127.0.0.1:5175, and confirm the changed panel renders against the real state files.",
    "conventions": [
     "dashboard/README.md",
-    "CLAUDE.md"
+    "AGENTS.md"
    ],
    "constraints": [
     "The dashboard READS generated artifacts (state/*.json, domains/*/tracking/status.md); UI stories never modify the generators or the data files",
@@ -31,7 +31,7 @@
    "stories_dir": "domains/ideas/stories/climate-radar",
    "build_test": null,
    "conventions": [
-    "domains/ideas/CLAUDE.md"
+    "domains/ideas/AGENTS.md"
    ],
    "constraints": [
     "Strategy gate applies (see the idea's pipeline.json entry): validate only, no build commitment — the practice is services this year",
@@ -48,7 +48,7 @@
    "build_test": null,
    "_build_test_note": "Client deliverable for the Acme engagement (Denver logistics SaaS; contact Jordan Lee). No repo until Acme approves the prototype scope; packs are the proposal artifact.",
    "conventions": [
-    "domains/acme/CLAUDE.md"
+    "domains/acme/AGENTS.md"
    ],
    "constraints": [
     "Client-visible copy is drawn from Acme's own materials, never invented; unknowns are labeled as open questions for Jordan",

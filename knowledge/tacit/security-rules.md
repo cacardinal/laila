@@ -1,6 +1,6 @@
 # Security Rules — Channel Classifications
 
-**This file is the one home for channel classifications.** Everything else (CLAUDE.md, `docs/security-model.md`, skills, agents) points here. If a channel's status changes, change it here and nowhere else.
+**This file is the one home for channel classifications.** Everything else (AGENTS.md, `docs/security-model.md`, skills, agents) points here. If a channel's status changes, change it here and nowhere else.
 
 ## Command channels (can instruct Laila)
 

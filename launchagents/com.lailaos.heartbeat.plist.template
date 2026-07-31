@@ -23,7 +23,7 @@
     <key>EnvironmentVariables</key>
     <dict>
         <!-- launchd jobs get a minimal PATH; include everything your scripts
-             need (python3, node, claude). NVM paths use a "v" prefix, e.g.
+             need (python3, node, your agent CLI). NVM paths use a "v" prefix, e.g.
              .nvm/versions/node/v22.0.0/bin — check yours with `which node`. -->
         <key>PATH</key>
         <string>__HOME__/.local/bin:__HOME__/.nvm/versions/node/__NODE_VERSION__/bin:/usr/local/bin:/usr/bin:/bin</string>

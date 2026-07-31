@@ -42,7 +42,7 @@ Check it's loaded: `launchctl list | grep lailaos`.
 ## Headless gotchas (read before debugging a "dead" loop)
 
 **PATH is minimal.** launchd does not run your shell profile. If a script needs
-`python3`, `node`, or `claude`, the plist's `EnvironmentVariables > PATH` must
+`python3`, `node`, or your agent CLI (e.g. `claude`), the plist's `EnvironmentVariables > PATH` must
 include their bin dirs. NVM paths include a `v` prefix
 (`~/.nvm/versions/node/v22.0.0/bin`) — a missing `v` is a classic silent
 failure. Verify with `which node` / `which claude` in a normal shell and copy

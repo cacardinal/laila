@@ -34,3 +34,18 @@ Subagent definitions for Laila OS. Each `.md` file in this directory defines one
 ## Adding an agent
 
 Copy the shape of an existing definition. Decide: what is the ONE job, which tier of model earns its cost, what is the minimal tool set (default to read-only), and what is the output contract. If the new agent would need a send tool, it isn't a subagent — it's a Tier 3 proposal the main session makes to the user.
+
+## Capability tiers, not model names
+
+Agent frontmatter uses the reference implementation's tier names. Map them by
+capability class on other platforms — the invariant is "smart boss, cheap
+workers", not any vendor's lineup:
+
+| Frontmatter says | Capability class | Use for |
+|---|---|---|
+| `haiku` | cheap + fast | search, retrieval, mechanical triage, parallel fan-outs |
+| `sonnet` | judgment-grade | review gates, synthesis, anything where being wrong is expensive |
+
+If your harness lacks per-subagent model selection, run every agent on the
+default model — the read-only and no-send-tools rules matter far more than the
+tier split.

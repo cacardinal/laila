@@ -9,15 +9,15 @@ Hence the checklists. Every step, every time.
 ## Adding a new domain — ALL steps required
 
 1. **Create the domain skeleton:**
-   - `domains/<name>/CLAUDE.md` — the domain's context: what it is, its
+   - `domains/<name>/AGENTS.md` — the domain's context: what it is, its
      workflows (including a "Check <Name>" workflow), its rules.
    - `domains/<name>/tracking/status.md` — current state, with a
      `Last updated: YYYY-MM-DD` header (the hygiene scanner keys off it).
 2. **Register the trigger:** add an entry to `config/domain-triggers.json` —
-   `patterns` (the phrases that invoke it), `claude_md` path, and
+   `patterns` (the phrases that invoke it), `context_file` path, and
    `state: "active"`. Include `meeting_routing` signals if meeting transcripts
    should auto-file to this domain.
-3. **Add a pointer row** to the root `CLAUDE.md` Domains section if it's a
+3. **Add a pointer row** to the root `AGENTS.md` Domains section if it's a
    headline domain. Keep it to one line — the router routes, it doesn't hold
    content.
 4. **Register in your external task/CRM system, if you run one.** If a
@@ -42,7 +42,7 @@ Hence the checklists. Every step, every time.
    the `archived` array (domain, state, kill date, archive path).
 3. Update the domain's record in your external system (health = retired), so
    dashboards stop counting it as live.
-4. Remove its row from the root `CLAUDE.md` Domains section.
+4. Remove its row from the root `AGENTS.md` Domains section.
 5. Verify nothing still references the old path — search indexes, dashboards,
    and any scripts that walk `domains/`.
 

@@ -89,8 +89,8 @@ Design details worth copying:
 
 | Loop | Schedule | Script | Purpose |
 | --- | --- | --- | --- |
-| Daily Brief | daily 7:00am | `scripts/daily-brief.sh` (yours — see `docs/headless-sessions.md`) | Headless Claude session assembles the morning brief and sends it to Telegram |
-| Nightly Consolidation | daily 2:00am | `scripts/nightly-consolidation.sh` | Headless Claude reviews daily notes, updates `knowledge/`, commits + pushes |
+| Daily Brief | daily 7:00am | `scripts/daily-brief.sh` (yours — see `docs/headless-sessions.md`) | Headless agent session (`AGENT_RUN`) assembles the morning brief and sends it to Telegram |
+| Nightly Consolidation | daily 2:00am | `scripts/nightly-consolidation.sh` | Headless agent session reviews daily notes, updates `knowledge/`, commits + pushes |
 | Task Heartbeat | every 30 min | `scripts/heartbeat.sh` | Active-task staleness/completion checks, Telegram alerts |
 | Comms Poll | every 10 min | `scripts/comms-poll.sh` (yours) | Fetch new email/message metadata, triage, update the comms queue |
 | Security Audit | monthly (1st, 06:30) | `scripts/security-audit.sh` | Diff-scan commits since the last audited base for secret patterns (hex 32-64, sk-*, long base64); env hygiene; verify the pre-push hook is installed. Findings hold the audited base and page the command channel |

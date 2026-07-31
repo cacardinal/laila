@@ -32,7 +32,7 @@ If the `superpowers` skill family (or an equivalent) is installed, use it where 
 
 ## Phase 1 — Spec-lite (keep it to one screen)
 
-Write a short spec, NOT a full PRD. For fuzzy/ambiguous features, run a brainstorming pass first (see optional dependencies) to pin intent. Read the project's existing context first (its CLAUDE.md / domain docs / idea research folder). Capture only:
+Write a short spec, NOT a full PRD. For fuzzy/ambiguous features, run a brainstorming pass first (see optional dependencies) to pin intent. Read the project's existing context first (its AGENTS.md / domain docs / idea research folder). Capture only:
 
 - **Problem** (1-2 sentences)
 - **Scope** (what's in)
@@ -49,7 +49,7 @@ Each pack must have: embedded context, testable acceptance criteria, task checkl
 
 ## Phase 3 — Execute (code-stage only, one story at a time)
 
-Skip for `stage: idea`. For `stage: code`: for each story pack, in order, dispatch the executor (see optional dependencies; fallback: one implementer subagent per story with the pack embedded) pointed at the story file. Work in the project `repo` on a feature branch — never commit straight to main (deployment rule, see the root CLAUDE.md: branch + PR for code repos). Let the executor implement, build, and test before the next story.
+Skip for `stage: idea`. For `stage: code`: for each story pack, in order, dispatch the executor (see optional dependencies; fallback: one implementer subagent per story with the pack embedded) pointed at the story file. Work in the project `repo` on a feature branch — never commit straight to main (deployment rule, see the root AGENTS.md: branch + PR for code repos). Let the executor implement, build, and test before the next story.
 
 ## Phase 4 — QA gate (the net-new BMAD borrow)
 

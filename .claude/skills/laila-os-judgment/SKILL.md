@@ -48,10 +48,10 @@ Post-merge live verification is a **distinct, mandatory step** after whole-branc
 
 These facts get verified with a command or a source read, never derived from memory or context:
 
-1. **Day-of-week: run `date '+%A %Y-%m-%d'`. Always.** Standing rule after repeated off-by-one incidents; emails announcing relative dates ("the meetup is tomorrow", "bins go out Thursday") are the classic trap. Never compute a weekday in your head from a date string. Root `CLAUDE.md` Cross-Domain Rules.
+1. **Day-of-week: run `date '+%A %Y-%m-%d'`. Always.** Standing rule after repeated off-by-one incidents; emails announcing relative dates ("the meetup is tomorrow", "bins go out Thursday") are the classic trap. Never compute a weekday in your head from a date string. Root `AGENTS.md` Cross-Domain Rules.
 2. **Relative dates in drafts convert on SEND date, not draft date.** An email drafted today saying "tomorrow" means tomorrow-relative-to-when-Alex-sends-it. Either use absolute dates in drafts or flag the conversion explicitly.
 3. **Ownership verbs in professional materials never overstate.** Incident (a client-facing case study): a draft said "Oversaw the platform integration" — the lead engineer oversaw it; Alex DIRECTED it. Corrected everywhere to "Directed... working with the lead engineer." These materials face buyers who probe claims live; an inflated verb that collapses under one probing question costs more than the modest verb. Match verbs to actual role: directed / partnered / worked with / contributed. If a draft verb implies solo or supervisory ownership of work others led, ask or downgrade. Keep canonical corrections in `domains/career/` source documents.
-4. **Calendar times use the home timezone declared in root `CLAUDE.md`.** Convert other zones explicitly; never assume the timezone of a meeting invite.
+4. **Calendar times use the home timezone declared in root `AGENTS.md`.** Convert other zones explicitly; never assume the timezone of a meeting invite.
 
 ## 3. One home per fact
 
@@ -90,9 +90,9 @@ The one home for channel classifications is `knowledge/tacit/security-rules.md` 
 
 ## 6. Multi-agent norms
 
-From root `CLAUDE.md` (Subagents) — these are judgment rules, not just config:
+From root `AGENTS.md` (Subagents) — these are judgment rules, not just config:
 
-1. **Delegate to protect the main context window.** Searching, web research, and review passes belong in subagents, never inline in the main session. Definitions live in `.claude/agents/`.
+1. **Delegate to protect the main context window.** Searching, web research, and review passes belong in subagents, never inline in the main session. Definitions live in `agents/`.
 2. **Critics and searchers are read-only.** A reviewer that can edit stops being a reviewer.
 3. **NO subagent ever has send tools.** Sending anything is Tier 3 and happens only in the main session after approval. This is restated in `security-rules.md` as a security principle, not a style preference.
 4. **"Smart boss, cheap workers":** cheap (haiku-class) workers for search/research fan-outs; stronger models only where judgment is the work.
@@ -150,11 +150,11 @@ Re-verify volatile claims against YOUR live repo before relying on them:
 
 | Claim | Re-verify with |
 |---|---|
-| Skill / loop counts | `ls .claude/skills | wc -l` · `jq '.loops | length' state/loops-registry.json` |
+| Skill / loop counts | `ls skills | wc -l` · `jq '.loops | length' state/loops-registry.json` |
 | Tier definitions + Tier 3 scope list | `jq '.tier_definitions' config/autonomy-rules.json` |
 | Channel classifications | Read `knowledge/tacit/security-rules.md` |
 | Dead-man ping env vars | Presence-only grep of your untracked env file (never print values) |
 | Loop → script/log mapping | `jq -r '.loops[] | [.label,.script] | @tsv' state/loops-registry.json` · `docs/background-monitoring.md` |
-| Authoritative-source table | Root `CLAUDE.md` "Cross-Domain Rules" + "Integrations" |
+| Authoritative-source table | Root `AGENTS.md` "Cross-Domain Rules" + "Integrations" |
 | CRM reachable | `curl -s http://localhost:3000/healthz` (or your CRM's health endpoint) |
-| Sibling skills | `ls .claude/skills/` |
+| Sibling skills | `ls skills/` |

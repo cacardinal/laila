@@ -1,6 +1,8 @@
 # Laila OS
 
-A working example of a personal operating system built on [Claude Code](https://claude.com/claude-code). Life domains live as a filesystem, memory persists across sessions, autonomy comes with hard lines, and a named agent persona (Laila) runs background loops on your behalf.
+A working example of a personal operating system for AI agent harnesses. Life domains live as a filesystem, memory persists across sessions, autonomy comes with hard lines, and a named agent persona (Laila) runs background loops on your behalf.
+
+The conventions are deliberately platform-agnostic — an `AGENTS.md` router, SKILL.md rituals, plain-file state, and an env-configurable headless runner — because the system is the files and the discipline, not any vendor's feature set. The reference implementation runs on [Claude Code](https://claude.com/claude-code); adapters and the porting checklist are in `docs/platform-portability.md`.
 
 This repo is extracted from a real system that has run daily since early 2026. The original carries 20 active domains, ~46 skills, ~50 scheduled background jobs, a self-hosted CRM, and an agent that triages email, preps meetings, and files transcripts while its human sleeps. Everything personal has been replaced with a fictional user named Alex. The architecture is the artifact.
 
@@ -10,7 +12,7 @@ Most "AI assistant" setups fail the same way. The model is smart but the *system
 
 Laila OS answers with three design commitments:
 
-1. **The filesystem is the mind.** Domains, tracking files, daily notes, and a knowledge graph live as markdown and JSON in one repo. Claude reads state instead of asking you to repeat it. One home per fact: every piece of truth has exactly one authoritative file, and everything else is a generated export.
+1. **The filesystem is the mind.** Domains, tracking files, daily notes, and a knowledge graph live as markdown and JSON in one repo. The agent reads state instead of asking you to repeat it, and any agent that can read a repo can run the system. One home per fact: every piece of truth has exactly one authoritative file, and everything else is a generated export.
 
 2. **Autonomy has a bright line.** Every action is Tier 1 (auto-execute and notify; deterministic, reversible, invisible to anyone but you) or Tier 3 (propose and wait; the default, and mandatory for anything another human could observe). The agent never sends a message, completes a shared task, or touches anything outward-facing without approval. No skill or subagent routes around this.
 
@@ -19,22 +21,25 @@ Laila OS answers with three design commitments:
 ## What's in the box
 
 ```
-CLAUDE.md               The router: global policies + pointers, no content
+AGENTS.md               The router: global policies + pointers, no content
+CLAUDE.md               One-line Claude Code adapter (imports AGENTS.md)
 config/
   domain-triggers.json  Domain registry: paths, trigger phrases, lifecycle state
   autonomy-rules.json   Tier definitions and the auto-execute allowlist
 domains/                One directory per life domain (career, health,
-                        household, content), each with its own CLAUDE.md
+                        household, content), each with its own AGENTS.md
                         and tracking/status.md
 state/                  Volatile truth: strategy, goals export, daily notes,
                         active tasks, the loops registry
 knowledge/              The memory system: entity graph, tacit lessons,
                         decision log, and the MEMORY.md hot-cache pattern
-.claude/skills/         Rituals as skills: daily-brief, session-wrap,
+skills/                 Rituals as skills: daily-brief, session-wrap,
                         whats-next, domain-hygiene, roast, validate-idea,
                         and the judgment layer that gates evidence
-.claude/agents/         Subagent definitions: read-only critics and cheap
+agents/                 Subagent definitions: read-only critics and cheap
                         research workers, none with send tools
+                        (skills/ and agents/ are the neutral paths; the
+                        files live in .claude/ for the reference harness)
 scripts/                Heartbeat, hygiene scanner, notify wrapper
 dashboard/              Zero-dependency status page over the state files,
                         with an optional live-CRM panel
@@ -46,7 +51,7 @@ docs/                   Security model, background monitoring, trigger
 
 ## How a day works
 
-The morning starts with a launchd job that runs a headless Claude session, assembles a daily brief (calendar, comms triage, domain status, cross-domain conflicts), and sends it to Telegram. During the day, you talk to the system through trigger phrases ("what's next?", "check career", "prep me for the 2pm"). Skills load domain context, subagents do the searching and reviewing so the main session stays sharp, and every decision lands in the decision log. At night a consolidation job reviews the day's notes and folds what mattered into the knowledge layer.
+The morning starts with a launchd job that runs a headless agent session (whatever CLI `AGENT_RUN` names), assembles a daily brief (calendar, comms triage, domain status, cross-domain conflicts), and sends it to Telegram. During the day, you talk to the system through trigger phrases ("what's next?", "check career", "prep me for the 2pm"). Skills load domain context, subagents do the searching and reviewing so the main session stays sharp, and every decision lands in the decision log. At night a consolidation job reviews the day's notes and folds what mattered into the knowledge layer.
 
 Sessions end with `/session-wrap`, a mandatory ritual that proposes updates across every tracking surface and waits for approval. Skipping it is how things get dropped, so it isn't optional.
 
@@ -56,16 +61,17 @@ Flat files carry most of the system's truth, but contacts, pipeline, and goals o
 
 ## The judgment layer
 
-The most transferable thing here may be `.claude/skills/laila-os-judgment`: a distillation of the working discipline this system learned from its own incidents. Evidence bars ("done" means verified against the live system, and a subagent's report is not that). Never-infer rules (run `date` for day-of-week, always). Secret-scan discipline for anything public. Stop-and-surface when reality contradicts the task description.
+The most transferable thing here may be `skills/laila-os-judgment`: a distillation of the working discipline this system learned from its own incidents. Evidence bars ("done" means verified against the live system, and a subagent's report is not that). Never-infer rules (run `date` for day-of-week, always). Secret-scan discipline for anything public. Stop-and-surface when reality contradicts the task description.
 
 Every rule in that file was paid for once. The skill exists so nothing gets paid for twice.
 
 ## Adapting it
 
-1. Clone, then rewrite `CLAUDE.md`'s user facts and `config/domain-triggers.json` with your real domains. Start with 3, add domains only when a real workload demands one (`docs/adding-domains.md` has the checklist).
+1. Clone, then rewrite `AGENTS.md`'s user facts and `config/domain-triggers.json` with your real domains. Start with 3, add domains only when a real workload demands one (`docs/adding-domains.md` has the checklist).
 2. Replace the sample content in `domains/`, `state/`, and `knowledge/` with your own. The structures are what transfer; Alex's data exists only to show the shape.
 3. Wire the integrations you actually have. The scripts read config from `.env` (see `.env.example`); the launchagent templates document the headless gotchas (PATH, TCC permissions, node paths).
 4. Adopt the tier model before you adopt anything else. A system that can act while you're away is only trustworthy if the line between "act" and "ask" is written down and enforced everywhere.
+5. Not on Claude Code? Work through the adapter checklist in `docs/platform-portability.md` — the invariants port; only the discovery layer changes.
 
 ## What's deliberately absent
 

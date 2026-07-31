@@ -2,7 +2,7 @@
 
 Standard sync sequence for all trigger phrases. Execute the relevant sections based on trigger type.
 
-Domain-specific filters (email queries, messaging allowlists, task lists) live in each domain's CLAUDE.md file. This protocol defines the *sequence and priority logic* only.
+Domain-specific filters (email queries, messaging allowlists, task lists) live in each domain's AGENTS.md file. This protocol defines the *sequence and priority logic* only.
 
 ---
 
@@ -11,7 +11,7 @@ Domain-specific filters (email queries, messaging allowlists, task lists) live i
 1. **Calendar** — Establishes time context
 2. **Email** — Highest volume, longest to process
 3. **Messages** — Quick scan
-4. **Group messaging** — Allowlisted chats only (see root CLAUDE.md)
+4. **Group messaging** — Allowlisted chats only (see root AGENTS.md)
 5. **Social/professional networks** — Rate-limited, check last
 6. **Task manager** — Final task list
 
