@@ -31,7 +31,7 @@ Most "AI assistant" setups fail the same way. The model is smart but the *system
 
 Laila OS answers with three design commitments:
 
-1. **The filesystem is the mind.** Domains, tracking files, daily notes, and a knowledge graph live as markdown and JSON in one repo. The agent reads state instead of asking you to repeat it, and any agent that can read a repo can run the system. One home per fact: every piece of truth has exactly one authoritative file, and everything else is a generated export.
+1. **The filesystem is the mind.** Domains, tracking files, daily notes, and a knowledge graph live as markdown and JSON in one repo. The agent reads state instead of asking you to repeat it, and any agent that can read a repo can run the system. Recall comes in tiers. Hybrid search covers the memory collections with BM25 plus embeddings, which amounts to RAG over your own files; a wikilink entity graph lets the agent walk connections by reading; grep sits underneath both and never breaks. Every piece of truth has exactly one authoritative file, everything else is a generated export, and there is deliberately no separate memory database to drift out of sync (`knowledge/README.md`).
 
 2. **Autonomy has a bright line.** Every action is Tier 1 (auto-execute and notify; deterministic, reversible, invisible to anyone but you) or Tier 3 (propose and wait; the default, and mandatory for anything another human could observe). The agent never sends a message, completes a shared task, or touches anything outward-facing without approval. No skill or subagent routes around this.
 
@@ -98,7 +98,8 @@ domains/                One directory per life domain (career, health,
 state/                  Volatile truth: strategy, goals export, daily notes,
                         active tasks, the loops registry
 knowledge/              The memory system: entity graph, tacit lessons,
-                        decision log, and the MEMORY.md hot-cache pattern
+                        decision log, the MEMORY.md hot-cache pattern,
+                        and the tiered retrieval design (search > links > grep)
 skills/                 Rituals as skills: daily-brief, session-wrap,
                         whats-next, domain-hygiene, roast, validate-idea,
                         and the judgment layer that gates evidence

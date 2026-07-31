@@ -78,12 +78,18 @@ Every loop pings a [healthchecks.io](https://healthchecks.io) check on success; 
 
 Self-hosted Twenty for contacts, pipeline, and goals — setup, worked queries, and gotchas in `docs/crm-twenty.md`. Skippable at first: everything degrades to the markdown tracking files.
 
-## 7. Background loops
+## 7. Retrieval index (optional)
+
+Once your knowledge and state files carry real content, give agents search instead of just grep. Index the memory folders (knowledge/, domains/*/tracking/, state/daily-notes/, state/briefs/) as collections in any hybrid-search tool. The reference system uses `qmd`, an open-source markdown search tool that combines BM25, embeddings, and reranking, and also runs as an MCP server agents can call as a tool. Design notes and the no-graph-database rationale live in `knowledge/README.md`, under "The Retrieval Layer."
+
+**Verify:** a search for a fact you know is in one specific file returns that file first.
+
+## 8. Background loops
 
 Only after steps 2-5 verify: copy the `launchagents/*.template` plists, fill in paths, and load them (`launchagents/README.md`; cron/systemd equivalents noted there). Set `AGENT_RUN` in `.env` to your harness's non-interactive command (`docs/headless-sessions.md`).
 
 **Verify:** each loop's log in `/tmp/` shows a clean run, `state/loops-registry.json` reflects reality, and every dead-man switch is green.
 
-## 8. First week
+## 9. First week
 
 Run the rituals manually before trusting them scheduled: a `daily-brief` in the morning, `session-wrap` at the end of every working session, and read `skills/laila-os-judgment` once end to end — it's the discipline the whole system assumes. Then check the autonomy audit log (`state/autonomy-audit.json`) after a few days: everything the system did on its own should be there, and nothing in it should surprise you. If something does, tighten `config/autonomy-rules.json` — the rules file is yours.

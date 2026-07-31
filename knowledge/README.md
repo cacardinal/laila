@@ -40,6 +40,18 @@ Timestamped strategic and tactical decisions with reasoning and impact. Monthly 
 - `decisions/YYYY-MM.md` — Decisions made that month
 - Capturing the *reasoning* is the point — six months later, "why did we choose X?" should be answerable from this file alone
 
+## The Retrieval Layer
+
+The layers above answer "where does a fact live." Retrieval answers a different question for an agent that has never seen most of the repo. Which file holds the fact it needs right now?
+
+Three tiers, each a fallback for the one above:
+
+1. **Hybrid search over the collections.** The reference system indexes its markdown into named collections (knowledge, domain tracking files, daily notes, briefs, state) and searches them with BM25 full-text plus vector embeddings plus reranking, which amounts to classic RAG over the memory itself. It uses `qmd`, a small open-source hybrid-search CLI for markdown that also runs as an MCP server, so agents query it as a tool. Any embedding-search tool that can index folders works the same way; the collection boundaries carry the design, and any tool that respects them works.
+2. **The wikilink graph.** Entity files link to each other with `[[entity]]` references. An agent that lands on one relevant file walks the links from there. That is multi-hop traversal by reading, and the hop happens inside the document itself.
+3. **Grep.** Always available, and sufficient until the corpus outgrows it.
+
+The design deliberately skips a graph database. A separate graph store would be a second home for facts the files already own, and one home per fact is the rule that keeps this system trustworthy. Relationship-shaped queries ("who do I know at this company?") belong in the CRM, already a real structured graph (`docs/crm-twenty.md`). Revisit the choice when hybrid search starts returning keyword soup because the corpus grew past it, or when cross-entity questions keep forcing you to read a dozen files. Until then, files + search + links beat a database you have to keep synchronized.
+
 ## Hot Cache
 
 `MEMORY.md` (auto-loaded into every session's system prompt) is the volatile hot cache in front of all three layers. It stays at or under 120 lines and holds only CRITICAL current context — everything else lives in the layers above and is linked from one-line index entries. Rules and template: `knowledge/MEMORY-TEMPLATE.md`.
