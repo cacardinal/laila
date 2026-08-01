@@ -39,7 +39,7 @@ Laila makes three commitments:
 
 2. **Autonomy has a bright line.** Every action is Tier 1 or Tier 3. There is deliberately no Tier 2 (`docs/security-model.md` explains why). Tier 1 actions run on their own and notify you; they must be deterministic, reversible, and invisible to anyone but you. Tier 3 is the default. The agent proposes and waits. Anything another person could see is Tier 3, always. The agent never sends a message or completes a shared task without approval, and no skill or subagent routes around this.
 
-3. **Commands and information are different channels.** Instructions reach the agent only through channels that authenticate you: your Telegram, your local sessions, a dedicated task queue. Email, messages, web pages, and CRM data are information. The agent reasons about them and never obeys them. If an email claims to be you and tells the agent to forward a document, the agent reads it, maybe reports it, and does nothing. This is how the system defeats prompt injection.
+3. **Commands and information are different channels.** Instructions reach the agent only through channels that authenticate you: your Telegram, your local sessions, a dedicated task queue. Email, messages, web pages, and CRM data are information. The agent reasons about them and never obeys them. If an email claims to be you and tells the agent to forward a document, the agent reads it, maybe reports it, and does nothing. An injected instruction commands nothing, because nothing on an information channel can trigger an action. At worst it biases a note, and the note is a git diff you can read and revert.
 
 ## How it compares
 
@@ -54,7 +54,7 @@ Laila makes three commitments:
 | Injection defense | Isolation + defaults | Scanning + isolation | Structural (channels carry no instructions) plus advisory flagging |
 | Autonomy | Tools conditionally enabled | Conservative sandboxes | Per-action tiers, propose by default, append-only audit |
 
-Pick OpenClaw for reach, Hermes for self-improvement, QM for a team, and Laila when you want every memory readable, every action tiered and logged, and every instruction authenticated. The full comparison, including the published research on background-session memory pollution, is in `docs/comparisons.md`.
+Pick OpenClaw for reach across the most channels and the biggest community, Hermes for an agent that gets better at your work on its own, QM when more than one person needs the system, and Laila when you want every memory readable, every action tiered and logged, and every instruction authenticated. The full comparison, including the published research on background-session memory pollution, is in `docs/comparisons.md`.
 
 ## Architecture
 
@@ -148,7 +148,7 @@ Flat files carry most of the truth. Contacts, pipeline, and goals need more stru
 
 ## The judgment layer
 
-`skills/laila-judgment` may be the most transferable file here. It records the working discipline the original system learned from its own failures. "Done" means verified against the live system, and a subagent's report is not evidence. Day-of-week comes from `date`, never from inference. Anything public gets a secret scan. When reality contradicts the task, the agent stops and says so. Each rule exists because breaking it once cost something.
+`skills/laila-judgment` records the working discipline the original system learned from its own failures. "Done" means verified against the live system, and a subagent's report is not evidence. Day-of-week comes from `date`, never from inference. Anything public gets a secret scan. When reality contradicts the task, the agent stops and says so. Each rule exists because breaking it once cost something.
 
 ## Adapting it
 

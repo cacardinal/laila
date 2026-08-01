@@ -13,6 +13,7 @@
           "solstice-systems.com",
           "heliotrope.co"
         ],
+        "sender_authentication": "DKIM-aligned sender domain required (docs/security-model.md); a From-header substring match alone never fires a Tier 1 action",
         "content_patterns": [
           "decided to go in another direction",
           "not moving forward with the proposal",
@@ -57,6 +58,7 @@
           "heliotrope.co",
           "calendly.com"
         ],
+        "sender_authentication": "DKIM-aligned sender domain required (docs/security-model.md); a From-header substring match alone never fires a Tier 1 action",
         "content_patterns": [
           "schedule.*discovery call",
           "set up an intro call",
