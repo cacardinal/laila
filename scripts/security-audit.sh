@@ -67,7 +67,7 @@ fi
 if [ -n "$FINDINGS" ]; then
   echo "SECURITY AUDIT: findings (base NOT advanced)"
   printf '%s' "$FINDINGS"
-  [ -x "scripts/telegram-notify.sh" ] && scripts/telegram-notify.sh "[SECURITY] Audit findings:
+  [ -x "scripts/telegram-notify.sh" ] && scripts/telegram-notify.sh default "[SECURITY] Audit findings:
 $(printf '%s' "$FINDINGS" | head -c 800)"
   [ -n "${HC_SECURITY_AUDIT_URL:-}" ] && curl -fsS -m 10 "${HC_SECURITY_AUDIT_URL}/fail" >/dev/null 2>&1
   exit 1

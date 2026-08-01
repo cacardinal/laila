@@ -37,6 +37,9 @@ jobs:
       - name: Python syntax
         run: python3 -m py_compile scripts/*.py && echo "python ok"
 
+      - name: Telegram bot behavioral selftest
+        run: python3 scripts/telegram-bot.py --selftest
+
       - name: Node syntax
         run: node --check dashboard/server.js && echo "node ok"
 

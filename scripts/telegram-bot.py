@@ -105,15 +105,29 @@ def run_agent(text):
 
 
 def read_offset():
+    if not os.path.exists(OFFSET_FILE):
+        return 0  # fresh install: no state yet
     try:
         return json.load(open(OFFSET_FILE))["offset"]
     except Exception:
-        return 0
+        # Corrupt offset state (e.g. a crash mid-write before this file was
+        # written atomically). Quarantine the evidence and SKIP the backlog:
+        # the loop polls offset+1, and -2+1 = -1 asks Telegram for only the
+        # newest update. Replaying up to 24h of messages as fresh commands —
+        # one agent session each — is far worse than possibly reprocessing one.
+        os.replace(OFFSET_FILE, OFFSET_FILE + ".corrupt")
+        print(f"offset file corrupt; quarantined to {OFFSET_FILE}.corrupt, skipping backlog", flush=True)
+        return -2
 
 
 def write_offset(offset):
     os.makedirs(os.path.dirname(OFFSET_FILE), exist_ok=True)
-    json.dump({"offset": offset}, open(OFFSET_FILE, "w"))
+    # Atomic (temp + rename) so a crash never truncates the offset file —
+    # a truncated file used to replay the entire backlog on restart.
+    tmp = OFFSET_FILE + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump({"offset": offset}, f)
+    os.replace(tmp, OFFSET_FILE)
 
 
 def send_reply(token, chat_id, text):

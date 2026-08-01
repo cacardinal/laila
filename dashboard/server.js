@@ -59,9 +59,9 @@ function overview() {
     generated_at: new Date().toISOString(),
     tasks: {
       items: taskList,
-      active: taskList.filter((t) => t.status !== "done").length,
+      active: taskList.filter((t) => !TERMINAL_STATUSES.has(t.status)).length,
       stale: taskList.filter(
-        (t) => t.status !== "done" && (!t.last_checked || now - Date.parse(t.last_checked) > staleMs)
+        (t) => !TERMINAL_STATUSES.has(t.status) && (!t.last_checked || now - Date.parse(t.last_checked) > staleMs)
       ).length,
     },
     brief: { items: brief?.items || brief?.pending || [] },
@@ -149,7 +149,12 @@ function auditAppend(entry) {
   entry.id = `AA-${nextNum}`;
   entry.timestamp = new Date().toISOString();
   log.entries.push(entry);
-  fs.writeFileSync(p, JSON.stringify(log, null, 2) + "\n");
+  // Atomic (temp + rename) so a crash can never truncate the audit log.
+  // ID assignment assumes this server is the only concurrent writer; other
+  // writers (sessions, loops) append in their own process lifetimes.
+  const tmp = p + ".tmp";
+  fs.writeFileSync(tmp, JSON.stringify(log, null, 2) + "\n");
+  fs.renameSync(tmp, p);
   return entry.id;
 }
 
@@ -220,6 +225,29 @@ async function proxyGraphql(req, res) {
 
 const MIME = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".svg": "image/svg+xml" };
 
+// One definition of "done" — must match the terminal set in scripts/heartbeat.py.
+const TERMINAL_STATUSES = new Set(["done", "completed", "cancelled"]);
+
+function sameOriginPost(req, res) {
+  // CSRF guard: browsers attach an Origin header to cross-site POSTs, so a
+  // malicious page in the user's own browser arrives with its own origin and
+  // is rejected — the 127.0.0.1 bind alone does not stop that. Requests with
+  // no Origin (curl, scripts) pass; for those the localhost bind is the boundary.
+  const origin = req.headers.origin;
+  let ok = true;
+  try {
+    if (origin) ok = new URL(origin).host === req.headers.host;
+  } catch {
+    ok = false;
+  }
+  if (!ok) {
+    res.writeHead(403, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: "cross_origin_rejected" }));
+    return false;
+  }
+  return true;
+}
+
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const json = (obj) => {
@@ -234,8 +262,10 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/api/calendar") return json(readJson("state/calendar-snapshot.json") || { events: [] });
     if (url.pathname === "/api/audit") return json(readJson("state/autonomy-audit.json") || { entries: [] });
     if (url.pathname === "/api/home") return json(await homeState());
-    if (url.pathname === "/api/home/action" && req.method === "POST") return homeAction(req, res);
-    if (url.pathname === "/graphql" && req.method === "POST") return proxyGraphql(req, res);
+    if (url.pathname === "/api/home/action" && req.method === "POST")
+      return sameOriginPost(req, res) && homeAction(req, res);
+    if (url.pathname === "/graphql" && req.method === "POST")
+      return sameOriginPost(req, res) && proxyGraphql(req, res);
 
     const rel = url.pathname === "/" ? "index.html" : url.pathname.slice(1);
     const file = path.join(PUBLIC, path.normalize(rel));
